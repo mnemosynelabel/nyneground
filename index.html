@@ -59,12 +59,17 @@ nav{
 .b-dim{position:absolute;inset:0;background:rgba(13,13,13,0.5);}
 .b-grad{position:absolute;inset:0;background:linear-gradient(100deg,rgba(13,13,13,0.97) 28%,rgba(13,13,13,0.55) 60%,rgba(13,13,13,0.12) 100%);}
 .b-content{position:relative;z-index:3;padding:clamp(24px,4vw,56px) clamp(24px,5vw,64px);max-width:min(600px,88%);}
-.b-season{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--crimson);margin-bottom:12px;}
-.b-name{font-family:'Cormorant Garamond',serif;font-size:clamp(44px,8vw,82px);font-weight:300;line-height:0.88;color:var(--ivory);margin-bottom:10px;}
-.b-name em{font-style:italic;color:var(--gold);}
-.b-desc{font-size:11px;letter-spacing:1.5px;color:var(--smoke);margin-bottom:26px;line-height:1.7;}
+.b-season{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--crimson);margin-bottom:8px;}
+.b-artist{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--smoke);margin-bottom:4px;}
+.b-track-name{font-family:'Cormorant Garamond',serif;font-size:clamp(40px,7.5vw,76px);font-weight:300;line-height:0.9;color:var(--ivory);margin-bottom:4px;}
+.b-track-name em{font-style:italic;color:var(--gold);}
+.b-album{font-size:10px;letter-spacing:2px;color:var(--stone);margin-bottom:6px;font-style:italic;}
+.b-desc{font-size:11px;letter-spacing:1.5px;color:var(--smoke);margin-bottom:24px;line-height:1.7;}
+.b-actions{display:flex;gap:12px;flex-wrap:wrap;}
 .b-btn{display:inline-flex;align-items:center;gap:9px;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;font-family:'DM Sans',sans-serif;border:0.5px solid rgba(201,168,76,0.5);color:var(--gold);background:none;padding:11px 22px;cursor:pointer;transition:all 0.25s;}
 .b-btn:hover{background:rgba(201,168,76,0.12);border-color:var(--gold);}
+.b-btn.buy{border-color:rgba(245,240,232,0.25);color:var(--ivory);}
+.b-btn.buy:hover{background:rgba(245,240,232,0.06);border-color:rgba(245,240,232,0.5);}
 .b-btn.cs{border-color:rgba(245,240,232,0.18);color:var(--smoke);cursor:default;}
 .b-btn.cs:hover{background:none;}
 .b-soon{display:inline-block;font-size:8.5px;letter-spacing:2.5px;text-transform:uppercase;border:0.5px solid rgba(245,240,232,0.18);color:var(--smoke);padding:5px 12px;margin-bottom:16px;}
@@ -95,35 +100,34 @@ nav{
 .acard-cover{width:100%;aspect-ratio:1/1;position:relative;overflow:hidden;background:#111;}
 .acard-cover img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.55s ease,filter 0.3s;filter:brightness(0.85);}
 .acard:hover .acard-cover img{transform:scale(1.04);filter:brightness(1);}
-.acard.playing .acard-cover img{filter:brightness(0.6);}
+.acard.playing .acard-cover img{filter:brightness(0.55);}
 
 .acard-ov{position:absolute;inset:0;background:rgba(13,13,13,0.48);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.25s;}
 .acard:hover .acard-ov{opacity:1;}
-.acard.playing .acard-ov{opacity:1;}
 .play-ring{width:56px;height:56px;border-radius:50%;border:1.5px solid var(--gold);display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:22px;transition:transform 0.22s,background 0.22s;}
 .acard:hover .play-ring{transform:scale(1.1);background:rgba(201,168,76,0.1);}
 
-/* playing indicator on cover */
-.acard-playing-ind{
-  position:absolute;bottom:12px;left:12px;
-  display:none;align-items:flex-end;gap:3px;height:18px;
-  background:rgba(13,13,13,0.7);padding:4px 8px;
-}
+.acard-playing-ind{position:absolute;bottom:12px;left:12px;display:none;align-items:flex-end;gap:3px;height:18px;background:rgba(13,13,13,0.75);padding:4px 8px;}
 .acard.playing .acard-playing-ind{display:flex;}
-.acard-playing-ind span{
-  display:inline-block;width:3px;background:var(--gold);border-radius:1px;
-  animation:bp 0.75s ease-in-out infinite alternate;
-}
+.acard-playing-ind span{display:inline-block;width:3px;background:var(--gold);border-radius:1px;animation:bp 0.75s ease-in-out infinite alternate;}
 .acard-playing-ind span:nth-child(2){animation-delay:.12s;}
 .acard-playing-ind span:nth-child(3){animation-delay:.26s;}
 .acard-playing-ind span:nth-child(4){animation-delay:.08s;}
 @keyframes bp{from{height:3px;opacity:.35;}to{height:14px;opacity:1;}}
 
-.acard-info{padding:14px 18px 18px;}
-.acard-type{font-size:8.5px;letter-spacing:2px;text-transform:uppercase;color:var(--crimson);margin-bottom:4px;}
+.acard-info{padding:14px 18px 20px;}
+.acard-type{font-size:8.5px;letter-spacing:2px;text-transform:uppercase;color:var(--crimson);margin-bottom:5px;}
 .acard-artist{font-size:9.5px;letter-spacing:2px;text-transform:uppercase;color:var(--smoke);margin-bottom:4px;}
-.acard-title{font-family:'Cormorant Garamond',serif;font-size:clamp(17px,2vw,22px);font-weight:400;color:var(--ivory);margin-bottom:4px;line-height:1.1;}
-.acard-date{font-size:9px;color:var(--dim);letter-spacing:1px;}
+.acard-track{font-family:'Cormorant Garamond',serif;font-size:clamp(17px,2vw,22px);font-weight:400;color:var(--ivory);margin-bottom:3px;line-height:1.1;}
+.acard-album{font-size:9px;color:var(--stone);letter-spacing:1px;font-style:italic;margin-bottom:3px;}
+.acard-date{font-size:9px;color:var(--dim);letter-spacing:1px;margin-bottom:14px;}
+
+.acard-btns{display:flex;gap:8px;flex-wrap:wrap;}
+.ac-btn{font-size:8.5px;letter-spacing:2px;text-transform:uppercase;font-family:'DM Sans',sans-serif;padding:7px 14px;cursor:pointer;background:none;transition:all 0.2s;display:inline-flex;align-items:center;gap:6px;}
+.ac-btn.listen{border:0.5px solid rgba(201,168,76,0.4);color:var(--gold);}
+.ac-btn.listen:hover{background:rgba(201,168,76,0.1);border-color:var(--gold);}
+.ac-btn.buy{border:0.5px solid rgba(245,240,232,0.15);color:var(--smoke);}
+.ac-btn.buy:hover{background:rgba(245,240,232,0.06);border-color:rgba(245,240,232,0.35);color:var(--ivory);}
 
 /* NOW PLAYING DOCK */
 .dock{
@@ -137,19 +141,18 @@ nav{
 }
 .dock.up{transform:translateY(0);}
 
-/* top bar of dock */
 .dock-bar{
   display:flex;align-items:center;
   gap:clamp(10px,2vw,20px);
   padding:12px clamp(14px,4vw,52px);
-  border-bottom:0.5px solid rgba(245,240,232,0.06);
+  border-bottom:0.5px solid rgba(245,240,232,0.05);
 }
 .dock-thumb{width:44px;height:44px;flex-shrink:0;overflow:hidden;border:0.5px solid rgba(245,240,232,0.1);background:#1a1a1a;}
 .dock-thumb img{width:100%;height:100%;object-fit:cover;display:block;}
 .dock-info{flex:1;min-width:0;}
 .dock-label{font-size:8px;letter-spacing:2.5px;text-transform:uppercase;color:var(--crimson);margin-bottom:2px;}
-.dock-title{font-family:'Cormorant Garamond',serif;font-size:clamp(13px,2vw,17px);color:var(--ivory);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.dock-artist{font-size:8.5px;letter-spacing:2px;text-transform:uppercase;color:var(--smoke);margin-top:1px;}
+.dock-track{font-family:'Cormorant Garamond',serif;font-size:clamp(13px,2vw,17px);color:var(--ivory);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.dock-meta{font-size:8.5px;letter-spacing:1.5px;color:var(--smoke);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .dock-bars{display:flex;align-items:flex-end;gap:3px;height:18px;flex-shrink:0;}
 .dock-bars span{display:inline-block;width:3px;background:var(--gold);border-radius:1px;animation:bp 0.75s ease-in-out infinite alternate;}
 .dock-bars span:nth-child(2){animation-delay:.15s;}
@@ -162,20 +165,9 @@ nav{
 .dock-btn.stop{border:0.5px solid rgba(245,240,232,0.15);color:var(--smoke);}
 .dock-btn.stop:hover{border-color:rgba(107,16,32,0.6);color:var(--crimson);}
 
-/* mini youtube player inside dock */
-.dock-player{
-  width:100%;
-  overflow:hidden;
-  max-height:0;
-  transition:max-height 0.4s cubic-bezier(0.77,0,0.18,1);
-}
+.dock-player{width:100%;overflow:hidden;max-height:0;transition:max-height 0.4s cubic-bezier(0.77,0,0.18,1);}
 .dock.up .dock-player{max-height:200px;}
-.dock-player iframe{
-  width:100%;
-  height:200px;
-  border:none;
-  display:block;
-}
+.dock-player iframe{width:100%;height:200px;border:none;display:block;}
 
 @media(max-width:600px){
   .dock-note{display:none;}
@@ -184,20 +176,46 @@ nav{
 }
 
 /* FOOTER */
-footer{border-top:0.5px solid var(--faint);padding:32px clamp(16px,5vw,56px);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
-.ft-name{font-family:'Cormorant Garamond',serif;font-size:20px;font-style:italic;color:var(--ivory);}
-.ft-sub{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);margin-top:4px;}
-.ft-r{font-size:9px;color:var(--dim);letter-spacing:1px;text-align:right;line-height:2.2;}
-.ft-r a{color:var(--stone);text-decoration:none;}
-.ft-r a:hover{color:var(--gold);}
+footer{
+  border-top:0.5px solid var(--faint);
+  padding:40px clamp(16px,5vw,56px);
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:32px;
+  align-items:start;
+}
+.ft-brand .ft-name{font-family:'Cormorant Garamond',serif;font-size:22px;font-style:italic;color:var(--ivory);}
+.ft-brand .ft-tag{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);margin-top:5px;line-height:1.8;}
+
+.ft-links h4{font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--crimson);margin-bottom:12px;}
+.ft-links a{display:block;font-size:10px;color:var(--smoke);text-decoration:none;letter-spacing:1px;margin-bottom:7px;transition:color 0.2s;}
+.ft-links a:hover{color:var(--gold);}
+
+.ft-contact h4{font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--crimson);margin-bottom:12px;}
+.ft-contact p{font-size:10px;color:var(--smoke);letter-spacing:1px;line-height:2;}
+.ft-contact a{color:var(--stone);text-decoration:none;}
+.ft-contact a:hover{color:var(--gold);}
+
+.ft-bottom{
+  grid-column:1/-1;
+  border-top:0.5px solid var(--faint);
+  padding-top:20px;
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;
+}
+.ft-bottom p{font-size:8.5px;color:var(--dim);letter-spacing:1px;}
 
 /* RESPONSIVE */
-@media(max-width:900px){.cat-bot{grid-template-columns:1fr 1fr;}}
+@media(max-width:900px){
+  .cat-bot{grid-template-columns:1fr 1fr;}
+  footer{grid-template-columns:1fr 1fr;}
+  .ft-bottom{grid-column:1/-1;}
+}
 @media(max-width:600px){
   .cat-top{grid-template-columns:1fr;}
   .cat-bot{grid-template-columns:1fr 1fr;}
   .nav-links{display:none;}
   .hamburger{display:block;}
+  footer{grid-template-columns:1fr;}
 }
 @media(max-width:380px){.cat-bot{grid-template-columns:1fr;}}
 </style>
@@ -254,13 +272,33 @@ footer{border-top:0.5px solid var(--faint);padding:32px clamp(16px,5vw,56px);dis
 
 <!-- FOOTER -->
 <footer>
-  <div>
+  <div class="ft-brand">
     <div class="ft-name">Nyne Ground</div>
-    <div class="ft-sub">Mnemosyne · Seongsu-dong, Seoul · Est. 2026</div>
+    <div class="ft-tag">
+      Mnemosyne's stage and store.<br>
+      where the music lands.<br>
+      Seongsu-dong, Seoul · Est. 2026<br>
+      Current Season — ANAMNESIS
+    </div>
   </div>
-  <div class="ft-r">
-    <a href="mailto:mnemosyne.label@gmail.com">mnemosyne.label@gmail.com</a><br>
-    @mnemosyne_label · Current Season — ANAMNESIS
+  <div class="ft-links">
+    <h4>Navigate</h4>
+    <a href="#">Store</a>
+    <a href="#">Shows</a>
+    <a href="#">Merch</a>
+    <a href="https://mnemosynelabel.github.io" target="_blank">↗ Mnemosyne Label</a>
+  </div>
+  <div class="ft-contact">
+    <h4>Contact</h4>
+    <p>
+      <a href="mailto:mnemosyne.label@gmail.com">mnemosyne.label@gmail.com</a><br>
+      @mnemosyne_label<br>
+      Nyne Ground
+    </p>
+  </div>
+  <div class="ft-bottom">
+    <p>© 2026 Mnemosyne · Seoul · All rights reserved.</p>
+    <p>from memory, everything is made.</p>
   </div>
 </footer>
 
@@ -270,8 +308,8 @@ footer{border-top:0.5px solid var(--faint);padding:32px clamp(16px,5vw,56px);dis
     <div class="dock-thumb"><img id="dock-img" src="" alt=""/></div>
     <div class="dock-info">
       <div class="dock-label">Now Playing</div>
-      <div class="dock-title" id="dock-title">—</div>
-      <div class="dock-artist" id="dock-artist">—</div>
+      <div class="dock-track" id="dock-track">—</div>
+      <div class="dock-meta" id="dock-meta">—</div>
     </div>
     <div class="dock-bars"><span></span><span></span><span></span><span></span><span></span></div>
     <div class="dock-note">via youtube music</div>
@@ -280,60 +318,64 @@ footer{border-top:0.5px solid var(--faint);padding:32px clamp(16px,5vw,56px);dis
     </div>
   </div>
   <div class="dock-player">
-    <iframe id="dock-yt"
-      allow="autoplay; encrypted-media"
-      allowfullscreen
-      src="about:blank">
-    </iframe>
+    <iframe id="dock-yt" allow="autoplay; encrypted-media" allowfullscreen src="about:blank"></iframe>
   </div>
 </div>
 
 <script>
 const releases = [
   {
-    id:1, type:'Single', artist:'ERIS', title:'Virtual Angel', date:'Feb 2026',
+    id:1, type:'Single', artist:'ERIS',
+    track:'Virtual Angel', album:'DALL (Devine All Love & Live)', date:'Feb 2026',
     cover:'https://raw.githubusercontent.com/mnemosynelabel/mnemosynelabel.github.io/ac8495ab85e0653340bf946223eac471cc068a44/images/eris%20virtual%20angel.jfif',
     ytId:'EqUP26j4XWU', start:0,
     banner:'Corrupted light from five voices.', cs:false
   },
   {
-    id:2, type:'Album', artist:'CI-EL', title:'ALPHA', date:'Apr 2026',
+    id:2, type:'Album', artist:'CI-EL',
+    track:'Tie a Cherry', album:'ALPHA', date:'Apr 2026',
     cover:'https://raw.githubusercontent.com/mnemosynelabel/mnemosynelabel.github.io/ac8495ab85e0653340bf946223eac471cc068a44/images/cl%20coming%20soon.jfif',
     ytId:'LrYwqmlSAK0', start:0,
     banner:'11 tracks. autonomy. self-conviction.', cs:false
   },
   {
-    id:3, type:'Album', artist:'AUGUST', title:'D2', date:'Apr 2026',
+    id:3, type:'Album', artist:'AUGUST',
+    track:'Shadow', album:'D2', date:'Apr 2026',
     cover:'https://raw.githubusercontent.com/mnemosynelabel/mnemosynelabel.github.io/480eff105cb63445cfd357f638ba8eda029a4f37/images/d2.jpg',
     ytId:'PV1gCvzpSy0', start:0,
     banner:'Liberation. identity. refusing definition.', cs:false
   },
   {
-    id:4, type:'Single', artist:'SKÆZ', title:'Do It', date:'Apr 2026',
+    id:4, type:'Single', artist:'SKÆZ',
+    track:'Do It', album:'Do It', date:'Apr 2026',
     cover:'https://raw.githubusercontent.com/mnemosynelabel/mnemosynelabel.github.io/ac8495ab85e0653340bf946223eac471cc068a44/images/skaez%20do%20it.jfif',
     ytId:'NED7nev2ywQ', start:0,
     banner:'Eight fractures. one stage.', cs:false
   },
   {
-    id:5, type:'Single', artist:'JASS', title:'With Love, J', date:'May 2026',
+    id:5, type:'Single', artist:'JASS',
+    track:'Fly', album:'With Love, J', date:'May 2026',
     cover:'https://raw.githubusercontent.com/mnemosynelabel/mnemosynelabel.github.io/480eff105cb63445cfd357f638ba8eda029a4f37/images/WithLoveJ.jpg',
     ytId:'iZpq8FjJr2E', start:0,
     banner:'A voice for the voiceless.', cs:false
   },
   {
-    id:6, type:'Artist', artist:'VI', title:'Coming Soon', date:'2026',
+    id:6, type:'Artist', artist:'VI',
+    track:'Coming Soon', album:'—', date:'2026',
     cover:'https://raw.githubusercontent.com/mnemosynelabel/mnemosynelabel.github.io/645b6dae18a54bb677721263110797827a7e585f/images/vi.jpg',
     ytId:null, start:0,
     banner:'Vessel of Persephone · where death and spring meet.', cs:true
   },
   {
-    id:7, type:'Group', artist:'AERA', title:'Coming Soon', date:'2026',
+    id:7, type:'Group', artist:'AERA',
+    track:'Coming Soon', album:'—', date:'2026',
     cover:'https://raw.githubusercontent.com/mnemosynelabel/mnemosynelabel.github.io/ac8495ab85e0653340bf946223eac471cc068a44/images/new%20gen.jpg',
     ytId:null, start:0,
     banner:'Pillars of Hera · Protectors of the Digital Olympus.', cs:true
   },
   {
-    id:8, type:'Group', artist:'ØISYZ', title:'Coming Soon', date:'2026',
+    id:8, type:'Group', artist:'ØISYZ',
+    track:'Coming Soon', album:'—', date:'2026',
     cover:'https://raw.githubusercontent.com/mnemosynelabel/mnemosynelabel.github.io/2c3308da499e3add58e5cab8f7ff05cb95fa8f7a/images/oisyz.jpg',
     ytId:null, start:0,
     banner:'Where emotional pain becomes sound.', cs:true
@@ -348,16 +390,22 @@ const bDots=document.getElementById('b-dots');
 releases.forEach((r,i)=>{
   const slide=document.createElement('div');
   slide.className='b-slide'+(i===0?' active':'');
-  const action=r.cs
-    ?`<div class="b-soon">Coming Soon</div><br><button class="b-btn cs" disabled><i class="ti ti-clock"></i>&nbsp;Watch This Space</button>`
-    :`<button class="b-btn" onclick="playCard(${r.id})"><i class="ti ti-player-play"></i>&nbsp;Listen Now</button>`;
+  const action = r.cs
+    ? `<div class="b-soon">Coming Soon</div><br>
+       <button class="b-btn cs" disabled><i class="ti ti-clock"></i>&nbsp;Watch This Space</button>`
+    : `<div class="b-actions">
+         <button class="b-btn" onclick="playCard(${r.id})"><i class="ti ti-player-play"></i>&nbsp;Listen Now</button>
+         <button class="b-btn buy"><i class="ti ti-shopping-bag"></i>&nbsp;Buy Now</button>
+       </div>`;
   slide.innerHTML=`
     <div class="b-img" style="background-image:url('${r.cover}');"></div>
     <div class="b-dim"></div>
     <div class="b-grad"></div>
     <div class="b-content">
       <div class="b-season">MNEMOSYNE · ANAMNESIS · ${r.date}</div>
-      <div class="b-name">${r.artist}<br><em>${r.title}</em></div>
+      <div class="b-artist">${r.artist}</div>
+      <div class="b-track-name"><em>${r.track}</em></div>
+      <div class="b-album">${r.album}</div>
       <div class="b-desc">${r.type}&nbsp;·&nbsp;${r.banner}</div>
       ${action}
     </div>`;
@@ -397,7 +445,7 @@ released.forEach((r,i)=>{
   card.id='card-'+r.id;
   card.innerHTML=`
     <div class="acard-cover">
-      <img src="${r.cover}" alt="${r.title}" loading="lazy"/>
+      <img src="${r.cover}" alt="${r.track}" loading="lazy"/>
       <div class="acard-ov">
         <div class="play-ring"><i class="ti ti-player-play" aria-hidden="true"></i></div>
       </div>
@@ -408,8 +456,17 @@ released.forEach((r,i)=>{
     <div class="acard-info">
       <div class="acard-type">${r.type}</div>
       <div class="acard-artist">${r.artist}</div>
-      <div class="acard-title">${r.title}</div>
+      <div class="acard-track">${r.track}</div>
+      <div class="acard-album">${r.album}</div>
       <div class="acard-date">${r.date}</div>
+      <div class="acard-btns">
+        <button class="ac-btn listen" onclick="event.stopPropagation();playCard(${r.id})">
+          <i class="ti ti-player-play"></i> Listen
+        </button>
+        <button class="ac-btn buy" onclick="event.stopPropagation()">
+          <i class="ti ti-shopping-bag"></i> Buy
+        </button>
+      </div>
     </div>`;
   card.addEventListener('click',()=>playCard(r.id));
   if(i<2) topEl.appendChild(card);
@@ -420,8 +477,8 @@ released.forEach((r,i)=>{
 let currentId=null;
 const dock=document.getElementById('dock');
 const dockImg=document.getElementById('dock-img');
-const dockTitle=document.getElementById('dock-title');
-const dockArtist=document.getElementById('dock-artist');
+const dockTrack=document.getElementById('dock-track');
+const dockMeta=document.getElementById('dock-meta');
 const dockYt=document.getElementById('dock-yt');
 
 function playCard(id){
@@ -430,19 +487,12 @@ function playCard(id){
   if(currentId===id) return;
   stopAll();
   currentId=id;
-
-  // mark card as playing
   const card=document.getElementById('card-'+id);
   if(card) card.classList.add('playing');
-
-  // update dock info
   dockImg.src=r.cover;
-  dockTitle.textContent=r.title;
-  dockArtist.textContent=r.artist;
-
-  // load youtube into dock mini player
+  dockTrack.textContent=r.track;
+  dockMeta.textContent=r.artist+' · '+r.album;
   dockYt.src=`https://www.youtube.com/embed/${r.ytId}?autoplay=1&start=${r.start}&rel=0&modestbranding=1&playsinline=1`;
-
   dock.classList.add('up');
 }
 
