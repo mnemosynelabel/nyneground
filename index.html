@@ -16,6 +16,7 @@
   --smoke:#A8A9AD;
   --stone:#8B7355;
   --dim:#3a3a3a;
+  --panel:#111111;
   --faint:rgba(245,240,232,0.07);
   --gfaint:rgba(201,168,76,0.18);
 }
@@ -25,15 +26,8 @@ body{background:var(--black);color:var(--ivory);font-family:'DM Sans',sans-serif
 ::-webkit-scrollbar-track{background:var(--black);}
 ::-webkit-scrollbar-thumb{background:var(--crimson);}
 
-/* ── NAV ── */
-nav{
-  position:sticky;top:0;z-index:500;
-  background:rgba(13,13,13,0.97);
-  backdrop-filter:blur(16px);
-  border-bottom:0.5px solid var(--gfaint);
-  height:62px;display:flex;align-items:center;justify-content:space-between;
-  padding:0 clamp(16px,5vw,56px);
-}
+/* NAV */
+nav{position:sticky;top:0;z-index:500;background:rgba(13,13,13,0.97);backdrop-filter:blur(16px);border-bottom:0.5px solid var(--gfaint);height:62px;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(16px,5vw,56px);}
 .nav-logo{display:flex;align-items:center;gap:11px;text-decoration:none;}
 .nav-ring{width:38px;height:38px;border-radius:50%;border:1.5px solid var(--crimson);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:21px;font-weight:600;color:var(--crimson);flex-shrink:0;}
 .nav-top{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--ivory);font-weight:300;line-height:1.3;}
@@ -45,66 +39,35 @@ nav{
 .nav-ext{border:0.5px solid rgba(201,168,76,0.35)!important;color:var(--gold)!important;padding:6px 13px;transition:background 0.2s!important;}
 .nav-ext:hover{background:rgba(201,168,76,0.09)!important;}
 .hamburger{display:none;background:none;border:none;color:var(--ivory);font-size:24px;cursor:pointer;padding:4px;line-height:1;}
-.mob-menu{
-  display:none;position:fixed;top:62px;left:0;right:0;bottom:0;
-  background:rgba(13,13,13,0.99);z-index:490;
-  flex-direction:column;align-items:center;justify-content:center;gap:40px;
-}
+.mob-menu{display:none;position:fixed;top:62px;left:0;right:0;bottom:0;background:rgba(13,13,13,0.99);z-index:490;flex-direction:column;align-items:center;justify-content:center;gap:40px;}
 .mob-menu.open{display:flex;}
 .mob-menu a{font-size:14px;letter-spacing:3px;text-transform:uppercase;color:var(--smoke);text-decoration:none;cursor:pointer;transition:color 0.2s;padding:8px 0;}
 .mob-menu a:hover,.mob-menu a.mext{color:var(--gold);}
-.mob-menu-close{position:absolute;top:20px;right:20px;background:none;border:none;color:var(--smoke);font-size:28px;cursor:pointer;}
+.mob-close{position:absolute;top:20px;right:20px;background:none;border:none;color:var(--smoke);font-size:28px;cursor:pointer;}
 
-/* ── BANNER ── */
-.banner{
-  position:relative;
-  height:clamp(380px,55vw,520px);
-  overflow:hidden;
-  border-bottom:0.5px solid var(--faint);
-}
+/* BANNER */
+.banner{position:relative;height:clamp(380px,55vw,520px);overflow:hidden;border-bottom:0.5px solid var(--faint);}
 .b-track{display:flex;width:100%;height:100%;transition:transform 0.8s cubic-bezier(0.77,0,0.18,1);will-change:transform;}
 .b-slide{min-width:100%;width:100%;height:100%;position:relative;display:flex;align-items:flex-end;flex-shrink:0;overflow:hidden;}
 .b-img{position:absolute;inset:0;background-size:cover;background-position:center 20%;transform:scale(1.05);transition:transform 8s linear;}
 .b-slide.active .b-img{transform:scale(1);}
 .b-dim{position:absolute;inset:0;background:rgba(13,13,13,0.45);}
-.b-grad{
-  position:absolute;inset:0;
-  background:linear-gradient(
-    160deg,
-    rgba(13,13,13,0.95) 0%,
-    rgba(13,13,13,0.75) 40%,
-    rgba(13,13,13,0.3) 70%,
-    rgba(13,13,13,0.6) 100%
-  );
-}
-.b-content{
-  position:relative;z-index:3;
-  padding:clamp(20px,4vw,52px) clamp(20px,5vw,64px);
-  max-width:min(580px,92%);
-  width:100%;
-}
-.b-season{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--crimson);margin-bottom:8px;}
+.b-grad{position:absolute;inset:0;background:linear-gradient(100deg,rgba(13,13,13,0.97) 28%,rgba(13,13,13,0.55) 60%,rgba(13,13,13,0.12) 100%);}
+.b-content{position:relative;z-index:3;padding:clamp(24px,4vw,52px) clamp(20px,5vw,64px);max-width:min(580px,92%);width:100%;}
+.b-badge{display:inline-block;font-size:9px;letter-spacing:2.5px;text-transform:uppercase;border:0.5px solid rgba(201,168,76,0.4);color:var(--gold);padding:4px 10px;margin-bottom:12px;}
 .b-artist{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--smoke);margin-bottom:4px;}
-.b-track-name{
-  font-family:'Cormorant Garamond',serif;
-  font-size:clamp(36px,7.5vw,76px);
-  font-weight:300;line-height:0.9;color:var(--ivory);margin-bottom:5px;
-}
+.b-track-name{font-family:'Cormorant Garamond',serif;font-size:clamp(36px,7.5vw,76px);font-weight:300;line-height:0.9;color:var(--ivory);margin-bottom:4px;}
 .b-track-name em{font-style:italic;color:var(--gold);}
-.b-album{font-size:10px;letter-spacing:2px;color:var(--stone);margin-bottom:6px;font-style:italic;}
-.b-desc{font-size:11px;letter-spacing:1.5px;color:var(--smoke);margin-bottom:22px;line-height:1.7;}
+.b-album{font-size:10px;letter-spacing:2px;color:var(--stone);margin-bottom:16px;font-style:italic;}
+.b-price{font-family:'Cormorant Garamond',serif;font-size:28px;color:var(--ivory);margin-bottom:20px;font-weight:300;}
+.b-price span{font-size:13px;color:var(--smoke);letter-spacing:1px;font-family:'DM Sans',sans-serif;margin-left:8px;}
 .b-actions{display:flex;gap:10px;flex-wrap:wrap;}
-.b-btn{
-  display:inline-flex;align-items:center;gap:8px;
-  font-size:10px;letter-spacing:2.5px;text-transform:uppercase;
-  font-family:'DM Sans',sans-serif;
-  border:0.5px solid rgba(201,168,76,0.5);color:var(--gold);
-  background:none;padding:10px 20px;cursor:pointer;transition:all 0.25s;
-  -webkit-tap-highlight-color:transparent;
-}
+.b-btn{display:inline-flex;align-items:center;gap:8px;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;font-family:'DM Sans',sans-serif;border:0.5px solid rgba(201,168,76,0.5);color:var(--gold);background:none;padding:11px 22px;cursor:pointer;transition:all 0.25s;-webkit-tap-highlight-color:transparent;}
 .b-btn:hover,.b-btn:active{background:rgba(201,168,76,0.12);border-color:var(--gold);}
-.b-btn.buy{border-color:rgba(245,240,232,0.25);color:var(--ivory);}
-.b-btn.buy:hover,.b-btn.buy:active{background:rgba(245,240,232,0.06);border-color:rgba(245,240,232,0.5);}
+.b-btn.primary{background:var(--gold);color:var(--black);border-color:var(--gold);font-weight:500;}
+.b-btn.primary:hover{background:#d4af52;}
+.b-btn.ghost{border-color:rgba(245,240,232,0.25);color:var(--ivory);}
+.b-btn.ghost:hover{background:rgba(245,240,232,0.06);}
 .b-btn.cs{border-color:rgba(245,240,232,0.18);color:var(--smoke);cursor:default;}
 .b-soon{display:inline-block;font-size:8.5px;letter-spacing:2.5px;text-transform:uppercase;border:0.5px solid rgba(245,240,232,0.18);color:var(--smoke);padding:5px 12px;margin-bottom:14px;}
 .b-nav{position:absolute;bottom:16px;right:clamp(12px,4vw,48px);z-index:10;display:flex;align-items:center;gap:8px;}
@@ -112,90 +75,141 @@ nav{
 .b-dot{width:7px;height:7px;border-radius:50%;background:rgba(245,240,232,0.2);border:none;cursor:pointer;padding:0;transition:all 0.35s;-webkit-tap-highlight-color:transparent;}
 .b-dot.active{background:var(--gold);width:22px;border-radius:3px;}
 .b-arr{width:32px;height:32px;background:rgba(13,13,13,0.6);border:0.5px solid rgba(245,240,232,0.14);color:var(--smoke);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:15px;transition:all 0.2s;-webkit-tap-highlight-color:transparent;}
-.b-arr:hover,.b-arr:active{border-color:rgba(201,168,76,0.45);color:var(--gold);}
+.b-arr:hover{border-color:rgba(201,168,76,0.45);color:var(--gold);}
 
-/* ── SECTION HEADER ── */
-.sec-head{
-  display:flex;align-items:flex-end;justify-content:space-between;
-  padding:36px clamp(16px,5vw,56px) 16px;
-  border-bottom:0.5px solid var(--faint);flex-wrap:wrap;gap:8px;
-}
+/* SECTION HEADER */
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;padding:40px clamp(16px,5vw,56px) 20px;border-bottom:0.5px solid var(--faint);flex-wrap:wrap;gap:8px;}
 .sec-tag{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--crimson);margin-bottom:6px;}
 .sec-title{font-family:'Cormorant Garamond',serif;font-size:clamp(22px,3.5vw,34px);font-weight:300;color:var(--ivory);}
 .sec-title em{font-style:italic;color:var(--gold);}
-.sec-hint{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--dim);}
+.sec-hint{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--dim);}
 
-/* ── CATALOG ── */
-.catalog{padding:0 clamp(0px,3vw,56px) 56px;}
-.cat-top{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--faint);margin-bottom:1px;}
-.cat-bot{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--faint);}
+/* PRODUCT GRID */
+.store{padding:0 clamp(16px,5vw,56px) 56px;}
+.store-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--faint);}
 
-/* ── ALBUM CARD ── */
-.acard{background:var(--black);cursor:pointer;position:relative;overflow:hidden;transition:background 0.3s;-webkit-tap-highlight-color:transparent;}
-.acard:hover{background:#161616;}
-.acard:active{background:#1a1a1a;}
-.acard.playing{background:#110e06;}
+/* PRODUCT CARD */
+.pcard{background:var(--black);position:relative;display:flex;flex-direction:column;}
 
-.acard-cover{width:100%;aspect-ratio:1/1;position:relative;overflow:hidden;background:#111;}
-.acard-cover img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.55s ease,filter 0.3s;filter:brightness(0.85);}
-.acard:hover .acard-cover img,.acard:active .acard-cover img{transform:scale(1.03);filter:brightness(1);}
-.acard.playing .acard-cover img{filter:brightness(0.5);}
+.pcard-cover{width:100%;aspect-ratio:1/1;position:relative;overflow:hidden;background:#111;cursor:pointer;-webkit-tap-highlight-color:transparent;}
+.pcard-cover img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.55s ease,filter 0.3s;filter:brightness(0.88);}
+.pcard-cover:hover img{transform:scale(1.04);filter:brightness(1);}
+.pcard.active .pcard-cover img{filter:brightness(0.5);}
 
-.acard-ov{position:absolute;inset:0;background:rgba(13,13,13,0.48);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.25s;}
-.acard:hover .acard-ov,.acard.playing .acard-ov{opacity:1;}
-.play-ring{width:52px;height:52px;border-radius:50%;border:1.5px solid var(--gold);display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:20px;transition:transform 0.22s,background 0.22s;}
-.acard:hover .play-ring{transform:scale(1.1);background:rgba(201,168,76,0.1);}
+.pcard-ov{position:absolute;inset:0;background:rgba(13,13,13,0.45);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.25s;}
+.pcard-cover:hover .pcard-ov,.pcard.active .pcard-ov{opacity:1;}
+.preview-tag{font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);border:0.5px solid rgba(201,168,76,0.6);padding:7px 14px;display:flex;align-items:center;gap:6px;}
 
-.acard-playing-ind{position:absolute;bottom:10px;left:10px;display:none;align-items:flex-end;gap:3px;height:16px;background:rgba(13,13,13,0.8);padding:3px 7px;}
-.acard.playing .acard-playing-ind{display:flex;}
-.acard-playing-ind span{display:inline-block;width:2.5px;background:var(--gold);border-radius:1px;animation:bp 0.75s ease-in-out infinite alternate;}
-.acard-playing-ind span:nth-child(2){animation-delay:.12s;}
-.acard-playing-ind span:nth-child(3){animation-delay:.26s;}
-.acard-playing-ind span:nth-child(4){animation-delay:.08s;}
+.pcard-playing-ind{position:absolute;bottom:10px;left:10px;display:none;align-items:flex-end;gap:3px;height:16px;background:rgba(13,13,13,0.8);padding:3px 8px;}
+.pcard.playing .pcard-playing-ind{display:flex;}
+.pcard-playing-ind span{display:inline-block;width:2.5px;background:var(--gold);border-radius:1px;animation:bp 0.75s ease-in-out infinite alternate;}
+.pcard-playing-ind span:nth-child(2){animation-delay:.12s;}
+.pcard-playing-ind span:nth-child(3){animation-delay:.26s;}
+.pcard-playing-ind span:nth-child(4){animation-delay:.08s;}
 @keyframes bp{from{height:3px;opacity:.35;}to{height:13px;opacity:1;}}
 
-.acard-info{padding:14px 16px 18px;}
-.acard-type{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--crimson);margin-bottom:5px;}
-.acard-artist{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--smoke);margin-bottom:4px;}
-.acard-track{font-family:'Cormorant Garamond',serif;font-size:clamp(18px,2.2vw,24px);font-weight:400;color:var(--ivory);margin-bottom:3px;line-height:1.15;}
-.acard-album{font-size:10px;color:var(--stone);letter-spacing:1px;font-style:italic;margin-bottom:3px;}
-.acard-date{font-size:10px;color:var(--dim);letter-spacing:1px;margin-bottom:14px;}
+.pcard-body{padding:18px 20px 22px;display:flex;flex-direction:column;gap:0;flex:1;}
+.pcard-meta{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--crimson);margin-bottom:5px;}
+.pcard-artist{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--smoke);margin-bottom:4px;}
+.pcard-title{font-family:'Cormorant Garamond',serif;font-size:clamp(20px,2.2vw,26px);font-weight:400;color:var(--ivory);line-height:1.1;margin-bottom:4px;}
+.pcard-track{font-size:10px;color:var(--stone);letter-spacing:1px;font-style:italic;margin-bottom:14px;}
 
-.acard-btns{display:flex;gap:6px;flex-wrap:wrap;}
-.ac-btn{
-  font-size:10px;letter-spacing:1.5px;text-transform:uppercase;
-  font-family:'DM Sans',sans-serif;padding:8px 14px;cursor:pointer;
-  background:none;transition:all 0.2s;display:inline-flex;align-items:center;gap:5px;
-  -webkit-tap-highlight-color:transparent;
-}
-.ac-btn.listen{border:0.5px solid rgba(201,168,76,0.4);color:var(--gold);}
-.ac-btn.listen:hover,.ac-btn.listen:active{background:rgba(201,168,76,0.1);border-color:var(--gold);}
-.ac-btn.buy{border:0.5px solid rgba(245,240,232,0.15);color:var(--smoke);}
-.ac-btn.buy:hover,.ac-btn.buy:active{background:rgba(245,240,232,0.06);border-color:rgba(245,240,232,0.35);color:var(--ivory);}
+.pcard-price-row{display:flex;align-items:baseline;gap:10px;margin-bottom:16px;padding-bottom:16px;border-bottom:0.5px solid var(--faint);}
+.pcard-price{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:300;color:var(--ivory);}
+.pcard-price-alt{font-size:10px;color:var(--smoke);letter-spacing:1px;}
 
-/* ── NOW PLAYING DOCK ── */
-.dock{
-  position:fixed;bottom:0;left:0;right:0;z-index:600;
-  background:rgba(10,10,10,0.98);
-  backdrop-filter:blur(24px);
-  -webkit-backdrop-filter:blur(24px);
-  border-top:1px solid rgba(201,168,76,0.2);
-  transform:translateY(100%);
+.pcard-formats{display:flex;gap:6px;margin-bottom:16px;}
+.fmt-tag{font-size:8.5px;letter-spacing:1.5px;text-transform:uppercase;border:0.5px solid rgba(245,240,232,0.15);color:var(--smoke);padding:4px 10px;}
+
+.pcard-actions{display:flex;gap:8px;margin-bottom:0;}
+.p-btn{font-size:9.5px;letter-spacing:2px;text-transform:uppercase;font-family:'DM Sans',sans-serif;padding:10px 18px;cursor:pointer;background:none;transition:all 0.2s;display:inline-flex;align-items:center;gap:6px;-webkit-tap-highlight-color:transparent;flex:1;justify-content:center;}
+.p-btn.buy{background:var(--gold);color:var(--black);border:0.5px solid var(--gold);font-weight:500;}
+.p-btn.buy:hover,.p-btn.buy:active{background:#d4af52;}
+.p-btn.preview{border:0.5px solid rgba(245,240,232,0.2);color:var(--smoke);flex:0;flex-shrink:0;}
+.p-btn.preview:hover,.p-btn.preview:active{border-color:rgba(201,168,76,0.4);color:var(--gold);}
+
+/* PRODUCT DETAIL PANEL */
+.panel-overlay{position:fixed;inset:0;background:rgba(13,13,13,0.7);z-index:700;opacity:0;pointer-events:none;transition:opacity 0.35s;backdrop-filter:blur(4px);}
+.panel-overlay.open{opacity:1;pointer-events:all;}
+
+.panel{
+  position:fixed;top:0;right:0;bottom:0;width:min(520px,100%);
+  background:#0f0f0f;z-index:800;
+  border-left:0.5px solid rgba(201,168,76,0.15);
+  transform:translateX(100%);
   transition:transform 0.45s cubic-bezier(0.77,0,0.175,1);
+  display:flex;flex-direction:column;
+  overflow:hidden;
 }
-.dock.up{transform:translateY(0);}
+.panel.open{transform:translateX(0);}
 
-.dock-bar{
-  display:flex;align-items:center;
-  gap:clamp(8px,2vw,20px);
-  padding:10px clamp(12px,4vw,52px);
-  border-bottom:0.5px solid rgba(245,240,232,0.05);
+.panel-head{
+  padding:20px 24px;
+  border-bottom:0.5px solid var(--faint);
+  display:flex;align-items:center;justify-content:space-between;
+  flex-shrink:0;
 }
+.panel-head-left{display:flex;align-items:center;gap:14px;}
+.panel-thumb{width:52px;height:52px;overflow:hidden;background:#1a1a1a;border:0.5px solid rgba(245,240,232,0.08);flex-shrink:0;}
+.panel-thumb img{width:100%;height:100%;object-fit:cover;display:block;}
+.panel-head-info{}
+.panel-head-artist{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--smoke);margin-bottom:3px;}
+.panel-head-title{font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--ivory);}
+.panel-close{background:none;border:none;color:var(--smoke);font-size:22px;cursor:pointer;padding:4px;transition:color 0.2s;-webkit-tap-highlight-color:transparent;}
+.panel-close:hover{color:var(--ivory);}
+
+.panel-body{flex:1;overflow-y:auto;padding:0;}
+.panel-body::-webkit-scrollbar{width:2px;}
+.panel-body::-webkit-scrollbar-thumb{background:var(--dim);}
+
+/* panel cover + price */
+.panel-hero{position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;background:#111;}
+.panel-hero img{width:100%;height:100%;object-fit:cover;display:block;filter:brightness(0.7);}
+.panel-hero-info{position:absolute;bottom:0;left:0;right:0;padding:20px 24px;background:linear-gradient(to top,rgba(13,13,13,0.95),transparent);}
+.panel-hero-price{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:300;color:var(--ivory);}
+.panel-hero-price-alt{font-size:11px;color:var(--smoke);letter-spacing:1px;margin-top:2px;}
+
+.panel-section{padding:20px 24px;border-bottom:0.5px solid var(--faint);}
+.panel-section-label{font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--crimson);margin-bottom:14px;}
+
+/* format selector */
+.format-opts{display:flex;gap:8px;flex-wrap:wrap;}
+.fmt-opt{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;border:0.5px solid rgba(245,240,232,0.18);color:var(--smoke);padding:8px 16px;cursor:pointer;transition:all 0.2s;-webkit-tap-highlight-color:transparent;}
+.fmt-opt.selected{border-color:var(--gold);color:var(--gold);}
+.fmt-opt:hover{border-color:rgba(201,168,76,0.4);color:var(--ivory);}
+
+/* includes */
+.includes-list{display:flex;flex-direction:column;gap:8px;}
+.inc-item{display:flex;align-items:center;gap:10px;font-size:11px;color:var(--smoke);letter-spacing:0.5px;}
+.inc-item i{color:var(--gold);font-size:14px;flex-shrink:0;}
+
+/* tracklist */
+.tracklist{display:flex;flex-direction:column;gap:0;}
+.track-item{display:flex;align-items:baseline;gap:12px;padding:10px 0;border-bottom:0.5px solid var(--faint);}
+.track-item:last-child{border-bottom:none;}
+.track-num{font-size:9px;color:var(--dim);letter-spacing:1px;min-width:20px;flex-shrink:0;}
+.track-name{font-size:12px;color:var(--ivory);letter-spacing:0.5px;flex:1;}
+.track-name.title{color:var(--gold);}
+.track-badge{font-size:8px;letter-spacing:1.5px;text-transform:uppercase;color:var(--crimson);border:0.5px solid rgba(160,24,48,0.4);padding:2px 6px;flex-shrink:0;}
+
+/* buy section in panel */
+.panel-buy{padding:20px 24px;border-bottom:0.5px solid var(--faint);}
+.panel-buy-price{font-family:'Cormorant Garamond',serif;font-size:28px;color:var(--ivory);margin-bottom:4px;}
+.panel-buy-alt{font-size:10px;color:var(--smoke);letter-spacing:1px;margin-bottom:16px;}
+.panel-buy-btn{width:100%;padding:14px;background:var(--gold);color:var(--black);border:none;font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;cursor:pointer;transition:background 0.2s;font-weight:500;display:flex;align-items:center;justify-content:center;gap:8px;-webkit-tap-highlight-color:transparent;}
+.panel-buy-btn:hover{background:#d4af52;}
+.panel-preview-btn{width:100%;margin-top:8px;padding:12px;background:none;color:var(--smoke);border:0.5px solid rgba(245,240,232,0.15);font-family:'DM Sans',sans-serif;font-size:10px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all 0.2s;display:flex;align-items:center;justify-content:center;gap:8px;-webkit-tap-highlight-color:transparent;}
+.panel-preview-btn:hover{border-color:rgba(201,168,76,0.4);color:var(--gold);}
+
+/* DOCK */
+.dock{position:fixed;bottom:0;left:0;right:0;z-index:600;background:rgba(10,10,10,0.98);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-top:1px solid rgba(201,168,76,0.2);transform:translateY(100%);transition:transform 0.45s cubic-bezier(0.77,0,0.175,1);}
+.dock.up{transform:translateY(0);}
+.dock-bar{display:flex;align-items:center;gap:clamp(8px,2vw,20px);padding:10px clamp(12px,4vw,52px);border-bottom:0.5px solid rgba(245,240,232,0.05);}
 .dock-thumb{width:42px;height:42px;flex-shrink:0;overflow:hidden;border:0.5px solid rgba(245,240,232,0.1);background:#1a1a1a;}
 .dock-thumb img{width:100%;height:100%;object-fit:cover;display:block;}
 .dock-info{flex:1;min-width:0;}
 .dock-label{font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--crimson);margin-bottom:2px;}
-.dock-track{font-family:'Cormorant Garamond',serif;font-size:clamp(15px,2vw,19px);color:var(--ivory);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.dock-track{font-family:'Cormorant Garamond',serif;font-size:clamp(14px,2vw,18px);color:var(--ivory);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .dock-meta{font-size:10px;letter-spacing:1px;color:var(--smoke);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .dock-bars{display:flex;align-items:flex-end;gap:3px;height:16px;flex-shrink:0;}
 .dock-bars span{display:inline-block;width:3px;background:var(--gold);border-radius:1px;animation:bp 0.75s ease-in-out infinite alternate;}
@@ -203,29 +217,17 @@ nav{
 .dock-bars span:nth-child(3){animation-delay:.3s;}
 .dock-bars span:nth-child(4){animation-delay:.05s;}
 .dock-bars span:nth-child(5){animation-delay:.22s;}
-.dock-note{font-size:10px;color:var(--dim);letter-spacing:1px;font-style:italic;flex-shrink:0;}
-.dock-actions{display:flex;gap:6px;flex-shrink:0;align-items:center;}
-.dock-btn{
-  background:none;font-size:10px;letter-spacing:2px;text-transform:uppercase;
-  font-family:'DM Sans',sans-serif;padding:8px 14px;cursor:pointer;transition:all 0.2s;
-  display:inline-flex;align-items:center;gap:5px;
-  -webkit-tap-highlight-color:transparent;
-}
+.dock-note{font-size:9px;color:var(--dim);letter-spacing:1px;font-style:italic;flex-shrink:0;}
+.dock-actions{display:flex;gap:6px;flex-shrink:0;}
+.dock-btn{background:none;font-size:9px;letter-spacing:2px;text-transform:uppercase;font-family:'DM Sans',sans-serif;padding:7px 13px;cursor:pointer;transition:all 0.2s;display:inline-flex;align-items:center;gap:5px;-webkit-tap-highlight-color:transparent;}
 .dock-btn.stop{border:0.5px solid rgba(245,240,232,0.15);color:var(--smoke);}
-.dock-btn.stop:hover,.dock-btn.stop:active{border-color:rgba(107,16,32,0.6);color:var(--crimson);}
-
+.dock-btn.stop:hover{border-color:rgba(160,24,48,0.6);color:var(--crimson);}
 .dock-player{width:100%;overflow:hidden;max-height:0;transition:max-height 0.4s cubic-bezier(0.77,0,0.18,1);}
 .dock.up .dock-player{max-height:200px;}
 .dock-player iframe{width:100%;height:200px;border:none;display:block;}
 
-/* ── FOOTER ── */
-footer{
-  border-top:0.5px solid var(--faint);
-  padding:40px clamp(16px,5vw,56px);
-  display:grid;
-  grid-template-columns:1fr 1fr 1fr;
-  gap:32px;align-items:start;
-}
+/* FOOTER */
+footer{border-top:0.5px solid var(--faint);padding:40px clamp(16px,5vw,56px);display:grid;grid-template-columns:1fr 1fr 1fr;gap:32px;align-items:start;}
 .ft-brand .ft-name{font-family:'Cormorant Garamond',serif;font-size:24px;font-style:italic;color:var(--ivory);}
 .ft-brand .ft-tag{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--dim);margin-top:5px;line-height:1.9;}
 .ft-links h4{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--crimson);margin-bottom:14px;}
@@ -238,250 +240,245 @@ footer{
 .ft-bottom{grid-column:1/-1;border-top:0.5px solid var(--faint);padding-top:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
 .ft-bottom p{font-size:10px;color:var(--dim);letter-spacing:1px;}
 
-/* ── RESPONSIVE · TABLET ── */
+/* RESPONSIVE */
 @media(max-width:900px){
-  .cat-bot{grid-template-columns:1fr 1fr;}
+  .store-grid{grid-template-columns:repeat(2,1fr);}
   footer{grid-template-columns:1fr 1fr;}
   .ft-bottom{grid-column:1/-1;}
 }
-
-/* ── RESPONSIVE · MOBILE ── */
 @media(max-width:640px){
   body{padding-bottom:120px;}
-
-  /* nav */
   .nav-links{display:none;}
   .hamburger{display:block;}
   .nav-bot{display:none;}
-  .nav-top{font-size:10px;letter-spacing:2px;}
-
-  /* banner */
   .banner{height:clamp(440px,100vw,560px);}
   .b-grad{background:linear-gradient(180deg,rgba(13,13,13,0.15) 0%,rgba(13,13,13,0.5) 40%,rgba(13,13,13,0.95) 75%,rgba(13,13,13,0.98) 100%);}
   .b-content{padding:20px 18px 24px;max-width:100%;}
-  .b-season{font-size:8px;letter-spacing:2px;margin-bottom:6px;}
-  .b-artist{font-size:9px;letter-spacing:2px;margin-bottom:3px;}
-  .b-track-name{font-size:clamp(30px,10vw,46px);margin-bottom:4px;}
-  .b-album{font-size:9px;margin-bottom:4px;}
-  .b-desc{font-size:10px;margin-bottom:16px;letter-spacing:1px;}
-  .b-actions{gap:8px;}
-  .b-btn{font-size:9px;padding:9px 16px;letter-spacing:2px;}
-  .b-nav{bottom:10px;right:12px;}
-  .b-arr{width:28px;height:28px;font-size:13px;}
-  .b-dot{width:5px;height:5px;}
-  .b-dot.active{width:16px;}
-
-  /* section header */
-  .sec-head{padding:24px 16px 12px;}
-  .sec-hint{display:none;}
-  .sec-title{font-size:20px;}
-
-  /* catalog — 2 columns on mobile */
-  .catalog{padding:0 0 48px;}
-  .cat-top{grid-template-columns:1fr 1fr;}
-  .cat-bot{grid-template-columns:1fr 1fr;}
-
-  /* cards — compact */
-  .acard-info{padding:10px 12px 14px;}
-  .acard-type{font-size:9px;margin-bottom:3px;}
-  .acard-artist{font-size:9.5px;margin-bottom:3px;}
-  .acard-track{font-size:15px;margin-bottom:2px;}
-  .acard-album{font-size:9px;margin-bottom:2px;}
-  .acard-date{font-size:9px;margin-bottom:10px;}
-  .acard-btns{gap:5px;}
-  .ac-btn{font-size:9px;padding:7px 11px;letter-spacing:1px;gap:4px;}
-  .play-ring{width:40px;height:40px;font-size:16px;}
-
-  /* dock */
-  .dock-bar{padding:9px 12px;gap:8px;}
-  .dock-thumb{width:38px;height:38px;}
-  .dock-label{font-size:8.5px;letter-spacing:2px;}
-  .dock-track{font-size:15px;}
-  .dock-meta{font-size:9.5px;}
+  .b-track-name{font-size:clamp(30px,10vw,46px);}
+  .b-price{font-size:22px;}
+  .store{padding:0 0 48px;}
+  .store-grid{grid-template-columns:repeat(2,1fr);}
+  .pcard-body{padding:12px 14px 16px;}
+  .pcard-title{font-size:16px;}
+  .pcard-price{font-size:20px;}
+  .p-btn{font-size:8.5px;padding:9px 12px;letter-spacing:1.5px;}
+  .panel{width:100%;}
   .dock-note{display:none;}
   .dock-bars{display:none;}
-  .dock-btn{font-size:9px;padding:7px 11px;letter-spacing:1.5px;}
   .dock-player iframe{height:160px;}
   .dock.up .dock-player{max-height:160px;}
-
-  /* footer */
   footer{grid-template-columns:1fr;padding:24px 16px;gap:20px;}
-  .ft-brand .ft-name{font-size:20px;}
-  .ft-brand .ft-tag{font-size:10px;line-height:1.8;}
-  .ft-links a{font-size:12px;}
-  .ft-contact p{font-size:12px;}
   .ft-bottom{flex-direction:column;align-items:flex-start;gap:4px;}
-  .ft-bottom p{font-size:9.5px;}
 }
-
-/* ── RESPONSIVE · SMALL PHONE ── */
-@media(max-width:360px){
-  .cat-top{grid-template-columns:1fr;}
-  .cat-bot{grid-template-columns:1fr;}
-  .b-track-name{font-size:28px;}
+@media(max-width:380px){
+  .store-grid{grid-template-columns:1fr;}
 }
 </style>
 </head>
 <body>
 
 <nav>
-  <a class="nav-logo" href="#">
-    <div class="nav-ring">N</div>
-    <div>
-      <div class="nav-top">Nyne Ground</div>
-      <div class="nav-bot">Mnemosyne · Seoul · Est. 2026</div>
-    </div>
-  </a>
+  <a class="nav-logo" href="#"><div class="nav-ring">N</div><div><div class="nav-top">Nyne Ground</div><div class="nav-bot">Mnemosyne · Seoul · Est. 2026</div></div></a>
   <ul class="nav-links">
     <li><a class="active">Store</a></li>
     <li><a>Shows</a></li>
     <li><a>Merch</a></li>
     <li><a class="nav-ext" href="https://mnemosynelabel.github.io" target="_blank">↗ Mnemosyne</a></li>
   </ul>
-  <button class="hamburger" id="hamburger" aria-label="Open menu"><i class="ti ti-menu-2"></i></button>
+  <button class="hamburger" id="hamburger" aria-label="Menu"><i class="ti ti-menu-2"></i></button>
 </nav>
 
 <div class="mob-menu" id="mob-menu">
-  <button class="mob-menu-close" onclick="closeMob()" aria-label="Close menu"><i class="ti ti-x"></i></button>
+  <button class="mob-close" onclick="closeMob()"><i class="ti ti-x"></i></button>
   <a onclick="closeMob()">Store</a>
   <a onclick="closeMob()">Shows</a>
   <a onclick="closeMob()">Merch</a>
   <a class="mext" href="https://mnemosynelabel.github.io" target="_blank">↗ Mnemosyne Label</a>
 </div>
 
-<!-- BANNER -->
-<div class="banner">
-  <div class="b-track" id="b-track"></div>
-  <div class="b-nav">
-    <button class="b-arr" onclick="moveBanner(-1)" aria-label="Previous"><i class="ti ti-chevron-left"></i></button>
-    <div class="b-dots" id="b-dots"></div>
-    <button class="b-arr" onclick="moveBanner(1)" aria-label="Next"><i class="ti ti-chevron-right"></i></button>
-  </div>
-</div>
+<div class="banner"><div class="b-track" id="b-track"></div><div class="b-nav"><button class="b-arr" onclick="moveBanner(-1)"><i class="ti ti-chevron-left"></i></button><div class="b-dots" id="b-dots"></div><button class="b-arr" onclick="moveBanner(1)"><i class="ti ti-chevron-right"></i></button></div></div>
 
-<!-- CATALOG -->
 <div class="sec-head">
-  <div>
-    <div class="sec-tag">II · The Catalog</div>
-    <div class="sec-title">All Releases — <em>by date</em></div>
-  </div>
-  <div class="sec-hint">click any release to listen</div>
+  <div><div class="sec-tag">Nyne Ground · The Store</div><div class="sec-title">Available Now — <em>all releases</em></div></div>
+  <div class="sec-hint">select any release to view</div>
 </div>
 
-<div class="catalog">
-  <div class="cat-top" id="cat-top"></div>
-  <div class="cat-bot" id="cat-bot"></div>
-</div>
+<div class="store"><div class="store-grid" id="store-grid"></div></div>
 
-<!-- FOOTER -->
 <footer>
-  <div class="ft-brand">
-    <div class="ft-name">Nyne Ground</div>
-    <div class="ft-tag">
-      Mnemosyne's stage and store.<br>
-      where the music lands.<br>
-      Seongsu-dong, Seoul · Est. 2026<br>
-      Current Season — ANAMNESIS
-    </div>
-  </div>
-  <div class="ft-links">
-    <h4>Navigate</h4>
-    <a href="#">Store</a>
-    <a href="#">Shows</a>
-    <a href="#">Merch</a>
-    <a href="https://mnemosynelabel.github.io" target="_blank">↗ Mnemosyne Label</a>
-  </div>
-  <div class="ft-contact">
-    <h4>Contact</h4>
-    <p>
-      <a href="mailto:mnemosyne.label@gmail.com">mnemosyne.label@gmail.com</a><br>
-      @mnemosyne_label<br>
-      Nyne Ground
-    </p>
-  </div>
-  <div class="ft-bottom">
-    <p>© 2026 Mnemosyne · Seoul · All rights reserved.</p>
-    <p>from memory, everything is made.</p>
-  </div>
+  <div class="ft-brand"><div class="ft-name">Nyne Ground</div><div class="ft-tag">Mnemosyne's stage and store.<br>where the music lands.<br>Seongsu-dong, Seoul · Est. 2026<br>Current Season — ANAMNESIS</div></div>
+  <div class="ft-links"><h4>Navigate</h4><a href="#">Store</a><a href="#">Shows</a><a href="#">Merch</a><a href="https://mnemosynelabel.github.io" target="_blank">↗ Mnemosyne Label</a></div>
+  <div class="ft-contact"><h4>Contact</h4><p><a href="mailto:mnemosyne.label@gmail.com">mnemosyne.label@gmail.com</a><br>@mnemosyne_label<br>Nyne Ground</p></div>
+  <div class="ft-bottom"><p>© 2026 Mnemosyne · Seoul · All rights reserved.</p><p>from memory, everything is made.</p></div>
 </footer>
 
-<!-- NOW PLAYING DOCK -->
+<!-- PRODUCT PANEL -->
+<div class="panel-overlay" id="panel-overlay" onclick="closePanel()"></div>
+<div class="panel" id="panel">
+  <div class="panel-head">
+    <div class="panel-head-left">
+      <div class="panel-thumb"><img id="panel-thumb" src="" alt=""/></div>
+      <div class="panel-head-info">
+        <div class="panel-head-artist" id="panel-head-artist">—</div>
+        <div class="panel-head-title" id="panel-head-title">—</div>
+      </div>
+    </div>
+    <button class="panel-close" onclick="closePanel()"><i class="ti ti-x"></i></button>
+  </div>
+  <div class="panel-body" id="panel-body"></div>
+</div>
+
+<!-- DOCK -->
 <div class="dock" id="dock">
   <div class="dock-bar">
     <div class="dock-thumb"><img id="dock-img" src="" alt=""/></div>
-    <div class="dock-info">
-      <div class="dock-label">Now Playing</div>
-      <div class="dock-track" id="dock-track">—</div>
-      <div class="dock-meta" id="dock-meta">—</div>
-    </div>
+    <div class="dock-info"><div class="dock-label">Now Playing</div><div class="dock-track" id="dock-track">—</div><div class="dock-meta" id="dock-meta">—</div></div>
     <div class="dock-bars"><span></span><span></span><span></span><span></span><span></span></div>
     <div class="dock-note">via youtube music</div>
-    <div class="dock-actions">
-      <button class="dock-btn stop" id="dock-stop"><i class="ti ti-x"></i> Close</button>
-    </div>
+    <div class="dock-actions"><button class="dock-btn stop" id="dock-stop"><i class="ti ti-x"></i> Close</button></div>
   </div>
-  <div class="dock-player">
-    <iframe id="dock-yt" allow="autoplay; encrypted-media" allowfullscreen src="about:blank"></iframe>
-  </div>
+  <div class="dock-player"><iframe id="dock-yt" allow="autoplay; encrypted-media" allowfullscreen src="about:blank"></iframe></div>
 </div>
 
 <script>
 const releases = [
   {
     id:1, type:'Single', artist:'ERIS',
-    track:'Virtual Angel', album:'DALL (Devine All Love & Live)', date:'Feb 2026',
+    track:'Virtual Angel', album:'DALL (Devine All Love & Live)',
+    date:'Feb 2026', priceUSD:18, priceKRW:24000,
     cover:'https://raw.githubusercontent.com/mnemosynelabel/mnemosynelabel.github.io/ac8495ab85e0653340bf946223eac471cc068a44/images/eris%20virtual%20angel.jfif',
     ytId:'EqUP26j4XWU', start:0,
-    banner:'Corrupted light from five voices.', cs:false
+    banner:'Five voices. one debut. corrupted light.',
+    cs:false,
+    includes:['CD Album (11 tracks)','Photo Booklet (80p)','Unit Photocards (5ea)','Group Photocard','Folded Poster','Sticker Sheet','Lyric Sheet'],
+    tracklist:[
+      {n:'01',t:'url',title:false},
+      {n:'02',t:'Virtual Angel',title:true},
+      {n:'03',t:'Sparkle',title:false},
+      {n:'04',t:"'은하수를 여행하는 히치하이커를 위한 안내서'",title:false},
+      {n:'05',t:'Flower Rhythm',title:false},
+      {n:'06',t:'Candy Crush',title:false},
+      {n:'07',t:'Air',title:false},
+      {n:'08',t:'Unf/Air',title:false},
+      {n:'09',t:'조난',title:false},
+      {n:'10',t:'Butterfly Effect',title:false},
+      {n:'11',t:'Birth',title:false},
+    ]
   },
   {
     id:2, type:'Album', artist:'CI-EL',
-    track:'Tie a Cherry', album:'ALPHA', date:'Apr 2026',
+    track:'Tie a Cherry', album:'ALPHA',
+    date:'Apr 2026', priceUSD:22, priceKRW:29000,
     cover:'https://raw.githubusercontent.com/mnemosynelabel/mnemosynelabel.github.io/ac8495ab85e0653340bf946223eac471cc068a44/images/cl%20coming%20soon.jfif',
     ytId:'LrYwqmlSAK0', start:0,
-    banner:'11 tracks. autonomy. self-conviction.', cs:false
+    banner:'11 tracks. autonomy. self-conviction.',
+    cs:false,
+    includes:['CD Album (11 tracks)','Photo Booklet (100p)','Random Photocard (1 of 4)','Folded Poster','Sticker Sheet','Mini Stand'],
+    tracklist:[
+      {n:'01',t:'SPICY',title:false},
+      {n:'02',t:'LOVER LIKE ME',title:false},
+      {n:'03',t:'CHUCK',title:false},
+      {n:'04',t:'XAI',title:false},
+      {n:'05',t:'LET IT',title:false},
+      {n:'06',t:'TIE A CHERRY',title:true},
+      {n:'07',t:'PARADISE',title:false},
+      {n:'08',t:'MY WAY',title:false},
+      {n:'09',t:'SIREN',title:false},
+      {n:'10',t:'HWA · 화 · 花',title:false},
+      {n:'11',t:'5 STAR',title:false},
+    ]
   },
   {
     id:3, type:'Album', artist:'AUGUST',
-    track:'Shadow', album:'D2', date:'Apr 2026',
+    track:'Shadow', album:'D2',
+    date:'Apr 2026', priceUSD:22, priceKRW:29000,
     cover:'https://raw.githubusercontent.com/mnemosynelabel/mnemosynelabel.github.io/480eff105cb63445cfd357f638ba8eda029a4f37/images/d2.jpg',
     ytId:'PV1gCvzpSy0', start:0,
-    banner:'Liberation. identity. refusing definition.', cs:false
+    banner:'Liberation. identity. refusing definition.',
+    cs:false,
+    includes:['CD Album (10 tracks)','Photo Booklet (100p)','Random Photocard (1 of 3)','Folded Poster','Sticker Sheet','Mini Stand'],
+    tracklist:[
+      {n:'01',t:'MOONLIGHT',title:false},
+      {n:'02',t:'AGUST D',title:false},
+      {n:'03',t:'WHAT DO YOU THINK?',title:false},
+      {n:'04',t:'STRANGE',title:false},
+      {n:'05',t:'28',title:false},
+      {n:'06',t:'BURN IT',title:false},
+      {n:'07',t:'PEOPLE',title:false},
+      {n:'08',t:'HONSOOL',title:false},
+      {n:'09',t:'INTERLUDE : SET ME FREE',title:false},
+      {n:'10',t:'DEAR MY FRIEND',title:false},
+      {n:'**',t:'SHADOW',title:true},
+    ]
   },
   {
     id:4, type:'Single', artist:'SKÆZ',
-    track:'Do It', album:'Do It', date:'Apr 2026',
+    track:'Do It', album:'Do It',
+    date:'Apr 2026', priceUSD:16, priceKRW:21000,
     cover:'https://raw.githubusercontent.com/mnemosynelabel/mnemosynelabel.github.io/ac8495ab85e0653340bf946223eac471cc068a44/images/skaez%20do%20it.jfif',
     ytId:'NED7nev2ywQ', start:0,
-    banner:'Eight fractures. one stage.', cs:false
+    banner:'Eight fractures. one stage.',
+    cs:false,
+    includes:['CD Single (5 tracks)','Photo Booklet (60p)','Unit Photocards (8ea)','Folded Poster','Sticker Sheet'],
+    tracklist:[
+      {n:'01',t:'DO IT',title:true},
+      {n:'02',t:'DIVINE',title:false},
+      {n:'03',t:'HOLIDAY',title:false},
+      {n:'04',t:'PHOTOBOOK',title:false},
+      {n:'05',t:'DO IT (FESTIVAL VERSION)',title:false},
+    ]
   },
   {
     id:5, type:'Single', artist:'JASS',
-    track:'Fly', album:'With Love, J', date:'May 2026',
+    track:'Fly', album:'With Love, J',
+    date:'May 2026', priceUSD:16, priceKRW:21000,
     cover:'https://raw.githubusercontent.com/mnemosynelabel/mnemosynelabel.github.io/480eff105cb63445cfd357f638ba8eda029a4f37/images/WithLoveJ.jpg',
     ytId:'iZpq8FjJr2E', start:0,
-    banner:'A voice for the voiceless.', cs:false
+    banner:'A voice for the voiceless.',
+    cs:false,
+    includes:['CD Single (6 tracks)','Photo Booklet (64p)','Random Photocard (1 of 3)','Folded Poster','Lyric Sheet'],
+    tracklist:[
+      {n:'01',t:'FLY',title:true},
+      {n:'02',t:'BIG MINI WORLD',title:false},
+      {n:'03',t:'FALLING CRAZY IN LOVE',title:false},
+      {n:'04',t:'LOVE ME THE SAME',title:false},
+      {n:'05',t:'GOLDEN SKY',title:false},
+      {n:'06',t:'DEAR DIARY',title:false},
+    ]
   },
   {
-    id:6, type:'Artist', artist:'VI',
-    track:'Coming Soon', album:'—', date:'2026',
+    id:6, type:'Mini Album', artist:'VI',
+    track:'Eclipse', album:'DESCENT',
+    date:'2026', priceUSD:20, priceKRW:26000,
     cover:'https://raw.githubusercontent.com/mnemosynelabel/mnemosynelabel.github.io/645b6dae18a54bb677721263110797827a7e585f/images/vi.jpg',
-    ytId:null, start:0,
-    banner:'Vessel of Persephone · where death and spring meet.', cs:true
+    ytId:'oCTqcTe1lIA', start:0,
+    banner:'Vessel of Persephone · where death and spring meet.',
+    cs:false,
+    includes:['CD Mini Album (4 tracks)','Photo Booklet (72p)','Random Photocard (1 of 4)','Folded Poster','Sticker Sheet'],
+    tracklist:[
+      {n:'01',t:'ECLIPSE',title:true},
+      {n:'02',t:'Absence',title:false},
+      {n:'03',t:'Dark Romance',title:false},
+      {n:'04',t:'Special Track',title:false},
+    ]
   },
   {
     id:7, type:'Group', artist:'AERA',
-    track:'Coming Soon', album:'—', date:'2026',
+    track:'Coming Soon', album:'—',
+    date:'2026', priceUSD:null, priceKRW:null,
     cover:'https://raw.githubusercontent.com/mnemosynelabel/mnemosynelabel.github.io/ac8495ab85e0653340bf946223eac471cc068a44/images/new%20gen.jpg',
     ytId:null, start:0,
-    banner:'Pillars of Hera · Protectors of the Digital Olympus.', cs:true
+    banner:'Pillars of Hera · Protectors of the Digital Olympus.',
+    cs:true, includes:[], tracklist:[]
   },
   {
     id:8, type:'Group', artist:'ØISYZ',
-    track:'Coming Soon', album:'—', date:'2026',
+    track:'Coming Soon', album:'—',
+    date:'2026', priceUSD:null, priceKRW:null,
     cover:'https://raw.githubusercontent.com/mnemosynelabel/mnemosynelabel.github.io/2c3308da499e3add58e5cab8f7ff05cb95fa8f7a/images/oisyz.jpg',
     ytId:null, start:0,
-    banner:'Where emotional pain becomes sound.', cs:true
+    banner:'Where emotional pain becomes sound.',
+    cs:true, includes:[], tracklist:[]
   }
 ];
 
@@ -496,25 +493,23 @@ releases.forEach((r,i)=>{
   const action=r.cs
     ?`<div class="b-soon">Coming Soon</div><br><button class="b-btn cs" disabled><i class="ti ti-clock"></i>&nbsp;Watch This Space</button>`
     :`<div class="b-actions">
-        <button class="b-btn" onclick="playCard(${r.id})"><i class="ti ti-player-play"></i>&nbsp;Listen Now</button>
-        <button class="b-btn buy"><i class="ti ti-shopping-bag"></i>&nbsp;Buy Now</button>
+        <button class="b-btn primary" onclick="openPanel(${r.id})"><i class="ti ti-shopping-bag"></i>&nbsp;Buy Now</button>
+        <button class="b-btn ghost" onclick="previewTrack(${r.id})"><i class="ti ti-player-play"></i>&nbsp;Preview</button>
       </div>`;
   slide.innerHTML=`
     <div class="b-img" style="background-image:url('${r.cover}');"></div>
-    <div class="b-dim"></div>
-    <div class="b-grad"></div>
+    <div class="b-dim"></div><div class="b-grad"></div>
     <div class="b-content">
-      <div class="b-season">MNEMOSYNE · ANAMNESIS · ${r.date}</div>
+      <div class="b-badge">${r.type} · Now Available</div>
       <div class="b-artist">${r.artist}</div>
-      <div class="b-track-name"><em>${r.track}</em></div>
+      <div class="b-track-name"><em>${r.cs?'Coming Soon':r.track}</em></div>
       <div class="b-album">${r.album}</div>
-      <div class="b-desc">${r.type}&nbsp;·&nbsp;${r.banner}</div>
+      ${r.cs?'':`<div class="b-price">$${r.priceUSD} <span>₩${r.priceKRW.toLocaleString()}</span></div>`}
       ${action}
     </div>`;
   bTrack.appendChild(slide);
   const dot=document.createElement('button');
   dot.className='b-dot'+(i===0?' active':'');
-  dot.setAttribute('aria-label','Slide '+(i+1));
   dot.onclick=()=>{goSlide(i);resetTimer();};
   bDots.appendChild(dot);
 });
@@ -528,55 +523,125 @@ function goSlide(n){
 function moveBanner(d){goSlide(bIdx+d);resetTimer();}
 function resetTimer(){clearInterval(bTimer);bTimer=setInterval(()=>goSlide(bIdx+1),5500);}
 resetTimer();
-
-// swipe support
 let tx=0;
 document.querySelector('.banner').addEventListener('touchstart',e=>{tx=e.touches[0].clientX;},{passive:true});
-document.querySelector('.banner').addEventListener('touchend',e=>{
-  const d=tx-e.changedTouches[0].clientX;
-  if(Math.abs(d)>40)moveBanner(d>0?1:-1);
-},{passive:true});
+document.querySelector('.banner').addEventListener('touchend',e=>{const d=tx-e.changedTouches[0].clientX;if(Math.abs(d)>40)moveBanner(d>0?1:-1);},{passive:true});
 
-// CATALOG
-const released=releases.filter(r=>!r.cs);
-const topEl=document.getElementById('cat-top');
-const botEl=document.getElementById('cat-bot');
-
-released.forEach((r,i)=>{
+// STORE GRID
+const grid=document.getElementById('store-grid');
+releases.forEach(r=>{
   const card=document.createElement('div');
-  card.className='acard';
-  card.id='card-'+r.id;
+  card.className='pcard'+(r.cs?' cs-card':'');
+  card.id='pcard-'+r.id;
+  const coverClick=r.cs?'':`onclick="openPanel(${r.id})"`;
   card.innerHTML=`
-    <div class="acard-cover">
+    <div class="pcard-cover" ${coverClick}>
       <img src="${r.cover}" alt="${r.track}" loading="lazy"/>
-      <div class="acard-ov">
-        <div class="play-ring"><i class="ti ti-player-play" aria-hidden="true"></i></div>
+      <div class="pcard-ov">
+        ${r.cs?`<div class="preview-tag"><i class="ti ti-clock"></i> Coming Soon</div>`:`<div class="preview-tag"><i class="ti ti-eye"></i> View Product</div>`}
       </div>
-      <div class="acard-playing-ind">
-        <span></span><span></span><span></span><span></span>
-      </div>
+      <div class="pcard-playing-ind"><span></span><span></span><span></span><span></span></div>
     </div>
-    <div class="acard-info">
-      <div class="acard-type">${r.type}</div>
-      <div class="acard-artist">${r.artist}</div>
-      <div class="acard-track">${r.track}</div>
-      <div class="acard-album">${r.album}</div>
-      <div class="acard-date">${r.date}</div>
-      <div class="acard-btns">
-        <button class="ac-btn listen" onclick="event.stopPropagation();playCard(${r.id})">
-          <i class="ti ti-player-play"></i> Listen
-        </button>
-        <button class="ac-btn buy" onclick="event.stopPropagation()">
-          <i class="ti ti-shopping-bag"></i> Buy
-        </button>
+    <div class="pcard-body">
+      <div class="pcard-meta">${r.type}</div>
+      <div class="pcard-artist">${r.artist}</div>
+      <div class="pcard-title">${r.cs?'Coming Soon':r.album}</div>
+      <div class="pcard-track">${r.cs?r.banner:`Title Track · ${r.track}`}</div>
+      ${r.cs?`<div style="margin-top:auto;padding-top:12px;"><div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);">Watch This Space</div></div>`:`
+      <div class="pcard-price-row">
+        <div class="pcard-price">$${r.priceUSD}</div>
+        <div class="pcard-price-alt">₩${r.priceKRW.toLocaleString()}</div>
       </div>
+      <div class="pcard-formats">
+        <div class="fmt-tag"><i class="ti ti-disc"></i> Physical</div>
+        <div class="fmt-tag"><i class="ti ti-download"></i> Digital</div>
+      </div>
+      <div class="pcard-actions">
+        <button class="p-btn buy" onclick="openPanel(${r.id})"><i class="ti ti-shopping-bag"></i> Buy Now</button>
+        <button class="p-btn preview" onclick="event.stopPropagation();previewTrack(${r.id})" title="Preview"><i class="ti ti-player-play"></i></button>
+      </div>`}
     </div>`;
-  card.addEventListener('click',()=>playCard(r.id));
-  if(i<2) topEl.appendChild(card);
-  else botEl.appendChild(card);
+  grid.appendChild(card);
 });
 
-// PLAYER
+// PANEL
+let panelOpen=null;
+const panel=document.getElementById('panel');
+const overlay=document.getElementById('panel-overlay');
+const panelBody=document.getElementById('panel-body');
+let selectedFmt={};
+
+function openPanel(id){
+  const r=releases.find(x=>x.id===id);
+  if(!r||r.cs) return;
+  panelOpen=id;
+  if(!selectedFmt[id]) selectedFmt[id]='physical';
+  document.getElementById('panel-thumb').src=r.cover;
+  document.getElementById('panel-head-artist').textContent=r.artist;
+  document.getElementById('panel-head-title').textContent=r.album;
+  renderPanelBody(r);
+  panel.classList.add('open');
+  overlay.classList.add('open');
+  document.body.style.overflow='hidden';
+}
+
+function renderPanelBody(r){
+  const fmt=selectedFmt[r.id]||'physical';
+  panelBody.innerHTML=`
+    <div class="panel-hero">
+      <img src="${r.cover}" alt="${r.album}"/>
+      <div class="panel-hero-info">
+        <div class="panel-hero-price">$${r.priceUSD}</div>
+        <div class="panel-hero-price-alt">₩${r.priceKRW.toLocaleString()} · Free shipping on orders over ₩50,000</div>
+      </div>
+    </div>
+    <div class="panel-buy">
+      <div class="panel-buy-price">$${r.priceUSD} <span style="font-size:13px;color:var(--smoke);font-family:'DM Sans',sans-serif;letter-spacing:1px;">₩${r.priceKRW.toLocaleString()}</span></div>
+      <div class="panel-buy-alt">${fmt==='physical'?'Physical Album · Ships within 7–14 business days':'Digital Download · Instant access after purchase'}</div>
+      <button class="panel-buy-btn"><i class="ti ti-shopping-bag"></i> Buy Now · ${fmt==='physical'?'Physical':'Digital'}</button>
+      <button class="panel-preview-btn" onclick="previewTrack(${r.id})"><i class="ti ti-player-play"></i> Preview Title Track</button>
+    </div>
+    <div class="panel-section">
+      <div class="panel-section-label">Format</div>
+      <div class="format-opts">
+        <div class="fmt-opt${fmt==='physical'?' selected':''}" onclick="selectFmt(${r.id},'physical')"><i class="ti ti-disc"></i> Physical CD</div>
+        <div class="fmt-opt${fmt==='digital'?' selected':''}" onclick="selectFmt(${r.id},'digital')"><i class="ti ti-download"></i> Digital Download</div>
+      </div>
+    </div>
+    ${fmt==='physical'?`
+    <div class="panel-section">
+      <div class="panel-section-label">What's Included</div>
+      <div class="includes-list">
+        ${r.includes.map(inc=>`<div class="inc-item"><i class="ti ti-check"></i><span>${inc}</span></div>`).join('')}
+      </div>
+    </div>`:''}
+    <div class="panel-section">
+      <div class="panel-section-label">Tracklist · ${r.tracklist.length} tracks</div>
+      <div class="tracklist">
+        ${r.tracklist.map(t=>`
+          <div class="track-item">
+            <div class="track-num">${t.n}</div>
+            <div class="track-name${t.title?' title':''}">${t.t}</div>
+            ${t.title?`<div class="track-badge">Title</div>`:''}
+          </div>`).join('')}
+      </div>
+    </div>`;
+}
+
+function selectFmt(id,fmt){
+  selectedFmt[id]=fmt;
+  const r=releases.find(x=>x.id===id);
+  renderPanelBody(r);
+}
+
+function closePanel(){
+  panel.classList.remove('open');
+  overlay.classList.remove('open');
+  document.body.style.overflow='';
+  panelOpen=null;
+}
+
+// PREVIEW / PLAYER
 let currentId=null;
 const dock=document.getElementById('dock');
 const dockImg=document.getElementById('dock-img');
@@ -584,13 +649,14 @@ const dockTrack=document.getElementById('dock-track');
 const dockMeta=document.getElementById('dock-meta');
 const dockYt=document.getElementById('dock-yt');
 
-function playCard(id){
+function previewTrack(id){
   const r=releases.find(x=>x.id===id);
   if(!r||r.cs||!r.ytId) return;
   if(currentId===id) return;
   stopAll();
   currentId=id;
-  const card=document.getElementById('card-'+id);
+  document.querySelectorAll('.pcard').forEach(c=>c.classList.remove('playing'));
+  const card=document.getElementById('pcard-'+id);
   if(card) card.classList.add('playing');
   dockImg.src=r.cover;
   dockTrack.textContent=r.track;
@@ -600,21 +666,14 @@ function playCard(id){
 }
 
 function stopAll(){
-  if(currentId){
-    const prev=document.getElementById('card-'+currentId);
-    if(prev) prev.classList.remove('playing');
-  }
+  if(currentId){const prev=document.getElementById('pcard-'+currentId);if(prev)prev.classList.remove('playing');}
   currentId=null;
   dockYt.src='about:blank';
   dock.classList.remove('up');
 }
 
 document.getElementById('dock-stop').addEventListener('click',stopAll);
-
-// MOBILE MENU
-document.getElementById('hamburger').addEventListener('click',()=>{
-  document.getElementById('mob-menu').classList.toggle('open');
-});
+document.getElementById('hamburger').addEventListener('click',()=>document.getElementById('mob-menu').classList.toggle('open'));
 function closeMob(){document.getElementById('mob-menu').classList.remove('open');}
 </script>
 </body>
