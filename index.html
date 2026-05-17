@@ -185,10 +185,10 @@ nav{position:sticky;top:0;z-index:500;background:rgba(13,13,13,0.97);backdrop-fi
 
 /* tracklist */
 .tracklist{display:flex;flex-direction:column;gap:0;}
-.track-item{display:flex;align-items:baseline;gap:12px;padding:10px 0;border-bottom:0.5px solid var(--faint);}
+.track-item{display:flex;align-items:flex-start;gap:12px;padding:12px 0;border-bottom:0.5px solid var(--faint);}
 .track-item:last-child{border-bottom:none;}
 .track-num{font-size:9px;color:var(--dim);letter-spacing:1px;min-width:20px;flex-shrink:0;}
-.track-name{font-size:12px;color:var(--ivory);letter-spacing:0.5px;flex:1;}
+.track-item-inner{flex:1;min-width:0;}.track-name-row{display:flex;align-items:center;gap:8px;margin-bottom:4px;}.track-name{font-size:12px;color:var(--ivory);letter-spacing:0.5px;}.track-credits{font-size:9.5px;color:var(--smoke);letter-spacing:0.3px;line-height:1.6;}
 .track-name.title{color:var(--gold);}
 .track-badge{font-size:8px;letter-spacing:1.5px;text-transform:uppercase;color:var(--crimson);border:0.5px solid rgba(160,24,48,0.4);padding:2px 6px;flex-shrink:0;}
 
@@ -218,13 +218,17 @@ nav{position:sticky;top:0;z-index:500;background:rgba(13,13,13,0.97);backdrop-fi
 .dock-bars span:nth-child(4){animation-delay:.05s;}
 .dock-bars span:nth-child(5){animation-delay:.22s;}
 .dock-note{font-size:9px;color:var(--dim);letter-spacing:1px;font-style:italic;flex-shrink:0;}
-.dock-actions{display:flex;gap:6px;flex-shrink:0;}
-.dock-btn{background:none;font-size:9px;letter-spacing:2px;text-transform:uppercase;font-family:'DM Sans',sans-serif;padding:7px 13px;cursor:pointer;transition:all 0.2s;display:inline-flex;align-items:center;gap:5px;-webkit-tap-highlight-color:transparent;}
-.dock-btn.stop{border:0.5px solid rgba(245,240,232,0.15);color:var(--smoke);}
-.dock-btn.stop:hover{border-color:rgba(160,24,48,0.6);color:var(--crimson);}
-.dock-player{width:100%;overflow:hidden;max-height:0;transition:max-height 0.4s cubic-bezier(0.77,0,0.18,1);}
-.dock.up .dock-player{max-height:200px;}
-.dock-player iframe{width:100%;height:200px;border:none;display:block;}
+.dock-controls{display:flex;gap:6px;flex-shrink:0;align-items:center;}
+.dock-ctrl{background:none;border:none;color:var(--smoke);font-size:20px;cursor:pointer;padding:4px;display:flex;align-items:center;transition:color 0.2s;-webkit-tap-highlight-color:transparent;}
+.dock-ctrl:hover{color:var(--ivory);}
+.dock-ctrl.stop{font-size:16px;border:0.5px solid rgba(245,240,232,0.15);padding:6px 10px;}
+.dock-ctrl.stop:hover{border-color:rgba(160,24,48,0.5);color:var(--crimson);}
+.dock-progress-wrap{display:flex;align-items:center;gap:10px;padding:6px clamp(12px,4vw,52px) 10px;}
+.dock-time{font-size:9px;color:var(--dim);letter-spacing:1px;min-width:32px;flex-shrink:0;}
+.dock-time:last-child{text-align:right;}
+.dock-progress{flex:1;height:2px;background:rgba(245,240,232,0.1);cursor:pointer;position:relative;}
+.dock-progress:hover{height:3px;}
+.dock-progress-bar{height:100%;background:var(--gold);width:0%;transition:width 0.1s linear;pointer-events:none;}
 
 /* FOOTER */
 footer{border-top:0.5px solid var(--faint);padding:40px clamp(16px,5vw,56px);display:grid;grid-template-columns:1fr 1fr 1fr;gap:32px;align-items:start;}
@@ -265,8 +269,6 @@ footer{border-top:0.5px solid var(--faint);padding:40px clamp(16px,5vw,56px);dis
   .panel{width:100%;}
   .dock-note{display:none;}
   .dock-bars{display:none;}
-  .dock-player iframe{height:160px;}
-  .dock.up .dock-player{max-height:160px;}
   footer{grid-template-columns:1fr;padding:24px 16px;gap:20px;}
   .ft-bottom{flex-direction:column;align-items:flex-start;gap:4px;}
 }
@@ -332,12 +334,25 @@ footer{border-top:0.5px solid var(--faint);padding:40px clamp(16px,5vw,56px);dis
 <div class="dock" id="dock">
   <div class="dock-bar">
     <div class="dock-thumb"><img id="dock-img" src="" alt=""/></div>
-    <div class="dock-info"><div class="dock-label">Now Playing</div><div class="dock-track" id="dock-track">—</div><div class="dock-meta" id="dock-meta">—</div></div>
+    <div class="dock-info">
+      <div class="dock-label">Now Playing</div>
+      <div class="dock-track" id="dock-track">—</div>
+      <div class="dock-meta" id="dock-meta">—</div>
+    </div>
     <div class="dock-bars"><span></span><span></span><span></span><span></span><span></span></div>
-    <div class="dock-note">via youtube music</div>
-    <div class="dock-actions"><button class="dock-btn stop" id="dock-stop"><i class="ti ti-x"></i> Close</button></div>
+    <div class="dock-controls">
+      <button class="dock-ctrl" id="dock-playpause" aria-label="Play/Pause"><i class="ti ti-player-pause"></i></button>
+      <button class="dock-ctrl stop" id="dock-stop" aria-label="Close"><i class="ti ti-x"></i></button>
+    </div>
   </div>
-  <div class="dock-player"><iframe id="dock-yt" allow="autoplay; encrypted-media" allowfullscreen src="about:blank"></iframe></div>
+  <div class="dock-progress-wrap">
+    <span class="dock-time" id="dock-current">0:00</span>
+    <div class="dock-progress" id="dock-progress">
+      <div class="dock-progress-bar" id="dock-bar"></div>
+    </div>
+    <span class="dock-time" id="dock-duration">0:00</span>
+  </div>
+  <audio id="dock-audio" preload="none"></audio>
 </div>
 
 <script>
@@ -347,22 +362,22 @@ const releases = [
     track:'Virtual Angel', album:'DALL (Devine All Love & Live)',
     date:'Feb 2026', priceUSD:18, priceKRW:24000,
     cover:'https://raw.githubusercontent.com/mnemosynelabel/mnemosynelabel.github.io/ac8495ab85e0653340bf946223eac471cc068a44/images/eris%20virtual%20angel.jfif',
-    ytId:'EqUP26j4XWU', start:0,
+    audioUrl:'https://raw.githubusercontent.com/mnemosynelabel/nyneground/5a5fe3d42a6dbaf8fa2fbc658729deec8fba1abe/music/Virtual%20Angel.mp3',
     banner:'Five voices. one debut. corrupted light.',
     cs:false,
     includes:['CD Album (11 tracks)','Photo Booklet (80p)','Unit Photocards (5ea)','Group Photocard','Folded Poster','Sticker Sheet','Lyric Sheet'],
     tracklist:[
-      {n:'01',t:'url',title:false},
-      {n:'02',t:'Virtual Angel',title:true},
-      {n:'03',t:'Sparkle',title:false},
-      {n:'04',t:"'은하수를 여행하는 히치하이커를 위한 안내서'",title:false},
-      {n:'05',t:'Flower Rhythm',title:false},
-      {n:'06',t:'Candy Crush',title:false},
-      {n:'07',t:'Air',title:false},
-      {n:'08',t:'Unf/Air',title:false},
-      {n:'09',t:'조난',title:false},
-      {n:'10',t:'Butterfly Effect',title:false},
-      {n:'11',t:'Birth',title:false},
+      {n:'01',t:'url',title:false,credits:'Composed by Woojin (4SHOBOIZ), Ambrose · Lyrics by J-RYU (4OFKINGZ), Ryul (4SHOBOIZ) · Produced by Gian (Wayvision)'},
+      {n:'02',t:'Virtual Angel',title:true,credits:'Composed by Arlecchino · Lyrics by Jael, Roxie · Produced by SHAWN, Gian (Wayvision), J-RYU (4OFKINGZ)'},
+      {n:'03',t:'Sparkle',title:false,credits:'Composed by Roxie · Lyrics by AIVEN, NIVEN, SEREN · Produced by Nikoleih (XLOVR)'},
+      {n:'04',t:"'은하수를 여행하는 히치하이커를 위한 안내서'",title:false,credits:'Composed by J-RYU (4OFKINGZ), Woojin (4SHOBOIZ) · Lyrics by Louis, Woojin (4SHOBOIZ) · Produced by SHAWN, NIKOLEIH (XLOVR)'},
+      {n:'05',t:'Flower Rhythm',title:false,credits:'Composed by Ambrose · Lyrics by Mel · Produced by ORPHEUS, Gian (Wayvision)'},
+      {n:'06',t:'Candy Crush',title:false,credits:'Composed by Romeo, Ambrose · Lyrics by Ambrose · Produced by ORPHEUS, NIKOLEIH (XLOVR)'},
+      {n:'07',t:'Air',title:false,credits:'Composed by Oyul, Woojin (4SHOBOIZ) · Lyrics by Oyul (4SHOBOIZ), Roxie · Produced by Gian (Wayvision), ZCHOUEN'},
+      {n:'08',t:'Unf/Air',title:false,credits:'Composed by Arlecchino, Romeo · Lyrics by Roxie · Produced by Gian (Wayvision), J-RYU (4OFKINGZ)'},
+      {n:'09',t:'조난',title:false,credits:'Composed by Ambrose · Lyrics by 이오리 · Produced by ZCHOUEN, NIKOLEIH (XLOVR)'},
+      {n:'10',t:'Butterfly Effect',title:false,credits:'Composed by Jael, Romeo · Lyrics by Mel · Produced by Gian (Wayvision), NIKOLEIH (XLOVR)'},
+      {n:'11',t:'Birth',title:false,credits:'Composed by EVREN, CELENE · Lyrics by AIVEN, NIVEN, SEREN · Produced by RAMEN'},
     ]
   },
   {
@@ -370,22 +385,22 @@ const releases = [
     track:'Tie a Cherry', album:'ALPHA',
     date:'Apr 2026', priceUSD:22, priceKRW:29000,
     cover:'https://raw.githubusercontent.com/mnemosynelabel/mnemosynelabel.github.io/ac8495ab85e0653340bf946223eac471cc068a44/images/cl%20coming%20soon.jfif',
-    ytId:'LrYwqmlSAK0', start:0,
+    audioUrl:'https://raw.githubusercontent.com/mnemosynelabel/nyneground/5a5fe3d42a6dbaf8fa2fbc658729deec8fba1abe/music/Tie%20a%20Cherry.mp3',
     banner:'11 tracks. autonomy. self-conviction.',
     cs:false,
     includes:['CD Album (11 tracks)','Photo Booklet (100p)','Random Photocard (1 of 4)','Folded Poster','Sticker Sheet','Mini Stand'],
     tracklist:[
-      {n:'01',t:'SPICY',title:false},
-      {n:'02',t:'LOVER LIKE ME',title:false},
-      {n:'03',t:'CHUCK',title:false},
-      {n:'04',t:'XAI',title:false},
-      {n:'05',t:'LET IT',title:false},
-      {n:'06',t:'TIE A CHERRY',title:true},
-      {n:'07',t:'PARADISE',title:false},
-      {n:'08',t:'MY WAY',title:false},
-      {n:'09',t:'SIREN',title:false},
-      {n:'10',t:'HWA · 화 · 花',title:false},
-      {n:'11',t:'5 STAR',title:false},
+      {n:'01',t:'SPICY',title:false,credits:'Written by CI-EL · Produced by CI-EL, AUGUST · Arranged by Amorette Lune'},
+      {n:'02',t:'LOVER LIKE ME',title:false,credits:'Written by CI-EL, JASS · Produced by CI-EL, SHAWN · Arranged by AUGUST'},
+      {n:'03',t:'CHUCK',title:false,credits:'Written by CI-EL, Violet · Produced by CI-EL, AKIO 3RÆCHA · Arranged by Violet'},
+      {n:'04',t:'XAI',title:false,credits:'Written by CI-EL, Violet · Produced by SHAWN, AKIO 3RÆCHA · Arranged by AUGUST'},
+      {n:'05',t:'LET IT',title:false,credits:'Written by CI-EL, AKIO 3RÆCHA · Produced by CI-EL, AKIO 3RÆCHA · Arranged by PHANTOM'},
+      {n:'06',t:'TIE A CHERRY',title:true,credits:'Written by CI-EL · Produced by CI-EL, AUGUST · Arranged by PHANTOM · Directed by Vaun · Choreographed by KHALIL, RYO DANCE RÆCHA'},
+      {n:'07',t:'PARADISE',title:false,credits:'Written by CI-EL, CELENE · Produced by ADAM 3RÆCHA · Arranged by JASS'},
+      {n:'08',t:'MY WAY',title:false,credits:'Written by CI-EL, AKIO 3RÆCHA · Produced by PHANTOM · Arranged by ADAM 3RÆCHA'},
+      {n:'09',t:'SIREN',title:false,credits:'Written by CI-EL, NARI · Produced by SHAWN, Violet · Arranged by AUGUST'},
+      {n:'10',t:'HWA · 화 · 花',title:false,credits:'Written by CI-EL, AUGUST · Produced by CI-EL, AUGUST · Arranged by Amorette Lune · Directed by Vaun · Choreographed by KHALIL, RYO DANCE RÆCHA'},
+      {n:'11',t:'5 STAR',title:false,credits:'Written by CI-EL, NARI · Produced by CI-EL · Arranged by AKIO 3RÆCHA'},
     ]
   },
   {
@@ -393,22 +408,22 @@ const releases = [
     track:'Shadow', album:'D2',
     date:'Apr 2026', priceUSD:22, priceKRW:29000,
     cover:'https://raw.githubusercontent.com/mnemosynelabel/mnemosynelabel.github.io/480eff105cb63445cfd357f638ba8eda029a4f37/images/d2.jpg',
-    ytId:'PV1gCvzpSy0', start:0,
+    audioUrl:'https://raw.githubusercontent.com/mnemosynelabel/nyneground/5a5fe3d42a6dbaf8fa2fbc658729deec8fba1abe/music/Shadow.mp3',
     banner:'Liberation. identity. refusing definition.',
     cs:false,
     includes:['CD Album (10 tracks)','Photo Booklet (100p)','Random Photocard (1 of 3)','Folded Poster','Sticker Sheet','Mini Stand'],
     tracklist:[
-      {n:'01',t:'MOONLIGHT',title:false},
-      {n:'02',t:'AGUST D',title:false},
-      {n:'03',t:'WHAT DO YOU THINK?',title:false},
-      {n:'04',t:'STRANGE',title:false},
-      {n:'05',t:'28',title:false},
-      {n:'06',t:'BURN IT',title:false},
-      {n:'07',t:'PEOPLE',title:false},
-      {n:'08',t:'HONSOOL',title:false},
-      {n:'09',t:'INTERLUDE : SET ME FREE',title:false},
-      {n:'10',t:'DEAR MY FRIEND',title:false},
-      {n:'**',t:'SHADOW',title:true},
+      {n:'01',t:'MOONLIGHT',title:false,credits:'Written by AUGUST, Violet · Produced by AMORETTE LUNE · Arranged by Violet'},
+      {n:'02',t:'AGUST D',title:false,credits:'Written by AUGUST · Produced by AUGUST, CI-EL · Arranged by AMORETTE LUNE'},
+      {n:'03',t:'WHAT DO YOU THINK?',title:false,credits:'Written by AUGUST · Produced by SHAWN · Arranged by ADAM 3RÆCHA'},
+      {n:'04',t:'STRANGE',title:false,credits:'Written by JASS, AKIO 3RÆCHA · Produced by AUGUST · Arranged by AKIO 3RÆCHA'},
+      {n:'05',t:'28',title:false,credits:'Written by AUGUST · Produced by ADAM 3RÆCHA · Arranged by AKIO 3RÆCHA'},
+      {n:'06',t:'BURN IT',title:false,credits:'Written by AUGUST, Violet · Produced by CI-EL, SHAWN · Arranged by Violet'},
+      {n:'07',t:'PEOPLE',title:false,credits:'Written by AUGUST, CI-EL · Produced by AUGUST · Arranged by JASS'},
+      {n:'08',t:'HONSOOL',title:false,credits:'Written by AUGUST · Produced by ADAM 3RÆCHA · Arranged by PHANTOM'},
+      {n:'09',t:'INTERLUDE : SET ME FREE',title:false,credits:'Written by AUGUST, AKIO 3RÆCHA · Produced by AUGUST, CI-EL · Arranged by PHANTOM'},
+      {n:'10',t:'DEAR MY FRIEND',title:false,credits:'Written by AUGUST, ASTER · Produced by AUGUST · Arranged by SHAWN'},
+      {n:'★',t:'SHADOW',title:true,credits:'Written by AUGUST · Produced by AUGUST · Arranged by AUGUST · Directed by CI-EL'},
     ]
   },
   {
@@ -416,7 +431,7 @@ const releases = [
     track:'Do It', album:'Do It',
     date:'Apr 2026', priceUSD:16, priceKRW:21000,
     cover:'https://raw.githubusercontent.com/mnemosynelabel/mnemosynelabel.github.io/ac8495ab85e0653340bf946223eac471cc068a44/images/skaez%20do%20it.jfif',
-    ytId:'NED7nev2ywQ', start:0,
+    audioUrl:'https://raw.githubusercontent.com/mnemosynelabel/nyneground/5a5fe3d42a6dbaf8fa2fbc658729deec8fba1abe/music/Do%20It.mp3',
     banner:'Eight fractures. one stage.',
     cs:false,
     includes:['CD Single (5 tracks)','Photo Booklet (60p)','Unit Photocards (8ea)','Folded Poster','Sticker Sheet'],
@@ -432,18 +447,18 @@ const releases = [
     id:5, type:'Single', artist:'JASS',
     track:'Fly', album:'With Love, J',
     date:'May 2026', priceUSD:16, priceKRW:21000,
-    cover:'https://raw.githubusercontent.com/mnemosynelabel/mnemosynelabel.github.io/480eff105cb63445cfd357f638ba8eda029a4f37/images/WithLoveJ.jpg',
-    ytId:'iZpq8FjJr2E', start:0,
+    cover:'https://raw.githubusercontent.com/mnemosynelabel/nyneground/5ee281f1b7306843ceb3e1b4cd6d32574ed189aa/images/with%20love%20j.jpg',
+    audioUrl:'https://raw.githubusercontent.com/mnemosynelabel/nyneground/5a5fe3d42a6dbaf8fa2fbc658729deec8fba1abe/music/Fly.mp3',
     banner:'A voice for the voiceless.',
     cs:false,
     includes:['CD Single (6 tracks)','Photo Booklet (64p)','Random Photocard (1 of 3)','Folded Poster','Lyric Sheet'],
     tracklist:[
-      {n:'01',t:'FLY',title:true},
-      {n:'02',t:'BIG MINI WORLD',title:false},
-      {n:'03',t:'FALLING CRAZY IN LOVE',title:false},
-      {n:'04',t:'LOVE ME THE SAME',title:false},
-      {n:'05',t:'GOLDEN SKY',title:false},
-      {n:'06',t:'DEAR DIARY',title:false},
+      {n:'01',t:'FLY',title:true,credits:'Lyrics by 이오리 (VIIXE), JASS, AYA (LYXIVE) · Composed by ARLE (VIIXE), 이오리 (VIIXE), AUGUST, AYA (LYXIVE) · Produced by CI-EL, SHAWN (SUBZERO), AYA (LYXIVE) · Choreographed by Niven (ERIS), RYO (SKÆZ)'},
+      {n:'02',t:'BIG MINI WORLD',title:false,credits:'Lyrics by JASS · Composed by AKIO (3RÆCHA), JASS · Produced by ƧEN · Choreographed by Haruna (ONHIGH), RYO (SKÆZ)'},
+      {n:'03',t:'FALLING CRAZY IN LOVE',title:false,credits:'Lyrics by JASS, MIEZA · Composed by ARLE (VIIXE), HARUNA (ONHIGH) · Produced by ƧEN'},
+      {n:'04',t:'LOVE ME THE SAME',title:false,credits:'Lyrics by VIOLET, AKIO (3RÆCHA) · Composed by VIOLET, AKIO (3RÆCHA) · Produced by SHAWN (SUBZERO), AUGUST, AYA (LYXIVE) · Choreographed by REA (AERA), NOLAN (SKÆZ)'},
+      {n:'05',t:'GOLDEN SKY',title:false,credits:'Lyrics by JASS · Piano by KYRO (SUBZERO) · Composed by CI-EL, AKIO (3RÆCHA) · Produced by ƧEN'},
+      {n:'06',t:'DEAR DIARY',title:false,credits:'Lyrics by 이오리 (VIIXE) · Composed by JASS, MIEZA · Produced by AYA (LYXIVE), AUGUST'},
     ]
   },
   {
@@ -451,15 +466,15 @@ const releases = [
     track:'Eclipse', album:'DESCENT',
     date:'2026', priceUSD:20, priceKRW:26000,
     cover:'https://raw.githubusercontent.com/mnemosynelabel/mnemosynelabel.github.io/645b6dae18a54bb677721263110797827a7e585f/images/vi.jpg',
-    ytId:'oCTqcTe1lIA', start:0,
+    audioUrl:'https://raw.githubusercontent.com/mnemosynelabel/nyneground/5a5fe3d42a6dbaf8fa2fbc658729deec8fba1abe/music/Eclipse.mp3',
     banner:'Vessel of Persephone · where death and spring meet.',
     cs:false,
     includes:['CD Mini Album (4 tracks)','Photo Booklet (72p)','Random Photocard (1 of 4)','Folded Poster','Sticker Sheet'],
     tracklist:[
-      {n:'01',t:'ECLIPSE',title:true},
-      {n:'02',t:'Absence',title:false},
-      {n:'03',t:'Dark Romance',title:false},
-      {n:'04',t:'Special Track',title:false},
+      {n:'01',t:'ECLIPSE',title:true,credits:'Lyrics by Violet, JASS, Annli · Composed by Violet, PHANTOM · Produced by AKIO (3RÆCHA) · Choreography by Björn, Ryo (SKÆZ), Nolan (SKÆZ)'},
+      {n:'02',t:'Absence',title:false,credits:'Lyrics by Violet · Composed by ARLE, AKIO (3RÆCHA) · Produced by Violet · Choreography by Kei, Rea'},
+      {n:'03',t:'Dark Romance',title:false,credits:'Lyrics by Violet, JASS, Annli · Composed by Violet, PHANTOM · Produced by CI-EL · Choreography by Kei, Rea'},
+      {n:'04',t:'Special Track',title:false,credits:'Lyrics by Violet · Composed by Violet · Produced by Violet · Choreography by Violet'},
     ]
   },
   {
@@ -467,7 +482,7 @@ const releases = [
     track:'Coming Soon', album:'—',
     date:'2026', priceUSD:null, priceKRW:null,
     cover:'https://raw.githubusercontent.com/mnemosynelabel/mnemosynelabel.github.io/ac8495ab85e0653340bf946223eac471cc068a44/images/new%20gen.jpg',
-    ytId:null, start:0,
+    audioUrl:null,
     banner:'Pillars of Hera · Protectors of the Digital Olympus.',
     cs:true, includes:[], tracklist:[]
   },
@@ -476,7 +491,7 @@ const releases = [
     track:'Coming Soon', album:'—',
     date:'2026', priceUSD:null, priceKRW:null,
     cover:'https://raw.githubusercontent.com/mnemosynelabel/mnemosynelabel.github.io/2c3308da499e3add58e5cab8f7ff05cb95fa8f7a/images/oisyz.jpg',
-    ytId:null, start:0,
+    audioUrl:null,
     banner:'Where emotional pain becomes sound.',
     cs:true, includes:[], tracklist:[]
   }
@@ -621,8 +636,13 @@ function renderPanelBody(r){
         ${r.tracklist.map(t=>`
           <div class="track-item">
             <div class="track-num">${t.n}</div>
-            <div class="track-name${t.title?' title':''}">${t.t}</div>
-            ${t.title?`<div class="track-badge">Title</div>`:''}
+            <div class="track-item-inner">
+              <div class="track-name-row">
+                <div class="track-name${t.title?' title':''}">${t.t}</div>
+                ${t.title?`<div class="track-badge">Title</div>`:''}
+              </div>
+              ${t.credits?`<div class="track-credits">${t.credits}</div>`:''}
+            </div>
           </div>`).join('')}
       </div>
     </div>`;
@@ -641,34 +661,84 @@ function closePanel(){
   panelOpen=null;
 }
 
-// PREVIEW / PLAYER
+// AUDIO PLAYER
 let currentId=null;
 const dock=document.getElementById('dock');
 const dockImg=document.getElementById('dock-img');
 const dockTrack=document.getElementById('dock-track');
 const dockMeta=document.getElementById('dock-meta');
-const dockYt=document.getElementById('dock-yt');
+const dockAudio=document.getElementById('dock-audio');
+const dockBar=document.getElementById('dock-bar');
+const dockCurrent=document.getElementById('dock-current');
+const dockDuration=document.getElementById('dock-duration');
+const dockPlayPause=document.getElementById('dock-playpause');
+
+function fmt(s){const m=Math.floor(s/60);const sec=Math.floor(s%60);return m+':'+(sec<10?'0':'')+sec;}
+
+dockAudio.addEventListener('timeupdate',()=>{
+  if(!dockAudio.duration) return;
+  const pct=(dockAudio.currentTime/dockAudio.duration)*100;
+  dockBar.style.width=pct+'%';
+  dockCurrent.textContent=fmt(dockAudio.currentTime);
+});
+dockAudio.addEventListener('loadedmetadata',()=>{
+  dockDuration.textContent=fmt(dockAudio.duration);
+});
+dockAudio.addEventListener('ended',()=>{
+  dockPlayPause.innerHTML='<i class="ti ti-player-play"></i>';
+  dockBar.style.width='0%';
+  dockCurrent.textContent='0:00';
+});
+dockAudio.addEventListener('play',()=>{
+  dockPlayPause.innerHTML='<i class="ti ti-player-pause"></i>';
+});
+dockAudio.addEventListener('pause',()=>{
+  dockPlayPause.innerHTML='<i class="ti ti-player-play"></i>';
+});
+
+// click progress bar to seek
+document.getElementById('dock-progress').addEventListener('click',function(e){
+  if(!dockAudio.duration) return;
+  const rect=this.getBoundingClientRect();
+  const pct=(e.clientX-rect.left)/rect.width;
+  dockAudio.currentTime=pct*dockAudio.duration;
+});
+
+dockPlayPause.addEventListener('click',()=>{
+  if(dockAudio.paused) dockAudio.play();
+  else dockAudio.pause();
+});
 
 function previewTrack(id){
   const r=releases.find(x=>x.id===id);
-  if(!r||r.cs||!r.ytId) return;
-  if(currentId===id) return;
+  if(!r||r.cs||!r.audioUrl) return;
+  if(currentId===id){
+    if(dockAudio.paused) dockAudio.play();
+    return;
+  }
   stopAll();
   currentId=id;
-  document.querySelectorAll('.pcard').forEach(c=>c.classList.remove('playing'));
   const card=document.getElementById('pcard-'+id);
   if(card) card.classList.add('playing');
   dockImg.src=r.cover;
   dockTrack.textContent=r.track;
   dockMeta.textContent=r.artist+' · '+r.album;
-  dockYt.src=`https://www.youtube.com/embed/${r.ytId}?autoplay=1&start=${r.start}&rel=0&modestbranding=1&playsinline=1`;
+  dockAudio.src=r.audioUrl;
+  dockAudio.load();
+  dockAudio.play();
+  dockBar.style.width='0%';
+  dockCurrent.textContent='0:00';
+  dockDuration.textContent='0:00';
   dock.classList.add('up');
 }
 
 function stopAll(){
   if(currentId){const prev=document.getElementById('pcard-'+currentId);if(prev)prev.classList.remove('playing');}
   currentId=null;
-  dockYt.src='about:blank';
+  dockAudio.pause();
+  dockAudio.src='';
+  dockBar.style.width='0%';
+  dockCurrent.textContent='0:00';
   dock.classList.remove('up');
 }
 
