@@ -20,7 +20,7 @@
   --gfaint:rgba(201,168,76,0.18);
 }
 html,body{width:100%;overflow-x:hidden;}
-body{background:var(--black);color:var(--ivory);font-family:'DM Sans',sans-serif;font-weight:300;min-height:100vh;padding-bottom:20px;}
+body{background:var(--black);color:var(--ivory);font-family:'DM Sans',sans-serif;font-weight:300;min-height:100vh;padding-bottom:100px;}
 ::-webkit-scrollbar{width:3px;}
 ::-webkit-scrollbar-track{background:var(--black);}
 ::-webkit-scrollbar-thumb{background:var(--crimson);}
@@ -92,11 +92,10 @@ nav{
 .acard:hover{background:#161616;}
 .acard.open{background:#0e0e0e;cursor:default;}
 
-/* Square cover */
 .acard-cover{width:100%;aspect-ratio:1/1;position:relative;overflow:hidden;background:#111;}
 .acard-cover img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.55s ease,filter 0.3s;filter:brightness(0.85);}
 .acard:hover .acard-cover img{transform:scale(1.04);filter:brightness(1);}
-.acard.open .acard-cover img{transform:none;filter:brightness(0.6);}
+.acard.open .acard-cover img{filter:brightness(0.55);}
 
 .acard-ov{position:absolute;inset:0;background:rgba(13,13,13,0.48);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.25s;}
 .acard:hover .acard-ov{opacity:1;}
@@ -104,33 +103,82 @@ nav{
 .play-ring{width:56px;height:56px;border-radius:50%;border:1.5px solid var(--gold);display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:22px;transition:transform 0.22s,background 0.22s;}
 .acard:hover .play-ring{transform:scale(1.1);background:rgba(201,168,76,0.1);}
 
-/* Spotify embed — slides down from cover */
-.acard-spotify{
-  overflow:hidden;
-  max-height:0;
-  transition:max-height 0.5s cubic-bezier(0.77,0,0.18,1);
-  background:#0e0e0e;
-}
+/* Spotify embed panel */
+.acard-spotify{overflow:hidden;max-height:0;transition:max-height 0.5s cubic-bezier(0.77,0,0.18,1);background:#0a0a0a;}
 .acard.open .acard-spotify{max-height:160px;}
-.acard-spotify iframe{
-  width:100%;height:152px;border:none;display:block;
-  border-radius:0;
-}
+.acard-spotify iframe{width:100%;height:152px;border:none;display:block;}
 
 .acard-info{padding:14px 18px 18px;}
 .acard-type{font-size:8.5px;letter-spacing:2px;text-transform:uppercase;color:var(--crimson);margin-bottom:4px;}
 .acard-artist{font-size:9.5px;letter-spacing:2px;text-transform:uppercase;color:var(--smoke);margin-bottom:4px;}
 .acard-title{font-family:'Cormorant Garamond',serif;font-size:clamp(17px,2vw,22px);font-weight:400;color:var(--ivory);margin-bottom:4px;line-height:1.1;}
 .acard-date{font-size:9px;color:var(--dim);letter-spacing:1px;}
-
 .acard-actions{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap;}
-.a-btn{font-size:8.5px;letter-spacing:2px;text-transform:uppercase;font-family:'DM Sans',sans-serif;padding:7px 14px;cursor:pointer;background:none;transition:all 0.2s;}
+.a-btn{font-size:8.5px;letter-spacing:2px;text-transform:uppercase;font-family:'DM Sans',sans-serif;padding:7px 14px;cursor:pointer;background:none;transition:all 0.2s;display:inline-flex;align-items:center;gap:6px;}
 .a-btn.listen{border:0.5px solid rgba(201,168,76,0.4);color:var(--gold);}
 .a-btn.listen:hover{background:rgba(201,168,76,0.1);border-color:var(--gold);}
-.acard.open .a-btn.listen{border-color:rgba(245,240,232,0.2);color:var(--smoke);}
-.a-btn.close{border:0.5px solid rgba(245,240,232,0.12);color:var(--dim);display:none;}
-.acard.open .a-btn.close{display:inline-block;}
-.acard.open .a-btn.close:hover{border-color:rgba(245,240,232,0.3);color:var(--smoke);}
+.a-btn.close-btn{border:0.5px solid rgba(245,240,232,0.12);color:var(--dim);display:none;}
+.acard.open .a-btn.close-btn{display:inline-flex;}
+.a-btn.close-btn:hover{border-color:rgba(245,240,232,0.3);color:var(--smoke);}
+
+/* NOW PLAYING DOCK */
+.dock{
+  position:fixed;bottom:0;left:0;right:0;z-index:600;
+  background:rgba(10,10,10,0.97);
+  backdrop-filter:blur(24px);
+  -webkit-backdrop-filter:blur(24px);
+  border-top:1px solid rgba(201,168,76,0.2);
+  height:80px;
+  display:flex;align-items:center;
+  gap:clamp(10px,2vw,24px);
+  padding:0 clamp(14px,4vw,52px);
+  transform:translateY(100%);
+  transition:transform 0.45s cubic-bezier(0.77,0,0.175,1);
+}
+.dock.up{transform:translateY(0);}
+
+.dock-thumb{
+  width:52px;height:52px;
+  flex-shrink:0;overflow:hidden;
+  border:0.5px solid rgba(245,240,232,0.1);
+  background:#1a1a1a;
+}
+.dock-thumb img{width:100%;height:100%;object-fit:cover;display:block;}
+
+.dock-info{flex:1;min-width:0;}
+.dock-label{font-size:8px;letter-spacing:2.5px;text-transform:uppercase;color:var(--crimson);margin-bottom:3px;}
+.dock-title{font-family:'Cormorant Garamond',serif;font-size:clamp(14px,2vw,19px);color:var(--ivory);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:1.2;}
+.dock-artist{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--smoke);margin-top:2px;}
+
+.dock-bars{display:flex;align-items:flex-end;gap:3px;height:20px;flex-shrink:0;}
+.dock-bars span{
+  display:inline-block;width:3px;background:var(--gold);border-radius:1px;
+  animation:barpulse 0.75s ease-in-out infinite alternate;
+}
+.dock-bars span:nth-child(1){animation-delay:0s;height:8px;}
+.dock-bars span:nth-child(2){animation-delay:.15s;height:14px;}
+.dock-bars span:nth-child(3){animation-delay:.3s;height:10px;}
+.dock-bars span:nth-child(4){animation-delay:.05s;height:18px;}
+.dock-bars span:nth-child(5){animation-delay:.22s;height:6px;}
+@keyframes barpulse{from{opacity:.3;transform:scaleY(0.4);}to{opacity:1;transform:scaleY(1);}}
+
+.dock-note{font-size:9px;color:var(--dim);letter-spacing:1px;font-style:italic;flex-shrink:0;}
+
+.dock-actions{display:flex;gap:8px;flex-shrink:0;align-items:center;}
+.dock-btn{
+  background:none;font-size:9px;letter-spacing:2px;text-transform:uppercase;
+  font-family:'DM Sans',sans-serif;padding:8px 16px;cursor:pointer;
+  transition:all 0.2s;display:inline-flex;align-items:center;gap:6px;
+}
+.dock-btn.spotify{border:0.5px solid rgba(30,215,96,0.35);color:#1ED760;}
+.dock-btn.spotify:hover{background:rgba(30,215,96,0.08);border-color:#1ED760;}
+.dock-btn.stop{border:0.5px solid rgba(245,240,232,0.15);color:var(--smoke);}
+.dock-btn.stop:hover{border-color:rgba(107,16,32,0.6);color:var(--crimson);}
+
+@media(max-width:600px){
+  .dock-note{display:none;}
+  .dock-btn.spotify span{display:none;}
+}
 
 /* FOOTER */
 footer{border-top:0.5px solid var(--faint);padding:32px clamp(16px,5vw,56px);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
@@ -212,6 +260,29 @@ footer{border-top:0.5px solid var(--faint);padding:32px clamp(16px,5vw,56px);dis
     @mnemosyne_label · Current Season — ANAMNESIS
   </div>
 </footer>
+
+<!-- NOW PLAYING DOCK -->
+<div class="dock" id="dock">
+  <div class="dock-thumb"><img id="dock-img" src="" alt=""/></div>
+  <div class="dock-info">
+    <div class="dock-label">Now Listening</div>
+    <div class="dock-title" id="dock-title">—</div>
+    <div class="dock-artist" id="dock-artist">—</div>
+  </div>
+  <div class="dock-bars">
+    <span></span><span></span><span></span><span></span><span></span>
+  </div>
+  <div class="dock-note">via spotify</div>
+  <div class="dock-actions">
+    <button class="dock-btn spotify" id="dock-spotify">
+      <i class="ti ti-brand-spotify"></i>
+      <span>Open in Spotify</span>
+    </button>
+    <button class="dock-btn stop" id="dock-stop">
+      <i class="ti ti-x"></i> Close
+    </button>
+  </div>
+</div>
 
 <script>
 const releases = [
@@ -321,17 +392,15 @@ released.forEach((r,i)=>{
   card.className='acard';
   card.id='card-'+r.id;
   card.innerHTML=`
-    <div class="acard-cover" id="cover-${r.id}">
+    <div class="acard-cover">
       <img src="${r.cover}" alt="${r.title}" loading="lazy"/>
       <div class="acard-ov"><div class="play-ring"><i class="ti ti-player-play" aria-hidden="true"></i></div></div>
     </div>
     <div class="acard-spotify" id="spotify-${r.id}">
-      <iframe
-        src="about:blank"
-        id="sp-frame-${r.id}"
+      <iframe id="sp-frame-${r.id}"
         allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-        loading="lazy"
-      ></iframe>
+        loading="lazy" src="about:blank">
+      </iframe>
     </div>
     <div class="acard-info">
       <div class="acard-type">${r.type}</div>
@@ -339,36 +408,51 @@ released.forEach((r,i)=>{
       <div class="acard-title">${r.title}</div>
       <div class="acard-date">${r.date}</div>
       <div class="acard-actions">
-        <button class="a-btn listen" onclick="openCard(${r.id})"><i class="ti ti-player-play"></i>&nbsp;Listen</button>
-        <button class="a-btn close" onclick="closeCard(${r.id})"><i class="ti ti-x"></i>&nbsp;Close</button>
+        <button class="a-btn listen" onclick="openCard(${r.id})">
+          <i class="ti ti-player-play"></i> Listen
+        </button>
+        <button class="a-btn close-btn" onclick="closeCard(${r.id})">
+          <i class="ti ti-x"></i> Close
+        </button>
       </div>
     </div>`;
-  card.addEventListener('click', function(e){
-    // click on card body (not buttons) toggles
+  card.addEventListener('click',function(e){
     if(e.target.closest('.a-btn')||e.target.closest('.acard-spotify')) return;
-    const isOpen=card.classList.contains('open');
-    if(isOpen) closeCard(r.id);
-    else openCard(r.id);
+    card.classList.contains('open')?closeCard(r.id):openCard(r.id);
   });
   if(i<2) topEl.appendChild(card);
   else botEl.appendChild(card);
 });
 
+// DOCK
 let currentOpen=null;
+const dock=document.getElementById('dock');
+const dockImg=document.getElementById('dock-img');
+const dockTitle=document.getElementById('dock-title');
+const dockArtist=document.getElementById('dock-artist');
+const dockSpotify=document.getElementById('dock-spotify');
 
 function openCard(id){
   const r=releases.find(x=>x.id===id);
   if(!r||r.cs||!r.spotifyId) return;
   if(currentOpen&&currentOpen!==id) closeCard(currentOpen);
   currentOpen=id;
+
   const card=document.getElementById('card-'+id);
   const frame=document.getElementById('sp-frame-'+id);
   if(card) card.classList.add('open');
-  if(frame && frame.src==='about:blank'){
+  if(frame&&frame.src==='about:blank'){
     frame.src=`https://open.spotify.com/embed/track/${r.spotifyId}?utm_source=generator&theme=0`;
   }
-  // scroll card into view smoothly
-  if(card) card.scrollIntoView({behavior:'smooth',block:'nearest'});
+
+  // update dock
+  dockImg.src=r.cover;
+  dockTitle.textContent=r.title;
+  dockArtist.textContent=r.artist;
+  dockSpotify.onclick=()=>window.open(`https://open.spotify.com/track/${r.spotifyId}`,'_blank');
+  dock.classList.add('up');
+
+  card.scrollIntoView({behavior:'smooth',block:'nearest'});
 }
 
 function closeCard(id){
@@ -376,8 +460,15 @@ function closeCard(id){
   const frame=document.getElementById('sp-frame-'+id);
   if(card) card.classList.remove('open');
   if(frame) frame.src='about:blank';
-  if(currentOpen===id) currentOpen=null;
+  if(currentOpen===id){
+    currentOpen=null;
+    dock.classList.remove('up');
+  }
 }
+
+document.getElementById('dock-stop').addEventListener('click',()=>{
+  if(currentOpen) closeCard(currentOpen);
+});
 
 document.getElementById('hamburger').addEventListener('click',()=>{
   document.getElementById('mob-menu').classList.toggle('open');
