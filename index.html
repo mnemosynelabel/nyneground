@@ -10,7 +10,7 @@
 *{box-sizing:border-box;margin:0;padding:0;}
 :root{
   --black:#0D0D0D;
-  --crimson:#6B1020;
+  --crimson:#A01830;
   --gold:#C9A84C;
   --ivory:#F5F0E8;
   --smoke:#A8A9AD;
@@ -154,17 +154,17 @@ nav{
 .acard-playing-ind span:nth-child(4){animation-delay:.08s;}
 @keyframes bp{from{height:3px;opacity:.35;}to{height:13px;opacity:1;}}
 
-.acard-info{padding:12px 14px 16px;}
-.acard-type{font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--crimson);margin-bottom:4px;}
-.acard-artist{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--smoke);margin-bottom:3px;}
-.acard-track{font-family:'Cormorant Garamond',serif;font-size:clamp(15px,2vw,22px);font-weight:400;color:var(--ivory);margin-bottom:2px;line-height:1.15;}
-.acard-album{font-size:8.5px;color:var(--stone);letter-spacing:1px;font-style:italic;margin-bottom:2px;}
-.acard-date{font-size:8.5px;color:var(--dim);letter-spacing:1px;margin-bottom:12px;}
+.acard-info{padding:14px 16px 18px;}
+.acard-type{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--crimson);margin-bottom:5px;}
+.acard-artist{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--smoke);margin-bottom:4px;}
+.acard-track{font-family:'Cormorant Garamond',serif;font-size:clamp(18px,2.2vw,24px);font-weight:400;color:var(--ivory);margin-bottom:3px;line-height:1.15;}
+.acard-album{font-size:10px;color:var(--stone);letter-spacing:1px;font-style:italic;margin-bottom:3px;}
+.acard-date{font-size:10px;color:var(--dim);letter-spacing:1px;margin-bottom:14px;}
 
 .acard-btns{display:flex;gap:6px;flex-wrap:wrap;}
 .ac-btn{
-  font-size:8px;letter-spacing:1.5px;text-transform:uppercase;
-  font-family:'DM Sans',sans-serif;padding:7px 12px;cursor:pointer;
+  font-size:10px;letter-spacing:1.5px;text-transform:uppercase;
+  font-family:'DM Sans',sans-serif;padding:8px 14px;cursor:pointer;
   background:none;transition:all 0.2s;display:inline-flex;align-items:center;gap:5px;
   -webkit-tap-highlight-color:transparent;
 }
@@ -194,20 +194,20 @@ nav{
 .dock-thumb{width:42px;height:42px;flex-shrink:0;overflow:hidden;border:0.5px solid rgba(245,240,232,0.1);background:#1a1a1a;}
 .dock-thumb img{width:100%;height:100%;object-fit:cover;display:block;}
 .dock-info{flex:1;min-width:0;}
-.dock-label{font-size:7.5px;letter-spacing:2.5px;text-transform:uppercase;color:var(--crimson);margin-bottom:2px;}
-.dock-track{font-family:'Cormorant Garamond',serif;font-size:clamp(13px,2vw,17px);color:var(--ivory);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.dock-meta{font-size:8px;letter-spacing:1px;color:var(--smoke);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.dock-label{font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--crimson);margin-bottom:2px;}
+.dock-track{font-family:'Cormorant Garamond',serif;font-size:clamp(15px,2vw,19px);color:var(--ivory);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.dock-meta{font-size:10px;letter-spacing:1px;color:var(--smoke);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .dock-bars{display:flex;align-items:flex-end;gap:3px;height:16px;flex-shrink:0;}
 .dock-bars span{display:inline-block;width:3px;background:var(--gold);border-radius:1px;animation:bp 0.75s ease-in-out infinite alternate;}
 .dock-bars span:nth-child(2){animation-delay:.15s;}
 .dock-bars span:nth-child(3){animation-delay:.3s;}
 .dock-bars span:nth-child(4){animation-delay:.05s;}
 .dock-bars span:nth-child(5){animation-delay:.22s;}
-.dock-note{font-size:8px;color:var(--dim);letter-spacing:1px;font-style:italic;flex-shrink:0;}
+.dock-note{font-size:10px;color:var(--dim);letter-spacing:1px;font-style:italic;flex-shrink:0;}
 .dock-actions{display:flex;gap:6px;flex-shrink:0;align-items:center;}
 .dock-btn{
-  background:none;font-size:8px;letter-spacing:2px;text-transform:uppercase;
-  font-family:'DM Sans',sans-serif;padding:7px 12px;cursor:pointer;transition:all 0.2s;
+  background:none;font-size:10px;letter-spacing:2px;text-transform:uppercase;
+  font-family:'DM Sans',sans-serif;padding:8px 14px;cursor:pointer;transition:all 0.2s;
   display:inline-flex;align-items:center;gap:5px;
   -webkit-tap-highlight-color:transparent;
 }
@@ -226,17 +226,17 @@ footer{
   grid-template-columns:1fr 1fr 1fr;
   gap:32px;align-items:start;
 }
-.ft-brand .ft-name{font-family:'Cormorant Garamond',serif;font-size:22px;font-style:italic;color:var(--ivory);}
-.ft-brand .ft-tag{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);margin-top:5px;line-height:1.8;}
-.ft-links h4{font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--crimson);margin-bottom:12px;}
-.ft-links a{display:block;font-size:10px;color:var(--smoke);text-decoration:none;letter-spacing:1px;margin-bottom:7px;transition:color 0.2s;}
+.ft-brand .ft-name{font-family:'Cormorant Garamond',serif;font-size:24px;font-style:italic;color:var(--ivory);}
+.ft-brand .ft-tag{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--dim);margin-top:5px;line-height:1.9;}
+.ft-links h4{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--crimson);margin-bottom:14px;}
+.ft-links a{display:block;font-size:12px;color:var(--smoke);text-decoration:none;letter-spacing:1px;margin-bottom:9px;transition:color 0.2s;}
 .ft-links a:hover{color:var(--gold);}
-.ft-contact h4{font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--crimson);margin-bottom:12px;}
-.ft-contact p{font-size:10px;color:var(--smoke);letter-spacing:1px;line-height:2;}
+.ft-contact h4{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--crimson);margin-bottom:14px;}
+.ft-contact p{font-size:12px;color:var(--smoke);letter-spacing:1px;line-height:2.1;}
 .ft-contact a{color:var(--stone);text-decoration:none;}
 .ft-contact a:hover{color:var(--gold);}
 .ft-bottom{grid-column:1/-1;border-top:0.5px solid var(--faint);padding-top:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
-.ft-bottom p{font-size:8.5px;color:var(--dim);letter-spacing:1px;}
+.ft-bottom p{font-size:10px;color:var(--dim);letter-spacing:1px;}
 
 /* ── RESPONSIVE · TABLET ── */
 @media(max-width:900px){
@@ -282,31 +282,36 @@ footer{
   .cat-bot{grid-template-columns:1fr 1fr;}
 
   /* cards — compact */
-  .acard-info{padding:9px 10px 12px;}
-  .acard-type{font-size:7.5px;margin-bottom:3px;}
-  .acard-artist{font-size:8px;margin-bottom:2px;}
-  .acard-track{font-size:13px;margin-bottom:2px;}
-  .acard-album{font-size:7.5px;margin-bottom:2px;}
-  .acard-date{font-size:7.5px;margin-bottom:9px;}
+  .acard-info{padding:10px 12px 14px;}
+  .acard-type{font-size:9px;margin-bottom:3px;}
+  .acard-artist{font-size:9.5px;margin-bottom:3px;}
+  .acard-track{font-size:15px;margin-bottom:2px;}
+  .acard-album{font-size:9px;margin-bottom:2px;}
+  .acard-date{font-size:9px;margin-bottom:10px;}
   .acard-btns{gap:5px;}
-  .ac-btn{font-size:7.5px;padding:6px 9px;letter-spacing:1px;gap:4px;}
+  .ac-btn{font-size:9px;padding:7px 11px;letter-spacing:1px;gap:4px;}
   .play-ring{width:40px;height:40px;font-size:16px;}
 
   /* dock */
   .dock-bar{padding:9px 12px;gap:8px;}
-  .dock-thumb{width:36px;height:36px;}
+  .dock-thumb{width:38px;height:38px;}
+  .dock-label{font-size:8.5px;letter-spacing:2px;}
+  .dock-track{font-size:15px;}
+  .dock-meta{font-size:9.5px;}
   .dock-note{display:none;}
   .dock-bars{display:none;}
-  .dock-btn{font-size:7.5px;padding:6px 10px;letter-spacing:1.5px;}
+  .dock-btn{font-size:9px;padding:7px 11px;letter-spacing:1.5px;}
   .dock-player iframe{height:160px;}
   .dock.up .dock-player{max-height:160px;}
 
   /* footer */
   footer{grid-template-columns:1fr;padding:24px 16px;gap:20px;}
-  .ft-brand .ft-name{font-size:18px;}
-  .ft-brand .ft-tag{font-size:8px;line-height:1.7;}
+  .ft-brand .ft-name{font-size:20px;}
+  .ft-brand .ft-tag{font-size:10px;line-height:1.8;}
+  .ft-links a{font-size:12px;}
+  .ft-contact p{font-size:12px;}
   .ft-bottom{flex-direction:column;align-items:flex-start;gap:4px;}
-  .ft-bottom p{font-size:8px;}
+  .ft-bottom p{font-size:9.5px;}
 }
 
 /* ── RESPONSIVE · SMALL PHONE ── */
