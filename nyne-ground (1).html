@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Nyne Ground · Mnemosyne</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --black:#0D0D0D;
+  --crimson:#6B1020;
+  --gold:#C9A84C;
+  --ivory:#F5F0E8;
+  --smoke:#A8A9AD;
+  --stone:#8B7355;
+  --dim:#444444;
+  --faint:rgba(245,240,232,0.06);
+  --gold-faint:rgba(201,168,76,0.15);
+}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--black);
+  color:var(--ivory);
+  font-family:'DM Sans',sans-serif;
+  font-weight:300;
+  overflow-x:hidden;
+  padding-bottom:90px;
+}
+::-webkit-scrollbar{width:3px;}
+::-webkit-scrollbar-track{background:var(--black);}
+::-webkit-scrollbar-thumb{background:var(--crimson);}
+
+/* ── NAV ── */
+nav{
+  position:sticky;top:0;z-index:500;
+  background:rgba(13,13,13,0.96);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  border-bottom:0.5px solid var(--gold-faint);
+  height:64px;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 clamp(20px,4vw,48px);
+}
+.nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none;cursor:pointer;}
+.nav-ring{
+  width:40px;height:40px;border-radius:50%;
+  border:1.5px solid var(--crimson);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Cormorant Garamond',serif;
+  font-size:22px;font-weight:600;color:var(--crimson);
+  flex-shrink:0;
+}
+.nav-words{}
+.nav-top{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--ivory);font-weight:300;line-height:1.3;}
+.nav-bot{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);}
+.nav-links{display:flex;gap:clamp(16px,2.5vw,36px);list-style:none;align-items:center;}
+.nav-links a{
+  font-size:10px;letter-spacing:2.5px;text-transform:uppercase;
+  color:var(--smoke);text-decoration:none;cursor:pointer;
+  transition:color 0.2s;padding:4px 0;
+  border-bottom:0.5px solid transparent;
+}
+.nav-links a:hover,.nav-links a.active{color:var(--ivory);border-bottom-color:var(--gold);}
+.nav-ext{
+  color:var(--gold) !important;
+  border:0.5px solid rgba(201,168,76,0.3) !important;
+  padding:7px 14px !important;
+  border-bottom:0.5px solid rgba(201,168,76,0.3) !important;
+  transition:all 0.2s !important;
+}
+.nav-ext:hover{background:rgba(201,168,76,0.08) !important;}
+.nav-hamburger{
+  display:none;background:none;border:none;
+  color:var(--ivory);font-size:22px;cursor:pointer;
+  padding:4px;
+}
+.mobile-menu{
+  display:none;position:fixed;
+  top:64px;left:0;right:0;bottom:0;
+  background:rgba(13,13,13,0.98);
+  z-index:400;
+  flex-direction:column;align-items:center;justify-content:center;gap:32px;
+}
+.mobile-menu.open{display:flex;}
+.mobile-menu a{
+  font-size:13px;letter-spacing:3px;text-transform:uppercase;
+  color:var(--smoke);text-decoration:none;cursor:pointer;
+  transition:color 0.2s;
+}
+.mobile-menu a:hover{color:var(--ivory);}
+.mobile-menu .mob-ext{color:var(--gold);}
+
+/* ── BANNER ── */
+.banner{
+  position:relative;
+  height:clamp(280px,55vw,460px);
+  overflow:hidden;
+  border-bottom:0.5px solid var(--faint);
+}
+.banner-track{
+  display:flex;height:100%;
+  transition:transform 0.75s cubic-bezier(0.77,0,0.175,1);
+  will-change:transform;
+}
+.banner-slide{
+  min-width:100%;height:100%;
+  position:relative;
+  display:flex;align-items:flex-end;
+  flex-shrink:0;
+}
+.b-bg{
+  position:absolute;inset:0;
+  background-size:cover;background-position:center 20%;
+  transition:filter 0.5s;
+}
+.b-bg.dim{filter:brightness(0.3) saturate(0.8);}
+.b-bg.nodim{filter:brightness(0.25) saturate(0.6);}
+.b-grad{
+  position:absolute;inset:0;
+  background:linear-gradient(105deg, rgba(13,13,13,0.95) 30%, rgba(13,13,13,0.4) 70%, rgba(13,13,13,0.15) 100%);
+}
+.b-content{
+  position:relative;z-index:2;
+  padding:clamp(24px,4vw,48px) clamp(20px,4vw,48px);
+  max-width:min(560px,90%);
+}
+.b-tag{
+  font-size:9px;letter-spacing:3px;text-transform:uppercase;
+  color:var(--crimson);margin-bottom:10px;
+}
+.b-name{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(38px,7vw,72px);
+  font-weight:300;line-height:0.92;
+  color:var(--ivory);margin-bottom:8px;
+}
+.b-name em{font-style:italic;color:var(--gold);}
+.b-sub{
+  font-size:11px;letter-spacing:1.5px;
+  color:var(--smoke);margin-bottom:22px;
+  line-height:1.6;
+}
+.b-btn{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:10px;letter-spacing:2.5px;text-transform:uppercase;
+  font-family:'DM Sans',sans-serif;font-weight:400;
+  border:0.5px solid rgba(201,168,76,0.5);
+  color:var(--gold);background:none;
+  padding:10px 20px;cursor:pointer;
+  transition:all 0.25s;
+}
+.b-btn:hover{background:rgba(201,168,76,0.1);border-color:var(--gold);}
+.b-btn.cs{
+  border-color:rgba(245,240,232,0.2);
+  color:var(--smoke);cursor:default;
+}
+.b-btn.cs:hover{background:none;border-color:rgba(245,240,232,0.2);}
+
+.b-soon-badge{
+  display:inline-block;
+  font-size:9px;letter-spacing:2.5px;text-transform:uppercase;
+  border:0.5px solid rgba(245,240,232,0.15);
+  color:var(--smoke);padding:6px 14px;margin-bottom:16px;
+}
+
+.banner-nav{
+  position:absolute;bottom:20px;right:clamp(16px,3vw,40px);
+  z-index:10;display:flex;align-items:center;gap:12px;
+}
+.b-dots{display:flex;gap:6px;align-items:center;}
+.b-dot{
+  width:6px;height:6px;border-radius:50%;
+  background:rgba(245,240,232,0.2);
+  border:none;cursor:pointer;padding:0;
+  transition:all 0.35s;
+}
+.b-dot.active{background:var(--gold);width:22px;border-radius:3px;}
+.b-arr{
+  width:34px;height:34px;
+  background:rgba(13,13,13,0.5);
+  border:0.5px solid rgba(245,240,232,0.12);
+  color:var(--smoke);cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  font-size:16px;transition:all 0.2s;
+}
+.b-arr:hover{border-color:rgba(201,168,76,0.4);color:var(--gold);}
+
+/* ── SECTION HEADER ── */
+.sec-head{
+  display:flex;align-items:flex-end;justify-content:space-between;
+  padding:40px clamp(20px,4vw,48px) 20px;
+  border-bottom:0.5px solid var(--faint);
+  flex-wrap:wrap;gap:8px;
+}
+.sec-tag{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--crimson);margin-bottom:6px;}
+.sec-title{font-family:'Cormorant Garamond',serif;font-size:clamp(22px,3.5vw,32px);font-weight:300;color:var(--ivory);}
+.sec-title em{font-style:italic;color:var(--gold);}
+.sec-hint{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--dim);}
+
+/* ── CATALOG ── */
+.catalog{padding:0 clamp(20px,4vw,48px) 48px;}
+
+.cat-featured{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:1px;
+  background:var(--faint);
+  margin-bottom:1px;
+}
+.cat-row{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1px;
+  background:var(--faint);
+}
+
+@media(max-width:700px){
+  .cat-featured{grid-template-columns:1fr;}
+  .cat-row{grid-template-columns:repeat(2,1fr);}
+  .nav-links{display:none;}
+  .nav-hamburger{display:block;}
+}
+@media(max-width:420px){
+  .cat-row{grid-template-columns:1fr;}
+}
+
+.acard{
+  background:var(--black);
+  cursor:pointer;
+  transition:background 0.25s;
+  position:relative;overflow:hidden;
+}
+.acard:hover{background:#141414;}
+.acard.playing{background:#110e06;}
+.acard.comingsoon{cursor:default;}
+.acard.comingsoon:hover{background:var(--black);}
+
+.acard-cover{
+  width:100%;position:relative;overflow:hidden;
+  background:#111;
+}
+.acard.large .acard-cover{height:clamp(200px,28vw,300px);}
+.acard.small .acard-cover{height:clamp(160px,20vw,220px);}
+.acard.comingsoon .acard-cover{filter:grayscale(0.6);}
+
+.acard-cover img{
+  width:100%;height:100%;
+  object-fit:cover;display:block;
+  transition:transform 0.55s ease, filter 0.3s;
+  filter:brightness(0.85);
+}
+.acard:hover .acard-cover img{transform:scale(1.04);filter:brightness(1);}
+.acard.comingsoon:hover .acard-cover img{transform:none;filter:brightness(0.85);}
+
+.acard-overlay{
+  position:absolute;inset:0;
+  background:rgba(13,13,13,0.52);
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;transition:opacity 0.25s;
+}
+.acard:hover .acard-overlay{opacity:1;}
+.acard.playing .acard-overlay{opacity:1;}
+.acard.comingsoon:hover .acard-overlay{opacity:0;}
+
+.acard-playbtn{
+  width:54px;height:54px;border-radius:50%;
+  border:1.5px solid var(--gold);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--gold);font-size:22px;
+  transition:transform 0.2s;
+}
+.acard:hover .acard-playbtn{transform:scale(1.08);}
+
+.acard-cs-label{
+  position:absolute;top:12px;left:12px;
+  font-size:8px;letter-spacing:2.5px;text-transform:uppercase;
+  color:var(--smoke);
+  border:0.5px solid rgba(245,240,232,0.2);
+  padding:4px 10px;
+  background:rgba(13,13,13,0.7);
+}
+
+.acard-info{padding:16px 20px 22px;}
+.acard-type{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--crimson);margin-bottom:5px;}
+.acard-artist{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--smoke);margin-bottom:4px;}
+.acard-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(18px,2.2vw,24px);
+  font-weight:400;color:var(--ivory);
+  margin-bottom:4px;line-height:1.1;
+}
+.acard-date{font-size:9px;color:var(--dim);letter-spacing:1px;margin-bottom:0;}
+.acard-desc{font-size:10px;color:var(--stone);margin-top:6px;line-height:1.5;font-style:italic;}
+
+.acard-bars{
+  display:none;align-items:flex-end;gap:3px;
+  height:14px;margin-top:10px;
+}
+.acard.playing .acard-bars{display:flex;}
+.acard-bars span{
+  display:inline-block;width:2.5px;
+  background:var(--gold);border-radius:1px;
+  animation:barpulse 0.75s ease-in-out infinite alternate;
+}
+.acard-bars span:nth-child(2){animation-delay:0.12s;}
+.acard-bars span:nth-child(3){animation-delay:0.26s;}
+.acard-bars span:nth-child(4){animation-delay:0.08s;}
+@keyframes barpulse{from{height:3px;opacity:0.35;}to{height:14px;opacity:1;}}
+
+/* ── DOCK ── */
+.dock{
+  position:fixed;bottom:0;left:0;right:0;z-index:600;
+  background:rgba(10,10,10,0.97);
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+  border-top:1px solid rgba(201,168,76,0.2);
+  height:80px;
+  display:flex;align-items:center;
+  gap:clamp(12px,2vw,24px);
+  padding:0 clamp(16px,4vw,48px);
+  transform:translateY(100%);
+  transition:transform 0.45s cubic-bezier(0.77,0,0.175,1);
+}
+.dock.up{transform:translateY(0);}
+.dock-thumb{
+  width:50px;height:50px;
+  background:#1a1a1a;flex-shrink:0;overflow:hidden;
+  border:0.5px solid rgba(245,240,232,0.08);
+}
+.dock-thumb img{width:100%;height:100%;object-fit:cover;display:block;}
+.dock-info{flex:1;min-width:0;}
+.dock-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(15px,2.2vw,19px);
+  color:var(--ivory);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.dock-artist{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--smoke);margin-top:3px;}
+.dock-bars{
+  display:flex;align-items:flex-end;gap:3px;height:18px;flex-shrink:0;
+}
+.dock-bars span{
+  display:inline-block;width:3px;background:var(--gold);border-radius:1px;
+  animation:barpulse 0.75s ease-in-out infinite alternate;
+}
+.dock-bars span:nth-child(2){animation-delay:0.15s;}
+.dock-bars span:nth-child(3){animation-delay:0.3s;}
+.dock-bars span:nth-child(4){animation-delay:0.05s;}
+.dock-bars span:nth-child(5){animation-delay:0.22s;}
+.dock-note{font-size:9px;color:var(--dim);letter-spacing:1px;font-style:italic;flex-shrink:0;}
+@media(max-width:500px){.dock-note{display:none;}}
+.dock-actions{display:flex;gap:8px;flex-shrink:0;}
+.dock-btn{
+  background:none;
+  font-size:9px;letter-spacing:2px;text-transform:uppercase;
+  font-family:'DM Sans',sans-serif;font-weight:400;
+  padding:8px 14px;cursor:pointer;transition:all 0.2s;
+}
+.dock-btn.stop{border:0.5px solid rgba(245,240,232,0.15);color:var(--smoke);}
+.dock-btn.stop:hover{border-color:rgba(245,240,232,0.35);color:var(--ivory);}
+.dock-btn.buy{border:0.5px solid rgba(201,168,76,0.35);color:var(--gold);}
+.dock-btn.buy:hover{background:rgba(201,168,76,0.1);border-color:var(--gold);}
+
+/* ── FOOTER ── */
+footer{
+  border-top:0.5px solid var(--faint);
+  padding:32px clamp(20px,4vw,48px);
+  display:flex;justify-content:space-between;align-items:center;
+  flex-wrap:wrap;gap:16px;
+}
+.ft-l{}
+.ft-name{font-family:'Cormorant Garamond',serif;font-size:20px;font-style:italic;color:var(--ivory);}
+.ft-sub{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);margin-top:4px;}
+.ft-r{font-size:9px;color:var(--dim);letter-spacing:1px;text-align:right;line-height:2.2;}
+.ft-r a{color:var(--stone);text-decoration:none;}
+.ft-r a:hover{color:var(--gold);}
+
+.yt-hidden{position:fixed;width:1px;height:1px;opacity:0;pointer-events:none;top:-9999px;left:-9999px;}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">
+    <div class="nav-ring">N</div>
+    <div class="nav-words">
+      <div class="nav-top">Nyne Ground</div>
+      <div class="nav-bot">Mnemosyne · Seoul · Est. 2026</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a class="active" href="#">Store</a></li>
+    <li><a href="#">Shows</a></li>
+    <li><a href="#">Merch</a></li>
+    <li><a class="nav-ext" href="https://mnemosynelabel.github.io" target="_blank">↗ Mnemosyne</a></li>
+  </ul>
+  <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+    <i class="ti ti-menu-2"></i>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#" onclick="closeMobile()">Store</a>
+  <a href="#" onclick="closeMobile()">Shows</a>
+  <a href="#" onclick="closeMobile()">Merch</a>
+  <a class="mob-ext" href="https://mnemosynelabel.github.io" target="_blank">↗ Mnemosyne Label</a>
+</div>
+
+<!-- BANNER -->
+<div class="banner">
+  <div class="banner-track" id="banner-track"></div>
+  <div class="banner-nav">
+    <button class="b-arr" onclick="moveBanner(-1)" aria-label="Previous"><i class="ti ti-chevron-left"></i></button>
+    <div class="b-dots" id="b-dots"></div>
+    <button class="b-arr" onclick="moveBanner(1)" aria-label="Next"><i class="ti ti-chevron-right"></i></button>
+  </div>
+</div>
+
+<!-- CATALOG -->
+<div class="sec-head">
+  <div>
+    <div class="sec-tag">II · The Catalog</div>
+    <div class="sec-title">All Releases — <em>by date</em></div>
+  </div>
+  <div class="sec-hint">click any album to listen</div>
+</div>
+
+<div class="catalog">
+  <div class="cat-featured" id="cat-feat"></div>
+  <div class="cat-row" id="cat-row"></div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-l">
+    <div class="ft-name">Nyne Ground</div>
+    <div class="ft-sub">Mnemosyne · Seongsu-dong, Seoul · Est. 2026</div>
+  </div>
+  <div class="ft-r">
+    <a href="mailto:mnemosyne.label@gmail.com">mnemosyne.label@gmail.com</a><br>
+    @mnemosyne_label<br>
+    Current Season — ANAMNESIS
+  </div>
+</footer>
+
+<!-- NOW PLAYING DOCK -->
+<div class="dock" id="dock">
+  <div class="dock-thumb"><img id="dock-img" src="" alt="Now playing"/></div>
+  <div class="dock-info">
+    <div class="dock-title" id="dock-title">—</div>
+    <div class="dock-artist" id="dock-artist">—</div>
+  </div>
+  <div class="dock-bars"><span></span><span></span><span></span><span></span><span></span></div>
+  <div class="dock-note">now playing · youtube</div>
+  <div class="dock-actions">
+    <button class="dock-btn buy">Buy Album</button>
+    <button class="dock-btn stop" id="dock-stop">Stop</button>
+  </div>
+</div>
+
+<!-- YOUTUBE PLAYER (hidden) -->
+<div id="yt-player-container" class="yt-hidden">
+  <div id="yt-player"></div>
+</div>
+
+<script src="https://www.youtube.com/iframe_api"></script>
+<script>
+const releases = [
+  {
+    id:1, type:'Single', artist:'ERIS', title:'Virtual Angel',
+    date:'Feb 2026', sort:202602,
+    cover:'https://raw.githubusercontent.com/mnemosynelabel/mnemosynelabel.github.io/ac8495ab85e0653340bf946223eac471cc068a44/images/eris%20virtual%20angel.jfif',
+    ytId:'FKIvKnFHMqg', start:0,
+    banner:'Corrupted light from five voices.',
+    comingsoon:false
+  },
+  {
+    id:2, type:'Album', artist:'CI-EL', title:'ALPHA',
+    date:'Apr 2026', sort:202604,
+    cover:'https://raw.githubusercontent.com/mnemosynelabel/mnemosynelabel.github.io/ac8495ab85e0653340bf946223eac471cc068a44/images/cl%20coming%20soon.jfif',
+    ytId:'sVi0YEBN4s4', start:0,
+    banner:'11 tracks. autonomy. self-conviction.',
+    comingsoon:false
+  },
+  {
+    id:3, type:'Album', artist:'AUGUST', title:'D2',
+    date:'Apr 2026', sort:202604,
+    cover:'https://raw.githubusercontent.com/mnemosynelabel/mnemosynelabel.github.io/480eff105cb63445cfd357f638ba8eda029a4f37/images/d2.jpg',
+    ytId:'sEQf5lcnj_o', start:0,
+    banner:'Liberation. identity. refusing definition.',
+    comingsoon:false
+  },
+  {
+    id:4, type:'Single', artist:'SKÆZ', title:'Do It',
+    date:'Apr 2026', sort:202604,
+    cover:'https://raw.githubusercontent.com/mnemosynelabel/mnemosynelabel.github.io/ac8495ab85e0653340bf946223eac471cc068a44/images/skaez%20do%20it.jfif',
+    ytId:'FINtQFXqGss', start:0,
+    banner:'Eight fractures. one stage.',
+    comingsoon:false
+  },
+  {
+    id:5, type:'Single', artist:'JASS', title:'With Love, J',
+    date:'May 2026', sort:202605,
+    cover:'https://raw.githubusercontent.com/mnemosynelabel/mnemosynelabel.github.io/480eff105cb63445cfd357f638ba8eda029a4f37/images/WithLoveJ.jpg',
+    ytId:'CIFWkuOomC8', start:30,
+    banner:'A voice for the voiceless.',
+    comingsoon:false
+  },
+  {
+    id:6, type:'Group', artist:'AERA', title:'Coming Soon',
+    date:'2026', sort:209999,
+    cover:'https://raw.githubusercontent.com/mnemosynelabel/mnemosynelabel.github.io/ac8495ab85e0653340bf946223eac471cc068a44/images/new%20gen.jpg',
+    ytId:null, start:0,
+    banner:'Pillars of Hera · Protectors of the Digital Olympus.',
+    comingsoon:true
+  },
+  {
+    id:7, type:'Group', artist:'ØISYZ', title:'Coming Soon',
+    date:'2026', sort:209999,
+    cover:'https://raw.githubusercontent.com/mnemosynelabel/mnemosynelabel.github.io/645b6dae18a54bb677721263110797827a7e585f/images/eris.jpg',
+    ytId:null, start:0,
+    banner:'Where emotional pain becomes sound.',
+    comingsoon:true
+  }
+];
+
+// ── YOUTUBE API ──
+let ytPlayer = null;
+let ytReady = false;
+let pendingPlay = null;
+
+window.onYouTubeIframeAPIReady = function() {
+  ytPlayer = new YT.Player('yt-player', {
+    width:'1',height:'1',
+    videoId:'',
+    playerVars:{autoplay:0,controls:0,modestbranding:1,rel:0},
+    events:{
+      onReady: function(e) {
+        ytReady = true;
+        if (pendingPlay) {
+          doYTPlay(pendingPlay.ytId, pendingPlay.start);
+          pendingPlay = null;
+        }
+      }
+    }
+  });
+};
+
+function doYTPlay(ytId, start) {
+  if (!ytPlayer || !ytReady) { pendingPlay = {ytId, start}; return; }
+  ytPlayer.loadVideoById({videoId: ytId, startSeconds: start || 0});
+  ytPlayer.playVideo();
+}
+
+function doYTStop() {
+  if (ytPlayer && ytReady) { ytPlayer.stopVideo(); }
+}
+
+// ── BANNER ──
+let bannerIdx = 0;
+let bannerTimer = null;
+const trackEl = document.getElementById('banner-track');
+const dotsEl = document.getElementById('b-dots');
+
+releases.forEach((r, i) => {
+  const slide = document.createElement('div');
+  slide.className = 'banner-slide';
+  const btnHtml = r.comingsoon
+    ? `<div class="b-soon-badge">Coming Soon</div><br><button class="b-btn cs" disabled><i class="ti ti-clock"></i> Watch This Space</button>`
+    : `<button class="b-btn" onclick="playById(${r.id})"><i class="ti ti-player-play"></i> Listen Now</button>`;
+  slide.innerHTML = `
+    <div class="b-bg ${r.comingsoon?'nodim':'dim'}" style="background-image:url('${r.cover}');"></div>
+    <div class="b-grad"></div>
+    <div class="b-content">
+      <div class="b-tag">MNEMOSYNE · ANAMNESIS · ${r.date}</div>
+      <div class="b-name">${r.artist}<br><em>${r.title}</em></div>
+      <div class="b-sub">${r.type} · ${r.banner}</div>
+      ${btnHtml}
+    </div>
+  `;
+  trackEl.appendChild(slide);
+
+  const dot = document.createElement('button');
+  dot.className = 'b-dot' + (i===0?' active':'');
+  dot.setAttribute('aria-label', 'Slide '+(i+1));
+  dot.onclick = () => { goSlide(i); resetTimer(); };
+  dotsEl.appendChild(dot);
+});
+
+function goSlide(n) {
+  bannerIdx = ((n % releases.length) + releases.length) % releases.length;
+  trackEl.style.transform = `translateX(-${bannerIdx * 100}%)`;
+  document.querySelectorAll('.b-dot').forEach((d,i) => d.classList.toggle('active', i===bannerIdx));
+}
+function moveBanner(dir) { goSlide(bannerIdx + dir); resetTimer(); }
+function resetTimer() {
+  clearInterval(bannerTimer);
+  bannerTimer = setInterval(() => goSlide(bannerIdx + 1), 5000);
+}
+resetTimer();
+
+// ── CATALOG ──
+const featEl = document.getElementById('cat-feat');
+const rowEl = document.getElementById('cat-row');
+const releasedOnly = releases.filter(r => !r.comingsoon);
+
+releasedOnly.forEach((r, i) => {
+  const card = document.createElement('div');
+  const isFeat = i < 2;
+  card.className = 'acard ' + (isFeat ? 'large' : 'small');
+  card.id = 'card-' + r.id;
+  const coverH = isFeat ? 'clamp(200px,28vw,300px)' : 'clamp(160px,20vw,220px)';
+  card.innerHTML = `
+    <div class="acard-cover" style="height:${coverH}">
+      <img src="${r.cover}" alt="${r.title}" loading="lazy"/>
+      <div class="acard-overlay">
+        <div class="acard-playbtn"><i class="ti ti-player-play" aria-hidden="true"></i></div>
+      </div>
+    </div>
+    <div class="acard-info">
+      <div class="acard-type">${r.type}</div>
+      <div class="acard-artist">${r.artist}</div>
+      <div class="acard-title">${r.title}</div>
+      <div class="acard-date">${r.date}</div>
+      <div class="acard-bars" id="bars-${r.id}">
+        <span></span><span></span><span></span><span></span>
+      </div>
+    </div>
+  `;
+  card.addEventListener('click', () => playById(r.id));
+  if (isFeat) featEl.appendChild(card);
+  else rowEl.appendChild(card);
+});
+
+// ── PLAYER ──
+let currentId = null;
+const dock = document.getElementById('dock');
+const dockImg = document.getElementById('dock-img');
+const dockTitle = document.getElementById('dock-title');
+const dockArtist = document.getElementById('dock-artist');
+
+function playById(id) {
+  const r = releases.find(x => x.id === id);
+  if (!r || r.comingsoon || !r.ytId) return;
+  if (currentId === id) return;
+  stopAll(false);
+  currentId = id;
+  const card = document.getElementById('card-' + id);
+  if (card) card.classList.add('playing');
+  dockImg.src = r.cover;
+  dockTitle.textContent = r.title;
+  dockArtist.textContent = r.artist;
+  dock.classList.add('up');
+  doYTPlay(r.ytId, r.start);
+}
+
+function stopAll(stopYT = true) {
+  currentId = null;
+  if (stopYT) doYTStop();
+  dock.classList.remove('up');
+  document.querySelectorAll('.acard').forEach(c => c.classList.remove('playing'));
+}
+
+document.getElementById('dock-stop').addEventListener('click', () => stopAll(true));
+
+// ── MOBILE MENU ──
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobile-menu');
+hamburger.addEventListener('click', () => {
+  mobileMenu.classList.toggle('open');
+});
+function closeMobile() { mobileMenu.classList.remove('open'); }
+
+// ── SWIPE SUPPORT ──
+let touchStartX = 0;
+document.querySelector('.banner').addEventListener('touchstart', e => {
+  touchStartX = e.touches[0].clientX;
+}, {passive:true});
+document.querySelector('.banner').addEventListener('touchend', e => {
+  const diff = touchStartX - e.changedTouches[0].clientX;
+  if (Math.abs(diff) > 50) { moveBanner(diff > 0 ? 1 : -1); }
+}, {passive:true});
+</script>
+</body>
+</html>
