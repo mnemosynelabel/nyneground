@@ -101,16 +101,13 @@ nav{position:sticky;top:0;z-index:500;background:rgba(13,13,13,0.97);backdrop-fi
 
 /* PRODUCT CARD */
 .pcard{background:var(--black);position:relative;display:flex;flex-direction:column;}
-
 .pcard-cover{width:100%;aspect-ratio:1/1;position:relative;overflow:hidden;background:#111;cursor:pointer;-webkit-tap-highlight-color:transparent;}
 .pcard-cover img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.55s ease,filter 0.3s;filter:brightness(0.88);}
 .pcard-cover:hover img{transform:scale(1.04);filter:brightness(1);}
 .pcard.active .pcard-cover img{filter:brightness(0.5);}
-
 .pcard-ov{position:absolute;inset:0;background:rgba(13,13,13,0.45);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.25s;}
 .pcard-cover:hover .pcard-ov,.pcard.active .pcard-ov{opacity:1;}
 .preview-tag{font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);border:0.5px solid rgba(201,168,76,0.6);padding:7px 14px;display:flex;align-items:center;gap:6px;}
-
 .pcard-playing-ind{position:absolute;bottom:10px;left:10px;display:none;align-items:flex-end;gap:3px;height:16px;background:rgba(13,13,13,0.8);padding:3px 8px;}
 .pcard.playing .pcard-playing-ind{display:flex;}
 .pcard-playing-ind span{display:inline-block;width:2.5px;background:var(--gold);border-radius:1px;animation:bp 0.75s ease-in-out infinite alternate;}
@@ -118,20 +115,16 @@ nav{position:sticky;top:0;z-index:500;background:rgba(13,13,13,0.97);backdrop-fi
 .pcard-playing-ind span:nth-child(3){animation-delay:.26s;}
 .pcard-playing-ind span:nth-child(4){animation-delay:.08s;}
 @keyframes bp{from{height:3px;opacity:.35;}to{height:13px;opacity:1;}}
-
 .pcard-body{padding:18px 20px 22px;display:flex;flex-direction:column;gap:0;flex:1;}
 .pcard-meta{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--crimson);margin-bottom:5px;}
 .pcard-artist{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--smoke);margin-bottom:4px;}
 .pcard-title{font-family:'Cormorant Garamond',serif;font-size:clamp(20px,2.2vw,26px);font-weight:400;color:var(--ivory);line-height:1.1;margin-bottom:4px;}
 .pcard-track{font-size:10px;color:var(--stone);letter-spacing:1px;font-style:italic;margin-bottom:14px;}
-
 .pcard-price-row{display:flex;align-items:baseline;gap:10px;margin-bottom:16px;padding-bottom:16px;border-bottom:0.5px solid var(--faint);}
 .pcard-price{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:300;color:var(--ivory);}
 .pcard-price-alt{font-size:10px;color:var(--smoke);letter-spacing:1px;}
-
 .pcard-formats{display:flex;gap:6px;margin-bottom:16px;}
 .fmt-tag{font-size:8.5px;letter-spacing:1.5px;text-transform:uppercase;border:0.5px solid rgba(245,240,232,0.15);color:var(--smoke);padding:4px 10px;}
-
 .pcard-actions{display:flex;gap:8px;margin-bottom:0;}
 .p-btn{font-size:9.5px;letter-spacing:2px;text-transform:uppercase;font-family:'DM Sans',sans-serif;padding:10px 18px;cursor:pointer;background:none;transition:all 0.2s;display:inline-flex;align-items:center;gap:6px;-webkit-tap-highlight-color:transparent;flex:1;justify-content:center;}
 .p-btn.buy{background:var(--gold);color:var(--black);border:0.5px solid var(--gold);font-weight:500;}
@@ -142,68 +135,43 @@ nav{position:sticky;top:0;z-index:500;background:rgba(13,13,13,0.97);backdrop-fi
 /* PRODUCT DETAIL PANEL */
 .panel-overlay{position:fixed;inset:0;background:rgba(13,13,13,0.7);z-index:700;opacity:0;pointer-events:none;transition:opacity 0.35s;backdrop-filter:blur(4px);}
 .panel-overlay.open{opacity:1;pointer-events:all;}
-
-.panel{
-  position:fixed;top:0;right:0;bottom:0;width:min(520px,100%);
-  background:#0f0f0f;z-index:800;
-  border-left:0.5px solid rgba(201,168,76,0.15);
-  transform:translateX(100%);
-  transition:transform 0.45s cubic-bezier(0.77,0,0.175,1);
-  display:flex;flex-direction:column;
-  overflow:hidden;
-}
+.panel{position:fixed;top:0;right:0;bottom:0;width:min(520px,100%);background:#0f0f0f;z-index:800;border-left:0.5px solid rgba(201,168,76,0.15);transform:translateX(100%);transition:transform 0.45s cubic-bezier(0.77,0,0.175,1);display:flex;flex-direction:column;overflow:hidden;}
 .panel.open{transform:translateX(0);}
-
-.panel-head{
-  padding:20px 24px;
-  border-bottom:0.5px solid var(--faint);
-  display:flex;align-items:center;justify-content:space-between;
-  flex-shrink:0;
-}
+.panel-head{padding:20px 24px;border-bottom:0.5px solid var(--faint);display:flex;align-items:center;justify-content:space-between;flex-shrink:0;}
 .panel-head-left{display:flex;align-items:center;gap:14px;}
 .panel-thumb{width:52px;height:52px;overflow:hidden;background:#1a1a1a;border:0.5px solid rgba(245,240,232,0.08);flex-shrink:0;}
 .panel-thumb img{width:100%;height:100%;object-fit:cover;display:block;}
-.panel-head-info{}
 .panel-head-artist{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--smoke);margin-bottom:3px;}
 .panel-head-title{font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--ivory);}
 .panel-close{background:none;border:none;color:var(--smoke);font-size:22px;cursor:pointer;padding:4px;transition:color 0.2s;-webkit-tap-highlight-color:transparent;}
 .panel-close:hover{color:var(--ivory);}
-
 .panel-body{flex:1;overflow-y:auto;padding:0;}
 .panel-body::-webkit-scrollbar{width:2px;}
 .panel-body::-webkit-scrollbar-thumb{background:var(--dim);}
-
-/* panel cover + price */
 .panel-hero{position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;background:#111;}
 .panel-hero img{width:100%;height:100%;object-fit:cover;display:block;filter:brightness(0.7);}
 .panel-hero-info{position:absolute;bottom:0;left:0;right:0;padding:20px 24px;background:linear-gradient(to top,rgba(13,13,13,0.95),transparent);}
 .panel-hero-price{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:300;color:var(--ivory);}
 .panel-hero-price-alt{font-size:11px;color:var(--smoke);letter-spacing:1px;margin-top:2px;}
-
 .panel-section{padding:20px 24px;border-bottom:0.5px solid var(--faint);}
 .panel-section-label{font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--crimson);margin-bottom:14px;}
-
-/* format selector */
 .format-opts{display:flex;gap:8px;flex-wrap:wrap;}
 .fmt-opt{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;border:0.5px solid rgba(245,240,232,0.18);color:var(--smoke);padding:8px 16px;cursor:pointer;transition:all 0.2s;-webkit-tap-highlight-color:transparent;}
 .fmt-opt.selected{border-color:var(--gold);color:var(--gold);}
 .fmt-opt:hover{border-color:rgba(201,168,76,0.4);color:var(--ivory);}
-
-/* includes */
 .includes-list{display:flex;flex-direction:column;gap:8px;}
 .inc-item{display:flex;align-items:center;gap:10px;font-size:11px;color:var(--smoke);letter-spacing:0.5px;}
 .inc-item i{color:var(--gold);font-size:14px;flex-shrink:0;}
-
-/* tracklist */
 .tracklist{display:flex;flex-direction:column;gap:0;}
 .track-item{display:flex;align-items:flex-start;gap:12px;padding:12px 0;border-bottom:0.5px solid var(--faint);}
 .track-item:last-child{border-bottom:none;}
 .track-num{font-size:9px;color:var(--dim);letter-spacing:1px;min-width:20px;flex-shrink:0;}
-.track-item-inner{flex:1;min-width:0;}.track-name-row{display:flex;align-items:center;gap:8px;margin-bottom:4px;}.track-name{font-size:12px;color:var(--ivory);letter-spacing:0.5px;}.track-credits{font-size:9.5px;color:var(--smoke);letter-spacing:0.3px;line-height:1.6;}
+.track-item-inner{flex:1;min-width:0;}
+.track-name-row{display:flex;align-items:center;gap:8px;margin-bottom:4px;}
+.track-name{font-size:12px;color:var(--ivory);letter-spacing:0.5px;}
 .track-name.title{color:var(--gold);}
+.track-credits{font-size:9.5px;color:var(--smoke);letter-spacing:0.3px;line-height:1.6;}
 .track-badge{font-size:8px;letter-spacing:1.5px;text-transform:uppercase;color:var(--crimson);border:0.5px solid rgba(160,24,48,0.4);padding:2px 6px;flex-shrink:0;}
-
-/* buy section in panel */
 .panel-buy{padding:20px 24px;border-bottom:0.5px solid var(--faint);}
 .panel-buy-price{font-family:'Cormorant Garamond',serif;font-size:28px;color:var(--ivory);margin-bottom:4px;}
 .panel-buy-alt{font-size:10px;color:var(--smoke);letter-spacing:1px;margin-bottom:16px;}
@@ -246,7 +214,7 @@ footer{border-top:0.5px solid var(--faint);padding:40px clamp(16px,5vw,56px);dis
 .ft-brand .ft-name{font-family:'Cormorant Garamond',serif;font-size:24px;font-style:italic;color:var(--ivory);}
 .ft-brand .ft-tag{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--dim);margin-top:5px;line-height:1.9;}
 .ft-links h4{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--crimson);margin-bottom:14px;}
-.ft-links a{display:block;font-size:12px;color:var(--smoke);text-decoration:none;letter-spacing:1px;margin-bottom:9px;transition:color 0.2s;}
+.ft-links a{display:block;font-size:12px;color:var(--smoke);text-decoration:none;letter-spacing:1px;margin-bottom:9px;transition:color 0.2s;cursor:pointer;}
 .ft-links a:hover{color:var(--gold);}
 .ft-contact h4{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--crimson);margin-bottom:14px;}
 .ft-contact p{font-size:12px;color:var(--smoke);letter-spacing:1px;line-height:2.1;}
@@ -256,109 +224,37 @@ footer{border-top:0.5px solid var(--faint);padding:40px clamp(16px,5vw,56px);dis
 .ft-bottom p{font-size:10px;color:var(--dim);letter-spacing:1px;}
 
 /* LABEL CALLOUT SECTION */
-.label-callout{
-  border-top:0.5px solid var(--faint);
-  border-bottom:0.5px solid var(--faint);
-  padding:clamp(48px,8vw,96px) clamp(16px,5vw,56px);
-  background:linear-gradient(160deg,#0f0d0a 0%,#0D0D0D 60%);
-  position:relative;overflow:hidden;
-}
-.label-callout::before{
-  content:'';position:absolute;top:-80px;right:-80px;
-  width:400px;height:400px;border-radius:50%;
-  background:radial-gradient(circle,rgba(201,168,76,0.04) 0%,transparent 70%);
-  pointer-events:none;
-}
-.lc-inner{
-  display:grid;
-  grid-template-columns:auto 1fr auto;
-  gap:clamp(32px,5vw,72px);
-  align-items:center;
-  max-width:1100px;
-}
-.lc-logo{
-  width:clamp(80px,12vw,140px);
-  opacity:0.9;
-  filter:brightness(1.1);
-  flex-shrink:0;
-}
-.lc-text{}
+.label-callout{border-top:0.5px solid var(--faint);border-bottom:0.5px solid var(--faint);padding:clamp(48px,8vw,96px) clamp(16px,5vw,56px);background:linear-gradient(160deg,#0f0d0a 0%,#0D0D0D 60%);position:relative;overflow:hidden;}
+.label-callout::before{content:'';position:absolute;top:-80px;right:-80px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(201,168,76,0.04) 0%,transparent 70%);pointer-events:none;}
+.lc-inner{display:grid;grid-template-columns:auto 1fr auto;gap:clamp(32px,5vw,72px);align-items:center;max-width:1100px;}
+.lc-logo{width:clamp(80px,12vw,140px);opacity:0.9;filter:brightness(1.1);flex-shrink:0;}
 .lc-tag{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--crimson);margin-bottom:10px;}
-.lc-title{
-  font-family:'Cormorant Garamond',serif;
-  font-size:clamp(28px,4.5vw,52px);
-  font-weight:300;line-height:1;
-  color:var(--ivory);margin-bottom:14px;
-}
+.lc-title{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,4.5vw,52px);font-weight:300;line-height:1;color:var(--ivory);margin-bottom:14px;}
 .lc-title em{font-style:italic;color:var(--gold);}
 .lc-desc{font-size:11px;color:var(--smoke);letter-spacing:0.5px;line-height:1.8;max-width:440px;}
 .lc-action{display:flex;flex-direction:column;align-items:flex-end;gap:14px;flex-shrink:0;}
-.lc-btn{
-  display:inline-flex;align-items:center;gap:8px;
-  font-size:10px;letter-spacing:2.5px;text-transform:uppercase;
-  font-family:'DM Sans',sans-serif;
-  background:var(--gold);color:var(--black);
-  border:none;padding:13px 24px;cursor:pointer;
-  transition:background 0.2s;text-decoration:none;font-weight:500;
-  white-space:nowrap;
-}
+.lc-btn{display:inline-flex;align-items:center;gap:8px;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;font-family:'DM Sans',sans-serif;background:var(--gold);color:var(--black);border:none;padding:13px 24px;cursor:pointer;transition:background 0.2s;text-decoration:none;font-weight:500;white-space:nowrap;}
 .lc-btn:hover{background:#d4af52;}
 .lc-sub{font-size:9px;color:var(--dim);letter-spacing:2px;text-transform:uppercase;text-align:right;}
 
 /* BANNER LABEL SLIDE */
-.b-label-slide{
-  position:relative;z-index:3;
-  display:flex;flex-direction:column;
-  align-items:flex-start;justify-content:flex-end;
-  padding:clamp(24px,4vw,52px) clamp(20px,5vw,64px);
-  height:100%;width:100%;
-}
-.b-label-logo{
-  width:clamp(80px,14vw,160px);
-  opacity:0.95;margin-bottom:20px;
-}
-.b-label-tag{
-  font-size:10px;letter-spacing:3px;text-transform:uppercase;
-  color:var(--gold);margin-bottom:8px;
-}
-.b-label-desc{
-  font-size:12px;color:var(--smoke);letter-spacing:0.5px;
-  line-height:1.7;margin-bottom:24px;max-width:420px;
-}
+.b-label-slide{position:relative;z-index:3;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end;padding:clamp(24px,4vw,52px) clamp(20px,5vw,64px);height:100%;width:100%;}
+.b-label-logo{width:clamp(80px,14vw,160px);opacity:0.95;margin-bottom:20px;}
+.b-label-tag{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:8px;}
+.b-label-desc{font-size:12px;color:var(--smoke);letter-spacing:0.5px;line-height:1.7;margin-bottom:24px;max-width:420px;}
 .b-label-btn{text-decoration:none;font-weight:500;}
 
 /* TOAST */
-.toast{
-  position:fixed;bottom:100px;left:50%;transform:translateX(-50%) translateY(20px);
-  background:#1a1a1a;border:0.5px solid rgba(201,168,76,0.3);
-  color:var(--ivory);font-size:11px;letter-spacing:1px;
-  padding:12px 24px;z-index:900;
-  opacity:0;pointer-events:none;
-  transition:all 0.3s;white-space:nowrap;
-  display:flex;align-items:center;gap:8px;
-}
+.toast{position:fixed;bottom:clamp(110px,20vw,130px);left:50%;transform:translateX(-50%) translateY(20px);background:#1a1a1a;border:0.5px solid rgba(201,168,76,0.3);color:var(--ivory);font-size:11px;letter-spacing:1px;padding:12px 20px;z-index:900;opacity:0;pointer-events:none;transition:all 0.3s;display:flex;align-items:center;gap:8px;max-width:calc(100vw - 32px);white-space:normal;text-align:center;line-height:1.5;}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
-.toast i{color:var(--gold);}
+.toast i{color:var(--gold);flex-shrink:0;}
 
-/* NOTIFY BTN for coming soon */
-.cs-notify{
-  display:inline-flex;align-items:center;gap:8px;
-  font-size:9px;letter-spacing:2px;text-transform:uppercase;
-  font-family:'DM Sans',sans-serif;
-  border:0.5px solid rgba(245,240,232,0.15);color:var(--smoke);
-  background:none;padding:9px 16px;cursor:pointer;
-  transition:all 0.2s;margin-top:12px;
-  -webkit-tap-highlight-color:transparent;
-}
+/* NOTIFY BTN */
+.cs-notify{display:inline-flex;align-items:center;gap:8px;font-size:9px;letter-spacing:2px;text-transform:uppercase;font-family:'DM Sans',sans-serif;border:0.5px solid rgba(245,240,232,0.15);color:var(--smoke);background:none;padding:9px 16px;cursor:pointer;transition:all 0.2s;margin-top:12px;-webkit-tap-highlight-color:transparent;}
 .cs-notify:hover{border-color:rgba(201,168,76,0.35);color:var(--gold);}
 
 /* SHIPPING NOTE */
-.shipping-note{
-  padding:12px 24px;
-  border-bottom:0.5px solid var(--faint);
-  display:flex;align-items:center;gap:10px;
-  font-size:10px;color:var(--smoke);letter-spacing:0.5px;
-}
+.shipping-note{padding:12px 24px;border-bottom:0.5px solid var(--faint);display:flex;align-items:center;gap:10px;font-size:10px;color:var(--smoke);letter-spacing:0.5px;}
 .shipping-note i{color:var(--gold);font-size:14px;flex-shrink:0;}
 
 /* ALSO LIKE */
@@ -372,15 +268,75 @@ footer{border-top:0.5px solid var(--faint);padding:40px clamp(16px,5vw,56px);dis
 .al-artist{font-size:8px;letter-spacing:1.5px;text-transform:uppercase;color:var(--smoke);}
 .al-title{font-size:11px;color:var(--ivory);margin-top:2px;font-family:'Cormorant Garamond',serif;}
 
+/* SHOWS & MERCH SECTIONS */
+.hero-shows{padding:clamp(56px,10vw,96px) clamp(20px,5vw,64px) clamp(40px,6vw,64px);border-bottom:0.5px solid var(--faint);position:relative;overflow:hidden;}
+.hero-shows::before{content:'';position:absolute;top:-100px;right:-100px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(160,24,48,0.05) 0%,transparent 70%);pointer-events:none;}
+.hero-tag-s{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--crimson);margin-bottom:14px;}
+.hero-title-s{font-family:'Cormorant Garamond',serif;font-size:clamp(48px,9vw,100px);font-weight:300;line-height:0.88;color:var(--ivory);margin-bottom:16px;}
+.hero-title-s em{font-style:italic;color:var(--gold);}
+.hero-sub-s{font-size:12px;color:var(--smoke);letter-spacing:1px;line-height:1.7;max-width:480px;}
+.upcoming-wrap{padding:clamp(40px,6vw,72px) clamp(20px,5vw,64px);border-bottom:0.5px solid var(--faint);}
+.past-wrap{padding:clamp(40px,6vw,72px) clamp(20px,5vw,64px) clamp(56px,8vw,96px);}
+.sec-label-s{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--crimson);margin-bottom:14px;}
+.sec-title-s{font-family:'Cormorant Garamond',serif;font-size:clamp(22px,3.5vw,32px);font-weight:300;color:var(--ivory);margin-bottom:28px;}
+.sec-title-s em{font-style:italic;color:var(--gold);}
+.upcoming-empty{border:0.5px solid var(--faint);padding:clamp(32px,5vw,56px) clamp(24px,4vw,48px);display:flex;align-items:flex-start;gap:24px;flex-wrap:wrap;}
+.ue-icon{font-size:32px;color:var(--dim);flex-shrink:0;padding-top:4px;}
+.ue-title{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--smoke);margin-bottom:6px;}
+.ue-sub{font-size:11px;color:var(--dim);letter-spacing:0.5px;line-height:1.7;}
+.ue-follow{display:inline-flex;align-items:center;gap:7px;margin-top:14px;font-size:9px;letter-spacing:2px;text-transform:uppercase;font-family:'DM Sans',sans-serif;border:0.5px solid rgba(201,168,76,0.35);color:var(--gold);padding:8px 16px;text-decoration:none;transition:all 0.2s;}
+.ue-follow:hover{background:rgba(201,168,76,0.08);}
+
+/* POSTER GRID */
+.poster-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(12px,2vw,24px);}
+.show-card{display:flex;flex-direction:column;cursor:pointer;-webkit-tap-highlight-color:transparent;}
+.show-poster{width:100%;aspect-ratio:1/1.414;position:relative;overflow:hidden;background:#111;border:0.5px solid rgba(245,240,232,0.06);transition:border-color 0.25s;}
+.show-card:hover .show-poster{border-color:rgba(201,168,76,0.3);}
+.show-poster img{width:100%;height:100%;object-fit:cover;display:block;filter:brightness(0.9);transition:transform 0.55s ease,filter 0.3s;}
+.show-card:hover .show-poster img{transform:scale(1.03);filter:brightness(1);}
+.show-poster-ov{position:absolute;inset:0;background:rgba(13,13,13,0.5);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.25s;}
+.show-card:hover .show-poster-ov{opacity:1;}
+.show-poster-ov-tag{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--ivory);border:0.5px solid rgba(245,240,232,0.4);padding:7px 14px;display:flex;align-items:center;gap:6px;}
+.show-info{padding:12px 2px 0;}
+.show-name{font-family:'Cormorant Garamond',serif;font-size:clamp(15px,1.8vw,19px);font-weight:400;color:var(--ivory);margin-bottom:3px;line-height:1.1;}
+.show-date{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--smoke);margin-bottom:2px;}
+.show-venue{font-size:9px;color:var(--dim);letter-spacing:0.5px;}
+
+/* LIGHTBOX */
+.lightbox{position:fixed;inset:0;z-index:800;background:rgba(13,13,13,0.95);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.3s;padding:clamp(16px,4vw,40px);}
+.lightbox.open{opacity:1;pointer-events:all;}
+.lightbox-inner{position:relative;max-height:90vh;display:flex;align-items:flex-start;gap:clamp(16px,3vw,36px);}
+.lightbox-img{max-height:88vh;max-width:min(480px,55vw);width:auto;height:auto;display:block;object-fit:contain;border:0.5px solid rgba(245,240,232,0.1);}
+.lightbox-info{padding-top:8px;max-width:280px;flex-shrink:0;}
+.lb-tag{font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--crimson);margin-bottom:10px;}
+.lb-name{font-family:'Cormorant Garamond',serif;font-size:clamp(24px,3.5vw,36px);font-weight:300;color:var(--ivory);line-height:1;margin-bottom:8px;}
+.lb-name em{font-style:italic;color:var(--gold);}
+.lb-date{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--smoke);margin-bottom:4px;}
+.lb-venue{font-size:11px;color:var(--stone);letter-spacing:1px;margin-bottom:20px;}
+.lb-desc{font-size:11px;color:var(--smoke);line-height:1.8;letter-spacing:0.3px;}
+.lb-close{position:absolute;top:-8px;right:-8px;background:rgba(13,13,13,0.8);border:0.5px solid rgba(245,240,232,0.2);color:var(--smoke);font-size:18px;cursor:pointer;width:34px;height:34px;display:flex;align-items:center;justify-content:center;transition:all 0.2s;-webkit-tap-highlight-color:transparent;}
+.lb-close:hover{border-color:var(--crimson);color:var(--ivory);}
+
+/* MERCH SOON */
+.merch-soon{padding:clamp(48px,8vw,96px) clamp(20px,5vw,64px);}
+.ms-inner{border:0.5px solid var(--faint);padding:clamp(32px,5vw,56px) clamp(24px,4vw,48px);display:flex;align-items:flex-start;gap:24px;flex-wrap:wrap;}
+.ms-icon{font-size:36px;color:var(--dim);flex-shrink:0;padding-top:4px;}
+.ms-title{font-family:'Cormorant Garamond',serif;font-size:24px;color:var(--smoke);margin-bottom:8px;}
+.ms-sub{font-size:11px;color:var(--dim);letter-spacing:0.5px;line-height:1.7;max-width:480px;}
+
 /* RESPONSIVE */
 @media(max-width:900px){
   .store-grid{grid-template-columns:repeat(2,1fr);}
+  .poster-grid{grid-template-columns:repeat(3,1fr);}
   footer{grid-template-columns:1fr 1fr;}
   .ft-bottom{grid-column:1/-1;}
   .lc-inner{grid-template-columns:1fr;gap:28px;}
   .lc-logo{width:90px;}
   .lc-action{align-items:flex-start;}
   .lc-sub{text-align:left;}
+  .lightbox-inner{flex-direction:column;align-items:center;}
+  .lightbox-img{max-width:min(360px,85vw);max-height:55vh;}
+  .lightbox-info{max-width:100%;padding-top:0;}
 }
 @media(max-width:640px){
   body{padding-bottom:120px;}
@@ -394,6 +350,10 @@ footer{border-top:0.5px solid var(--faint);padding:40px clamp(16px,5vw,56px);dis
   .b-price{font-size:22px;}
   .store{padding:0 0 48px;}
   .store-grid{grid-template-columns:repeat(2,1fr);}
+  .poster-grid{grid-template-columns:repeat(2,1fr);gap:10px;}
+  .upcoming-wrap,.past-wrap{padding:24px 16px;}
+  .hero-shows{padding:40px 16px 28px;}
+  .merch-soon{padding:24px 16px;}
   .pcard-body{padding:12px 14px 16px;}
   .pcard-title{font-size:16px;}
   .pcard-price{font-size:20px;}
@@ -414,9 +374,9 @@ footer{border-top:0.5px solid var(--faint);padding:40px clamp(16px,5vw,56px);dis
 <nav>
   <a class="nav-logo" href="#"><div class="nav-ring">N</div><div><div class="nav-top">Nyne Ground</div><div class="nav-bot">Mnemosyne · Seoul · Est. 2026</div></div></a>
   <ul class="nav-links">
-    <li><a class="active">Store</a></li>
-    <li><a>Shows</a></li>
-    <li><a>Merch</a></li>
+    <li><a class="active" onclick="showSection('store')">Store</a></li>
+    <li><a onclick="showSection('shows')">Shows</a></li>
+    <li><a onclick="showSection('merch')">Merch</a></li>
     <li><a class="nav-ext" href="https://mnemosynelabel.github.io" target="_blank">↗ Mnemosyne</a></li>
   </ul>
   <button class="hamburger" id="hamburger" aria-label="Menu"><i class="ti ti-menu-2"></i></button>
@@ -424,20 +384,73 @@ footer{border-top:0.5px solid var(--faint);padding:40px clamp(16px,5vw,56px);dis
 
 <div class="mob-menu" id="mob-menu">
   <button class="mob-close" onclick="closeMob()"><i class="ti ti-x"></i></button>
-  <a onclick="closeMob()">Store</a>
-  <a onclick="closeMob()">Shows</a>
-  <a onclick="closeMob()">Merch</a>
+  <a onclick="showSection('store');closeMob()">Store</a>
+  <a onclick="showSection('shows');closeMob()">Shows</a>
+  <a onclick="showSection('merch');closeMob()">Merch</a>
   <a class="mext" href="https://mnemosynelabel.github.io" target="_blank">↗ Mnemosyne Label</a>
 </div>
 
-<div class="banner"><div class="b-track" id="b-track"></div><div class="b-nav"><button class="b-arr" onclick="moveBanner(-1)"><i class="ti ti-chevron-left"></i></button><div class="b-dots" id="b-dots"></div><button class="b-arr" onclick="moveBanner(1)"><i class="ti ti-chevron-right"></i></button></div></div>
-
-<div class="sec-head">
-  <div><div class="sec-tag">Nyne Ground · The Store</div><div class="sec-title">Available Now — <em>all releases</em></div></div>
-  <div class="sec-hint">select any release to view</div>
+<!-- STORE SECTION -->
+<div id="section-store">
+  <div class="banner">
+    <div class="b-track" id="b-track"></div>
+    <div class="b-nav">
+      <button class="b-arr" onclick="moveBanner(-1)"><i class="ti ti-chevron-left"></i></button>
+      <div class="b-dots" id="b-dots"></div>
+      <button class="b-arr" onclick="moveBanner(1)"><i class="ti ti-chevron-right"></i></button>
+    </div>
+  </div>
+  <div class="sec-head">
+    <div><div class="sec-tag">Nyne Ground · The Store</div><div class="sec-title">Available Now — <em>all releases</em></div></div>
+    <div class="sec-hint">select any release to view</div>
+  </div>
+  <div class="store"><div class="store-grid" id="store-grid"></div></div>
 </div>
 
-<div class="store"><div class="store-grid" id="store-grid"></div></div>
+<!-- SHOWS SECTION -->
+<div id="section-shows" style="display:none">
+  <div class="hero-shows">
+    <div class="hero-tag-s">Nyne Ground · 나인 그라운드 · Shows</div>
+    <div class="hero-title-s">The stage<br><em>is memory.</em></div>
+    <div class="hero-sub-s">Every show at Nyne Ground is a document. A night that happened and cannot be untaken. This is the archive.</div>
+  </div>
+  <div class="upcoming-wrap">
+    <div class="sec-label-s">I · Upcoming</div>
+    <div class="sec-title-s">Next on <em>the stage</em></div>
+    <div class="upcoming-empty">
+      <div class="ue-icon"><i class="ti ti-calendar-event"></i></div>
+      <div class="ue-text">
+        <div class="ue-title">Nothing announced yet.</div>
+        <div class="ue-sub">When a new show is confirmed, it will be posted here first.<br>Follow the accounts below to stay updated.</div>
+        <a href="https://www.facebook.com/profile.php?id=61576437987900" target="_blank" class="ue-follow"><i class="ti ti-brand-facebook"></i> @NyneGround</a>
+      </div>
+    </div>
+  </div>
+  <div class="past-wrap">
+    <div class="sec-label-s">II · The Archive</div>
+    <div class="sec-title-s">Past <em>shows</em></div>
+    <div class="poster-grid" id="poster-grid"></div>
+  </div>
+</div>
+
+<!-- MERCH SECTION -->
+<div id="section-merch" style="display:none">
+  <div class="hero-shows">
+    <div class="hero-tag-s">Nyne Ground · 나인 그라운드 · Merch</div>
+    <div class="hero-title-s">The store<br><em>is coming.</em></div>
+    <div class="hero-sub-s">Physical merchandise. Limited drops. Everything connected to the palette. Nothing made to be forgotten.</div>
+  </div>
+  <div class="merch-soon">
+    <div class="ms-inner">
+      <div class="ms-icon"><i class="ti ti-hanger"></i></div>
+      <div>
+        <div class="ms-title">Drops announced here.</div>
+        <div class="ms-sub">No merch available at this time. Watch this space — when something drops, it will be posted on Nyne Ground first. Everything is limited.</div>
+        <a href="https://www.facebook.com/profile.php?id=61576437987900" target="_blank" class="ue-follow" style="margin-top:16px;display:inline-flex;"><i class="ti ti-brand-facebook"></i> Follow Nyne Ground</a>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- LABEL CALLOUT -->
 <section class="label-callout">
@@ -449,9 +462,7 @@ footer{border-top:0.5px solid var(--faint);padding:40px clamp(16px,5vw,56px);dis
       <div class="lc-desc">Mnemosyne is an independent music label based in Seoul, South Korea. Founded in 2026. Every artist here is a craftsperson first. Every release is made in-house — the sound, the image, the story, the rights.</div>
     </div>
     <div class="lc-action">
-      <a href="https://mnemosynelabel.github.io" target="_blank" class="lc-btn">
-        <i class="ti ti-arrow-up-right"></i> Visit Mnemosyne
-      </a>
+      <a href="https://mnemosynelabel.github.io" target="_blank" class="lc-btn"><i class="ti ti-arrow-up-right"></i> Visit Mnemosyne</a>
       <div class="lc-sub">Roster · Releases · About · Contact</div>
     </div>
   </div>
@@ -459,7 +470,12 @@ footer{border-top:0.5px solid var(--faint);padding:40px clamp(16px,5vw,56px);dis
 
 <footer>
   <div class="ft-brand"><div class="ft-name">Nyne Ground</div><div class="ft-tag">Mnemosyne's stage and store.<br>where the music lands.<br>Seongsu-dong, Seoul · Est. 2026<br>Current Season — ANAMNESIS</div></div>
-  <div class="ft-links"><h4>Navigate</h4><a href="#">Store</a><a href="#">Shows</a><a href="#">Merch</a><a href="https://mnemosynelabel.github.io" target="_blank">↗ Mnemosyne Label</a></div>
+  <div class="ft-links"><h4>Navigate</h4>
+    <a onclick="showSection('store')">Store</a>
+    <a onclick="showSection('shows')">Shows</a>
+    <a onclick="showSection('merch')">Merch</a>
+    <a href="https://mnemosynelabel.github.io" target="_blank">↗ Mnemosyne Label</a>
+  </div>
   <div class="ft-contact"><h4>Contact</h4><p><a href="mailto:mnemosyne.label@gmail.com">mnemosyne.label@gmail.com</a><br>@mnemosyne_label<br>Nyne Ground</p></div>
   <div class="ft-bottom"><p>© 2026 Mnemosyne · Seoul · All rights reserved.</p><p>from memory, everything is made.</p></div>
 </footer>
@@ -480,6 +496,21 @@ footer{border-top:0.5px solid var(--faint);padding:40px clamp(16px,5vw,56px);dis
   <div class="panel-body" id="panel-body"></div>
 </div>
 
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+  <div class="lightbox-inner" id="lb-inner">
+    <button class="lb-close" onclick="closeLightbox()"><i class="ti ti-x"></i></button>
+    <img class="lightbox-img" id="lb-img" src="" alt=""/>
+    <div class="lightbox-info">
+      <div class="lb-tag" id="lb-tag">—</div>
+      <div class="lb-name" id="lb-name">—</div>
+      <div class="lb-date" id="lb-date">—</div>
+      <div class="lb-venue" id="lb-venue">—</div>
+      <div class="lb-desc" id="lb-desc">—</div>
+    </div>
+  </div>
+</div>
+
 <!-- DOCK -->
 <div class="dock" id="dock">
   <div class="dock-bar">
@@ -497,15 +528,18 @@ footer{border-top:0.5px solid var(--faint);padding:40px clamp(16px,5vw,56px);dis
   </div>
   <div class="dock-progress-wrap">
     <span class="dock-time" id="dock-current">0:00</span>
-    <div class="dock-progress" id="dock-progress">
-      <div class="dock-progress-bar" id="dock-bar"></div>
-    </div>
+    <div class="dock-progress" id="dock-progress"><div class="dock-progress-bar" id="dock-bar"></div></div>
     <span class="dock-time" id="dock-duration">0:00</span>
   </div>
   <audio id="dock-audio" preload="none"></audio>
 </div>
 
+<!-- TOAST -->
+<div class="toast" id="toast"><i class="ti ti-check"></i><span id="toast-msg">—</span></div>
+
 <script>
+const MNM_LOGO = 'https://raw.githubusercontent.com/mnemosynelabel/mnemosynelabel.github.io/9e71655ee2bf3f08671c485cffb3e69d09791f4d/images/logo.png';
+
 const releases = [
   {
     id:1, type:'Album', artist:'ERIS',
@@ -629,12 +663,24 @@ const releases = [
   },
   {
     id:7, type:'Album', artist:'AERA',
-    track:'Coming Soon', album:'—',
-    date:'2026', priceUSD:null, priceKRW:null,
-    cover:'https://raw.githubusercontent.com/mnemosynelabel/mnemosynelabel.github.io/ac8495ab85e0653340bf946223eac471cc068a44/images/new%20gen.jpg',
+    track:'Savage', album:"THE FIRST ALBUM 'SAVAGE'",
+    date:'2026', priceUSD:22, priceKRW:29000,
+    cover:'https://raw.githubusercontent.com/mnemosynelabel/nyneground/2ac362b108e485a4baa2dc7af9d1c6e68315d654/images/AERA%20BASILEIA.png',
     audioUrl:null,
     banner:'Pillars of Hera · Protectors of the Digital Olympus.',
-    cs:true, includes:[], tracklist:[]
+    cs:false,
+    includes:['CD Album (9 tracks)','Photo Booklet (96p)','Random Photocard (1 of 4)','Folded Poster','Sticker Sheet','Mini Stand'],
+    tracklist:[
+      {n:'01',t:'Savage',title:true,credits:'Produced by CI-EL, Rea · Lyrics by Annli, Harbin · Composed by Arle, Phantom · Choreographed by Rea, BJÖRN'},
+      {n:'02',t:'aenergy',title:false,credits:'Produced by August, Daisy · Lyrics by Rea, Yuu · Composed by Arle · Choreographed by Rea'},
+      {n:'03',t:"I'll make you cry",title:false,credits:'Produced by CI-EL · Lyrics by Annli · Composed by Phantom'},
+      {n:'04',t:'Yeppi Yeppi',title:false,credits:'Produced by ƧEN · Lyrics by 이오리, Lune · Composed by August'},
+      {n:'05',t:'Iconic',title:false,credits:'Produced by August, Violet · Lyrics by Arle · Composed by SEN'},
+      {n:'06',t:'Lucid Dream',title:false,credits:'Produced by BJÖRN, Violet · Lyrics by Annli, Harbin · Composed by Jass · Choreographed by Rea'},
+      {n:'07',t:'Black Mamba',title:false,credits:'Pre-release · Produced by CI-EL, August · Lyrics by Rea, Annli, Lune · Composed by SEN, Jass · Choreographed by Rea, Niven'},
+      {n:'08',t:'Next Level',title:false,credits:'Pre-release · Produced by CI-EL, SEN · Lyrics by Phantom, Annli, Daisy · Composed by August · Choreographed by Rea'},
+      {n:'09',t:'Hot Air Balloon',title:false,credits:'Special Track · Produced by CI-EL, August · Lyrics by Rea, Daisy · Composed by Lune, Harbin · Choreographed by Rea'},
+    ]
   },
   {
     id:8, type:'Album', artist:'ØISYZ',
@@ -647,315 +693,346 @@ const releases = [
   }
 ];
 
-// BANNER
-let bIdx=0, bTimer=null;
-const bTrack=document.getElementById('b-track');
-const bDots=document.getElementById('b-dots');
+// SHOWS DATA
+const BASE_IMG = 'https://raw.githubusercontent.com/mnemosynelabel/nyneground/2ac362b108e485a4baa2dc7af9d1c6e68315d654/images/';
+const shows = [
+  {name:'GENESIS',date:'2026',venue:'Nyne Ground · Seongsu-dong, Seoul',desc:'The beginning. The first night Nyne Ground opened its doors.',poster:BASE_IMG+'GENESIS.png'},
+  {name:'ANAMNESIS',date:'April 20, 2026',venue:'Nyne Ground · Seongsu-dong, Seoul',desc:'CI-EL and AUGUST on one stage. Red flame meets blue flame. Same fire. Different temperature. The founding showcase of Mnemosyne.',poster:BASE_IMG+'ANAMNESIS.png'},
+  {name:'EPOPTEIA',date:'May 9, 2026',venue:'Nyne Ground · Seongsu-dong, Seoul',desc:'One night. Every name. Nothing forgotten. The final initiation before everything moves forward.',poster:BASE_IMG+'EPOPTEIA.png'},
+  {name:'SYNERGIA',date:'2026',venue:'Nyne Ground · Seongsu-dong, Seoul',desc:'A night of collaboration. The roster together.',poster:BASE_IMG+'SYNERGIA.png'},
+  {name:'ELEFTHERIA',date:'2026',venue:'Nyne Ground · Seongsu-dong, Seoul',desc:'Freedom. Liberation. A stage built for what cannot be contained.',poster:BASE_IMG+'ELEFTHERIA.png'},
+  {name:'SKÆZ SHOWCASE',date:'2026',venue:'Nyne Ground · Seongsu-dong, Seoul',desc:'Eight fractures. One stage. SKÆZ claimed the night.',poster:BASE_IMG+'SHOWCASE%20SKAEZ.png'},
+  {name:'AERA · BASILEIA',date:'2026',venue:'Nyne Ground · Seongsu-dong, Seoul',desc:'The pillars take the stage. AERA declared their reign.',poster:BASE_IMG+'AERA%20BASILEIA.png'},
+];
 
-// add label slide at end
-const allSlides = [...releases, {
-  id:'label', cs:false, isLabel:true,
-  cover:'', artist:'', track:'', album:'', priceUSD:null
-}];
+// ─── BANNER ───────────────────────────────────────────────────────────────────
+let bIdx = 0, bTimer = null;
+const bTrack = document.getElementById('b-track');
+const bDots  = document.getElementById('b-dots');
 
-allSlides.forEach((r,i)=>{
-  const slide=document.createElement('div');
-  slide.className='b-slide'+(i===0?' active':'');
-  let slideHTML='';
-  if(r.isLabel){
-    slideHTML=`
-      <div class="b-img" style="background:linear-gradient(135deg,#0D0D0D 0%,#1a1208 50%,#0D0D0D 100%);"></div>
-      <div class="b-label-slide">
-        <img src="https://raw.githubusercontent.com/mnemosynelabel/mnemosynelabel.github.io/9e71655ee2bf3f08671c485cffb3e69d09791f4d/images/logo.png" alt="Mnemosyne" class="b-label-logo"/>
-        <div class="b-label-tag">from memory, everything is made.</div>
-        <div class="b-label-desc">An independent label based in Seoul.<br>Every release made in-house. Every credit belongs to the artist.</div>
-        <a href="https://mnemosynelabel.github.io" target="_blank" class="b-btn primary b-label-btn"><i class="ti ti-arrow-up-right"></i>&nbsp;Visit the Label</a>
-      </div>`;
+const bannerSlides = [...releases, { id:'label', isLabel:true }];
+
+bannerSlides.forEach(function(r, i) {
+  var slide = document.createElement('div');
+  slide.className = 'b-slide' + (i === 0 ? ' active' : '');
+
+  var slideHTML = '';
+  if (r.isLabel) {
+    slideHTML = '<div class="b-img" style="background:linear-gradient(135deg,#0D0D0D 0%,#1a1208 50%,#0D0D0D 100%);"></div>'
+      + '<div class="b-label-slide">'
+      + '<img src="' + MNM_LOGO + '" alt="Mnemosyne" class="b-label-logo"/>'
+      + '<div class="b-label-tag">from memory, everything is made.</div>'
+      + '<div class="b-label-desc">An independent label based in Seoul.<br>Every release made in-house. Every credit belongs to the artist.</div>'
+      + '<a href="https://mnemosynelabel.github.io" target="_blank" class="b-btn primary b-label-btn"><i class="ti ti-arrow-up-right"></i>&nbsp;Visit the Label</a>'
+      + '</div>';
   } else {
-    const action=r.cs
-      ?`<div class="b-soon">Coming Soon</div><br><button class="b-btn cs" disabled><i class="ti ti-clock"></i>&nbsp;Watch This Space</button>`
-      :`<div class="b-actions">
-          <button class="b-btn primary" onclick="openPanel(${r.id})"><i class="ti ti-shopping-bag"></i>&nbsp;Buy Now</button>
-          <button class="b-btn ghost" onclick="previewTrack(${r.id})"><i class="ti ti-player-play"></i>&nbsp;Preview</button>
-        </div>`;
-    slideHTML=`
-      <div class="b-img" style="background-image:url('${r.cover}');"></div>
-      <div class="b-dim"></div><div class="b-grad"></div>
-      <div class="b-content">
-        <div class="b-badge">${r.type} · Now Available</div>
-        <div class="b-artist">${r.artist}</div>
-        <div class="b-track-name"><em>${r.cs?'Coming Soon':r.track}</em></div>
-        <div class="b-album">${r.album}</div>
-        ${r.cs?'':`<div class="b-price">$${r.priceUSD} <span>₩${r.priceKRW.toLocaleString()}</span></div>`}
-        ${action}
-      </div>`;
+    var csAction = r.cs
+      ? '<div class="b-soon">Coming Soon</div><br><button class="b-btn cs" disabled><i class="ti ti-clock"></i>&nbsp;Watch This Space</button>'
+      : '<div class="b-actions"><button class="b-btn primary" onclick="openPanel(' + r.id + ')"><i class="ti ti-shopping-bag"></i>&nbsp;Buy Now</button><button class="b-btn ghost" onclick="previewTrack(' + r.id + ')"><i class="ti ti-player-play"></i>&nbsp;Preview</button></div>';
+    var priceHtml = r.cs ? '' : '<div class="b-price">$' + r.priceUSD + ' <span>₩' + r.priceKRW.toLocaleString() + '</span></div>';
+    slideHTML = '<div class="b-img" style="background-image:url(\'' + r.cover + '\')"></div>'
+      + '<div class="b-dim"></div><div class="b-grad"></div>'
+      + '<div class="b-content">'
+      + '<div class="b-badge">' + r.type + ' · ' + (r.cs ? 'Coming Soon' : 'Now Available') + '</div>'
+      + '<div class="b-artist">' + r.artist + '</div>'
+      + '<div class="b-track-name"><em>' + (r.cs ? 'Coming Soon' : r.track) + '</em></div>'
+      + '<div class="b-album">' + r.album + '</div>'
+      + '<div class="b-desc">' + r.type + '&nbsp;·&nbsp;' + r.banner + '</div>'
+      + priceHtml
+      + csAction
+      + '</div>';
   }
-  slide.innerHTML=slideHTML;
+  slide.innerHTML = slideHTML;
   bTrack.appendChild(slide);
-  const dot=document.createElement('button');
-  dot.className='b-dot'+(i===0?' active':'');
-  dot.onclick=()=>{goSlide(i);resetTimer();};
+
+  var dot = document.createElement('button');
+  dot.className = 'b-dot' + (i === 0 ? ' active' : '');
+  dot.onclick = (function(idx) { return function() { goSlide(idx); resetTimer(); }; })(i);
   bDots.appendChild(dot);
 });
 
-function goSlide(n){
-  bIdx=((n%allSlides.length)+allSlides.length)%allSlides.length;
-  bTrack.style.transform=`translateX(-${bIdx*100}%)`;
-  document.querySelectorAll('.b-slide').forEach((s,i)=>s.classList.toggle('active',i===bIdx));
-  document.querySelectorAll('.b-dot').forEach((d,i)=>d.classList.toggle('active',i===bIdx));
+function goSlide(n) {
+  bIdx = ((n % bannerSlides.length) + bannerSlides.length) % bannerSlides.length;
+  bTrack.style.transform = 'translateX(-' + (bIdx * 100) + '%)';
+  document.querySelectorAll('.b-slide').forEach(function(s, i) { s.classList.toggle('active', i === bIdx); });
+  document.querySelectorAll('.b-dot').forEach(function(d, i) { d.classList.toggle('active', i === bIdx); });
 }
-function moveBanner(d){goSlide(bIdx+d);resetTimer();}
-function resetTimer(){clearInterval(bTimer);bTimer=setInterval(()=>goSlide(bIdx+1),5500);}
+function moveBanner(d) { goSlide(bIdx + d); resetTimer(); }
+function resetTimer() { clearInterval(bTimer); bTimer = setInterval(function() { goSlide(bIdx + 1); }, 5500); }
 resetTimer();
-let tx=0;
-document.querySelector('.banner').addEventListener('touchstart',e=>{tx=e.touches[0].clientX;},{passive:true});
-document.querySelector('.banner').addEventListener('touchend',e=>{const d=tx-e.changedTouches[0].clientX;if(Math.abs(d)>40)moveBanner(d>0?1:-1);},{passive:true});
 
-// STORE GRID
-const grid=document.getElementById('store-grid');
-releases.forEach(r=>{
-  const card=document.createElement('div');
-  card.className='pcard'+(r.cs?' cs-card':'');
-  card.id='pcard-'+r.id;
-  const coverClick=r.cs?'':`onclick="openPanel(${r.id})"`;
-  card.innerHTML=`
-    <div class="pcard-cover" ${coverClick}>
-      <img src="${r.cover}" alt="${r.track}" loading="lazy"/>
-      <div class="pcard-ov">
-        ${r.cs?`<div class="preview-tag"><i class="ti ti-clock"></i> Coming Soon</div>`:`<div class="preview-tag"><i class="ti ti-eye"></i> View Product</div>`}
-      </div>
-      <div class="pcard-playing-ind"><span></span><span></span><span></span><span></span></div>
-    </div>
-    <div class="pcard-body">
-      <div class="pcard-meta">${r.type}</div>
-      <div class="pcard-artist">${r.artist}</div>
-      <div class="pcard-title">${r.cs?'Coming Soon':r.album}</div>
-      <div class="pcard-track">${r.cs?r.banner:`Title Track · ${r.track}`}</div>
-      ${r.cs?`<div style="margin-top:auto;padding-top:12px;">
-        <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);margin-bottom:8px;">Watch This Space</div>
-        <button class="cs-notify" onclick="event.stopPropagation();showToast('We will announce on @mnemosyne_label when this drops.')"><i class="ti ti-bell"></i> Notify Me</button>
-      </div>`:`
-      <div class="pcard-price-row">
-        <div class="pcard-price">$${r.priceUSD}</div>
-        <div class="pcard-price-alt">₩${r.priceKRW.toLocaleString()}</div>
-      </div>
-      <div class="pcard-formats">
-        <div class="fmt-tag"><i class="ti ti-disc"></i> Physical</div>
-        <div class="fmt-tag"><i class="ti ti-download"></i> Digital</div>
-      </div>
-      <div class="pcard-actions">
-        <button class="p-btn buy" onclick="openPanel(${r.id})"><i class="ti ti-shopping-bag"></i> Buy Now</button>
-        <button class="p-btn preview" onclick="event.stopPropagation();previewTrack(${r.id})" title="Preview"><i class="ti ti-player-play"></i></button>
-      </div>`}
-    </div>`;
-  grid.appendChild(card);
+var _bTouchX = 0;
+document.querySelector('.banner').addEventListener('touchstart', function(e) { _bTouchX = e.touches[0].clientX; }, {passive:true});
+document.querySelector('.banner').addEventListener('touchend', function(e) { var d = _bTouchX - e.changedTouches[0].clientX; if (Math.abs(d) > 40) moveBanner(d > 0 ? 1 : -1); }, {passive:true});
+
+// ─── STORE GRID ───────────────────────────────────────────────────────────────
+var storeGrid = document.getElementById('store-grid');
+releases.forEach(function(r) {
+  var card = document.createElement('div');
+  card.className = 'pcard' + (r.cs ? ' cs-card' : '');
+  card.id = 'pcard-' + r.id;
+
+  var coverClick = r.cs ? '' : 'onclick="openPanel(' + r.id + ')"';
+  var ovTag = r.cs
+    ? '<div class="preview-tag"><i class="ti ti-clock"></i> Coming Soon</div>'
+    : '<div class="preview-tag"><i class="ti ti-eye"></i> View Product</div>';
+  var priceBlock = r.cs
+    ? '<div style="margin-top:auto;padding-top:12px;"><div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);margin-bottom:8px;">Watch This Space</div>'
+      + '<button class="cs-notify" onclick="event.stopPropagation();showToast(\'We will announce on @mnemosyne_label when this drops.\')"><i class="ti ti-bell"></i> Notify Me</button></div>'
+    : '<div class="pcard-price-row"><div class="pcard-price">$' + r.priceUSD + '</div><div class="pcard-price-alt">₩' + r.priceKRW.toLocaleString() + '</div></div>'
+      + '<div class="pcard-formats"><div class="fmt-tag"><i class="ti ti-disc"></i> Physical</div><div class="fmt-tag"><i class="ti ti-download"></i> Digital</div></div>'
+      + '<div class="pcard-actions">'
+      + '<button class="p-btn buy" onclick="openPanel(' + r.id + ')"><i class="ti ti-shopping-bag"></i> Buy Now</button>'
+      + '<button class="p-btn preview" onclick="event.stopPropagation();previewTrack(' + r.id + ')" title="Preview"><i class="ti ti-player-play"></i></button>'
+      + '</div>';
+
+  card.innerHTML = '<div class="pcard-cover" ' + coverClick + '>'
+    + '<img src="' + r.cover + '" alt="' + r.track + '" loading="lazy"/>'
+    + '<div class="pcard-ov">' + ovTag + '</div>'
+    + '<div class="pcard-playing-ind"><span></span><span></span><span></span><span></span></div>'
+    + '</div>'
+    + '<div class="pcard-body">'
+    + '<div class="pcard-meta">' + r.type + '</div>'
+    + '<div class="pcard-artist">' + r.artist + '</div>'
+    + '<div class="pcard-title">' + (r.cs ? 'Coming Soon' : r.album) + '</div>'
+    + '<div class="pcard-track">' + (r.cs ? r.banner : 'Title Track · ' + r.track) + '</div>'
+    + priceBlock
+    + '</div>';
+
+  storeGrid.appendChild(card);
 });
 
-// PANEL
-let panelOpen=null;
-const panel=document.getElementById('panel');
-const overlay=document.getElementById('panel-overlay');
-const panelBody=document.getElementById('panel-body');
-let selectedFmt={};
+// ─── SHOWS GRID ───────────────────────────────────────────────────────────────
+// FIX: use posterGrid variable, not the storeGrid variable
+var posterGrid = document.getElementById('poster-grid');
+shows.forEach(function(s) {
+  var card = document.createElement('div');
+  card.className = 'show-card';
+  card.innerHTML = '<div class="show-poster">'
+    + '<img src="' + s.poster + '" alt="' + s.name + '" loading="lazy"/>'
+    + '<div class="show-poster-ov"><div class="show-poster-ov-tag"><i class="ti ti-eye"></i> View Poster</div></div>'
+    + '</div>'
+    + '<div class="show-info">'
+    + '<div class="show-name">' + s.name + '</div>'
+    + '<div class="show-date">' + s.date + '</div>'
+    + '<div class="show-venue">' + s.venue + '</div>'
+    + '</div>';
+  card.addEventListener('click', (function(show) { return function() { openLightbox(show); }; })(s));
+  posterGrid.appendChild(card); // FIX: append to posterGrid, not grid
+});
 
-function openPanel(id){
-  const r=releases.find(x=>x.id===id);
-  if(!r||r.cs) return;
-  panelOpen=id;
-  if(!selectedFmt[id]) selectedFmt[id]='physical';
-  document.getElementById('panel-thumb').src=r.cover;
-  document.getElementById('panel-head-artist').textContent=r.artist;
-  document.getElementById('panel-head-title').textContent=r.album;
+// ─── PANEL ────────────────────────────────────────────────────────────────────
+var panelOpen = null;
+var panel = document.getElementById('panel');
+var overlay = document.getElementById('panel-overlay');
+var panelBody = document.getElementById('panel-body');
+var selectedFmt = {};
+
+function openPanel(id) {
+  var r = releases.find(function(x) { return x.id === id; });
+  if (!r || r.cs) return;
+  panelOpen = id;
+  if (!selectedFmt[id]) selectedFmt[id] = 'physical';
+  document.getElementById('panel-thumb').src = r.cover;
+  document.getElementById('panel-head-artist').textContent = r.artist;
+  document.getElementById('panel-head-title').textContent = r.album;
   renderPanelBody(r);
   panel.classList.add('open');
   overlay.classList.add('open');
-  document.body.style.overflow='hidden';
+  document.body.style.overflow = 'hidden';
 }
 
-function renderPanelBody(r){
-  const fmt=selectedFmt[r.id]||'physical';
-  panelBody.innerHTML=`
-    <div class="panel-hero">
-      <img src="${r.cover}" alt="${r.album}"/>
-      <div class="panel-hero-info">
-        <div class="panel-hero-price">$${r.priceUSD}</div>
-        <div class="panel-hero-price-alt">₩${r.priceKRW.toLocaleString()} · Free shipping on orders over ₩50,000</div>
-      </div>
-    </div>
-    <div class="panel-buy">
-      <div class="panel-buy-price">$${r.priceUSD} <span style="font-size:13px;color:var(--smoke);font-family:'DM Sans',sans-serif;letter-spacing:1px;">₩${r.priceKRW.toLocaleString()}</span></div>
-      <div class="panel-buy-alt">${fmt==='physical'?'Physical Album · Ships within 7–14 business days':'Digital Download · Instant access after purchase'}</div>
-      <button class="panel-buy-btn" onclick="showToast('To order, send us a message at @mnemosyne_label or Nyne Ground.')"><i class="ti ti-shopping-bag"></i> Buy Now · ${fmt==='physical'?'Physical':'Digital'}</button>
-      <button class="panel-preview-btn" onclick="previewTrack(${r.id})"><i class="ti ti-player-play"></i> Preview Title Track</button>
-    </div>
-    <div class="shipping-note">
-      <i class="ti ti-truck"></i>
-      <span>Physical orders ship within 7–14 business days from Seoul · Digital orders fulfilled via email</span>
-    </div>
-    <div style="display:none">
-    </div>
-    <div class="panel-section">
-      <div class="panel-section-label">Format</div>
-      <div class="format-opts">
-        <div class="fmt-opt${fmt==='physical'?' selected':''}" onclick="selectFmt(${r.id},'physical')"><i class="ti ti-disc"></i> Physical CD</div>
-        <div class="fmt-opt${fmt==='digital'?' selected':''}" onclick="selectFmt(${r.id},'digital')"><i class="ti ti-download"></i> Digital Download</div>
-      </div>
-    </div>
-    ${fmt==='physical'?`
-    <div class="panel-section">
-      <div class="panel-section-label">What's Included</div>
-      <div class="includes-list">
-        ${r.includes.map(inc=>`<div class="inc-item"><i class="ti ti-check"></i><span>${inc}</span></div>`).join('')}
-      </div>
-    </div>`:''}
-    <div class="panel-section">
-      <div class="panel-section-label">Tracklist · ${r.tracklist.length} tracks</div>
-      <div class="tracklist">
-        ${r.tracklist.map(t=>`
-          <div class="track-item">
-            <div class="track-num">${t.n}</div>
-            <div class="track-item-inner">
-              <div class="track-name-row">
-                <div class="track-name${t.title?' title':''}">${t.t}</div>
-                ${t.title?`<div class="track-badge">Title</div>`:''}
-              </div>
-              ${t.credits?`<div class="track-credits">${t.credits}</div>`:''}
-            </div>
-          </div>`).join('')}
-      </div>
-    </div>`;
+function renderPanelBody(r) {
+  var fmt = selectedFmt[r.id] || 'physical';
+  var fmtLabel = fmt === 'physical' ? 'Physical Album · Ships within 7–14 business days' : 'Digital Download · Instant access after purchase';
+  var buyLabel = 'Buy Now · ' + (fmt === 'physical' ? 'Physical' : 'Digital');
+  var physSel = fmt === 'physical' ? ' selected' : '';
+  var digSel  = fmt === 'digital'  ? ' selected' : '';
+
+  var includesHtml = '';
+  if (fmt === 'physical') {
+    var incItems = '';
+    r.includes.forEach(function(inc) { incItems += '<div class="inc-item"><i class="ti ti-check"></i><span>' + inc + '</span></div>'; });
+    includesHtml = '<div class="panel-section"><div class="panel-section-label">What\'s Included</div><div class="includes-list">' + incItems + '</div></div>';
+  }
+
+  var trackItems = '';
+  r.tracklist.forEach(function(t) {
+    var titleBadge = t.title ? '<div class="track-badge">Title</div>' : '';
+    var creditsDiv = t.credits ? '<div class="track-credits">' + t.credits + '</div>' : '';
+    var nameClass  = t.title ? 'track-name title' : 'track-name';
+    trackItems += '<div class="track-item">'
+      + '<div class="track-num">' + t.n + '</div>'
+      + '<div class="track-item-inner">'
+      + '<div class="track-name-row"><div class="' + nameClass + '">' + t.t + '</div>' + titleBadge + '</div>'
+      + creditsDiv
+      + '</div></div>';
+  });
+
+  // "You May Also Like" — up to 3 other non-cs releases
+  var others = releases.filter(function(x) { return !x.cs && x.id !== r.id; }).slice(0, 3);
+  var alHtml = '';
+  if (others.length) {
+    var alCards = '';
+    others.forEach(function(o) {
+      alCards += '<div class="al-card" onclick="closePanel();setTimeout(function(){openPanel(' + o.id + ')},300)">'
+        + '<img src="' + o.cover + '" alt="' + o.album + '" loading="lazy"/>'
+        + '<div class="al-info"><div class="al-artist">' + o.artist + '</div><div class="al-title">' + o.album + '</div></div>'
+        + '</div>';
+    });
+    alHtml = '<div class="also-like"><div class="panel-section-label" style="margin-bottom:12px">You May Also Like</div>'
+      + '<div class="also-like-grid">' + alCards + '</div></div>';
+  }
+
+  var previewBtn = r.audioUrl
+    ? '<button class="panel-preview-btn" onclick="previewTrack(' + r.id + ')"><i class="ti ti-player-play"></i> Preview Title Track</button>'
+    : '';
+
+  panelBody.innerHTML = ''
+    + '<div class="panel-hero"><img src="' + r.cover + '" alt="' + r.album + '"/>'
+    + '<div class="panel-hero-info">'
+    + '<div class="panel-hero-price">$' + r.priceUSD + '</div>'
+    + '<div class="panel-hero-price-alt">₩' + r.priceKRW.toLocaleString() + ' · Free shipping on orders over ₩50,000</div>'
+    + '</div></div>'
+    + '<div class="panel-buy">'
+    + '<div class="panel-buy-price">$' + r.priceUSD + ' <span style="font-size:13px;color:var(--smoke);font-family:DM Sans,sans-serif;letter-spacing:1px;">₩' + r.priceKRW.toLocaleString() + '</span></div>'
+    + '<div class="panel-buy-alt">' + fmtLabel + '</div>'
+    + '<button class="panel-buy-btn" onclick="showToast(\'To order, send us a message at @mnemosyne_label or Nyne Ground.\')"><i class="ti ti-shopping-bag"></i> ' + buyLabel + '</button>'
+    + previewBtn
+    + '</div>'
+    + '<div class="shipping-note"><i class="ti ti-truck"></i><span>Physical orders ship within 7–14 business days from Seoul · Digital orders fulfilled via email</span></div>'
+    + '<div class="panel-section"><div class="panel-section-label">Format</div>'
+    + '<div class="format-opts">'
+    + '<div class="fmt-opt' + physSel + '" onclick="selectFmt(' + r.id + ',\'physical\')"><i class="ti ti-disc"></i> Physical CD</div>'
+    + '<div class="fmt-opt' + digSel  + '" onclick="selectFmt(' + r.id + ',\'digital\')"><i class="ti ti-download"></i> Digital Download</div>'
+    + '</div></div>'
+    + includesHtml
+    + '<div class="panel-section"><div class="panel-section-label">Tracklist · ' + r.tracklist.length + ' tracks</div>'
+    + '<div class="tracklist">' + trackItems + '</div></div>'
+    + alHtml;
 }
 
-function selectFmt(id,fmt){
-  selectedFmt[id]=fmt;
-  const r=releases.find(x=>x.id===id);
+function selectFmt(id, fmt) {
+  selectedFmt[id] = fmt;
+  var r = releases.find(function(x) { return x.id === id; });
   renderPanelBody(r);
 }
 
-function closePanel(){
+function closePanel() {
   panel.classList.remove('open');
   overlay.classList.remove('open');
-  document.body.style.overflow='';
-  panelOpen=null;
+  document.body.style.overflow = '';
+  panelOpen = null;
 }
 
-// AUDIO PLAYER
-let currentId=null;
-const dock=document.getElementById('dock');
-const dockImg=document.getElementById('dock-img');
-const dockTrack=document.getElementById('dock-track');
-const dockMeta=document.getElementById('dock-meta');
-const dockAudio=document.getElementById('dock-audio');
-const dockBar=document.getElementById('dock-bar');
-const dockCurrent=document.getElementById('dock-current');
-const dockDuration=document.getElementById('dock-duration');
-const dockPlayPause=document.getElementById('dock-playpause');
+// ─── AUDIO PLAYER ─────────────────────────────────────────────────────────────
+var currentId = null;
+var dock        = document.getElementById('dock');
+var dockImg     = document.getElementById('dock-img');
+var dockTrack   = document.getElementById('dock-track');
+var dockMeta    = document.getElementById('dock-meta');
+var dockAudio   = document.getElementById('dock-audio');
+var dockBar     = document.getElementById('dock-bar');
+var dockCurrent = document.getElementById('dock-current');
+var dockDuration= document.getElementById('dock-duration');
+var dockPlayPause = document.getElementById('dock-playpause');
 
-function fmt(s){const m=Math.floor(s/60);const sec=Math.floor(s%60);return m+':'+(sec<10?'0':'')+sec;}
+function fmtTime(s) { var m = Math.floor(s / 60); var sec = Math.floor(s % 60); return m + ':' + (sec < 10 ? '0' : '') + sec; }
 
-dockAudio.addEventListener('timeupdate',()=>{
-  if(!dockAudio.duration) return;
-  const pct=(dockAudio.currentTime/dockAudio.duration)*100;
-  dockBar.style.width=pct+'%';
-  dockCurrent.textContent=fmt(dockAudio.currentTime);
+dockAudio.addEventListener('timeupdate', function() {
+  if (!dockAudio.duration) return;
+  dockBar.style.width = ((dockAudio.currentTime / dockAudio.duration) * 100) + '%';
+  dockCurrent.textContent = fmtTime(dockAudio.currentTime);
 });
-dockAudio.addEventListener('loadedmetadata',()=>{
-  dockDuration.textContent=fmt(dockAudio.duration);
+dockAudio.addEventListener('loadedmetadata', function() { dockDuration.textContent = fmtTime(dockAudio.duration); });
+dockAudio.addEventListener('ended', function() {
+  dockPlayPause.innerHTML = '<i class="ti ti-player-play"></i>';
+  dockBar.style.width = '0%';
+  dockCurrent.textContent = '0:00';
 });
-dockAudio.addEventListener('ended',()=>{
-  dockPlayPause.innerHTML='<i class="ti ti-player-play"></i>';
-  dockBar.style.width='0%';
-  dockCurrent.textContent='0:00';
-});
-dockAudio.addEventListener('play',()=>{
-  dockPlayPause.innerHTML='<i class="ti ti-player-pause"></i>';
-});
-dockAudio.addEventListener('pause',()=>{
-  dockPlayPause.innerHTML='<i class="ti ti-player-play"></i>';
-});
+dockAudio.addEventListener('play',  function() { dockPlayPause.innerHTML = '<i class="ti ti-player-pause"></i>'; });
+dockAudio.addEventListener('pause', function() { dockPlayPause.innerHTML = '<i class="ti ti-player-play"></i>'; });
 
-// click progress bar to seek
-document.getElementById('dock-progress').addEventListener('click',function(e){
-  if(!dockAudio.duration) return;
-  const rect=this.getBoundingClientRect();
-  const pct=(e.clientX-rect.left)/rect.width;
-  dockAudio.currentTime=pct*dockAudio.duration;
+document.getElementById('dock-progress').addEventListener('click', function(e) {
+  if (!dockAudio.duration) return;
+  var rect = this.getBoundingClientRect();
+  dockAudio.currentTime = ((e.clientX - rect.left) / rect.width) * dockAudio.duration;
 });
+dockPlayPause.addEventListener('click', function() { if (dockAudio.paused) dockAudio.play(); else dockAudio.pause(); });
 
-dockPlayPause.addEventListener('click',()=>{
-  if(dockAudio.paused) dockAudio.play();
-  else dockAudio.pause();
-});
-
-function previewTrack(id){
-  const r=releases.find(x=>x.id===id);
-  if(!r||r.cs||!r.audioUrl) return;
-  if(currentId===id){
-    if(dockAudio.paused) dockAudio.play();
-    return;
-  }
+function previewTrack(id) {
+  var r = releases.find(function(x) { return x.id === id; });
+  if (!r || r.cs || !r.audioUrl) return;
+  if (currentId === id) { if (dockAudio.paused) dockAudio.play(); return; }
   stopAll();
-  currentId=id;
-  const card=document.getElementById('pcard-'+id);
-  if(card) card.classList.add('playing');
-  dockImg.src=r.cover;
-  dockTrack.textContent=r.track;
-  dockMeta.textContent=r.artist+' · '+r.album;
-  dockAudio.src=r.audioUrl;
+  currentId = id;
+  var card = document.getElementById('pcard-' + id);
+  if (card) card.classList.add('playing');
+  dockImg.src      = r.cover;
+  dockTrack.textContent = r.track;
+  dockMeta.textContent  = r.artist + ' · ' + r.album;
+  dockAudio.src    = r.audioUrl;
   dockAudio.load();
   dockAudio.play();
-  dockBar.style.width='0%';
-  dockCurrent.textContent='0:00';
-  dockDuration.textContent='0:00';
+  dockBar.style.width      = '0%';
+  dockCurrent.textContent  = '0:00';
+  dockDuration.textContent = '0:00';
   dock.classList.add('up');
 }
 
-function stopAll(){
-  if(currentId){const prev=document.getElementById('pcard-'+currentId);if(prev)prev.classList.remove('playing');}
-  currentId=null;
+function stopAll() {
+  if (currentId) { var prev = document.getElementById('pcard-' + currentId); if (prev) prev.classList.remove('playing'); }
+  currentId = null;
   dockAudio.pause();
-  dockAudio.src='';
-  dockBar.style.width='0%';
-  dockCurrent.textContent='0:00';
+  dockAudio.src = '';
+  dockBar.style.width = '0%';
+  dockCurrent.textContent = '0:00';
   dock.classList.remove('up');
 }
+document.getElementById('dock-stop').addEventListener('click', stopAll);
 
-document.getElementById('dock-stop').addEventListener('click',stopAll);
-document.getElementById('hamburger').addEventListener('click',()=>document.getElementById('mob-menu').classList.toggle('open'));
-function closeMob(){document.getElementById('mob-menu').classList.remove('open');}
+// ─── NAV / SECTION SWITCHING ──────────────────────────────────────────────────
+document.getElementById('hamburger').addEventListener('click', function() {
+  document.getElementById('mob-menu').classList.toggle('open');
+});
+function closeMob() { document.getElementById('mob-menu').classList.remove('open'); }
 
-// TOAST
-function showToast(msg){
-  const t=document.getElementById('toast');
-  document.getElementById('toast-msg').textContent=msg;
-  t.classList.add('show');
-  setTimeout(()=>t.classList.remove('show'),3000);
+function showSection(name) {
+  ['store', 'shows', 'merch'].forEach(function(s) {
+    var el = document.getElementById('section-' + s);
+    if (el) el.style.display = (s === name) ? '' : 'none';
+  });
+  document.querySelectorAll('.nav-links a:not(.nav-ext)').forEach(function(a, i) {
+    a.classList.toggle('active', ['store', 'shows', 'merch'][i] === name);
+  });
+  window.scrollTo({ top: 62, behavior: 'smooth' });
 }
 
-// ALSO LIKE — inject into panel after tracklist
-const _origRenderPanel = renderPanelBody;
-renderPanelBody = function(r){
-  _origRenderPanel(r);
-  const others = releases.filter(x=>!x.cs && x.id!==r.id).slice(0,3);
-  if(!others.length) return;
-  const alSection = document.createElement('div');
-  alSection.className='also-like';
-  alSection.innerHTML=`
-    <div class="panel-section-label" style="margin-bottom:0">You May Also Like</div>
-    <div class="also-like-grid">
-      ${others.map(o=>`
-        <div class="al-card" onclick="closePanel();setTimeout(()=>openPanel(${o.id}),300)">
-          <img src="${o.cover}" alt="${o.album}" loading="lazy"/>
-          <div class="al-info">
-            <div class="al-artist">${o.artist}</div>
-            <div class="al-title">${o.album}</div>
-          </div>
-        </div>`).join('')}
-    </div>`;
-  document.getElementById('panel-body').appendChild(alSection);
-};
+// ─── LIGHTBOX ─────────────────────────────────────────────────────────────────
+function openLightbox(s) {
+  document.getElementById('lb-img').src    = s.poster;
+  document.getElementById('lb-tag').textContent    = 'Mnemosyne · Nyne Ground';
+  document.getElementById('lb-name').innerHTML     = '<em>' + s.name + '</em>';
+  document.getElementById('lb-date').textContent   = s.date;
+  document.getElementById('lb-venue').textContent  = s.venue;
+  document.getElementById('lb-desc').textContent   = s.desc;
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox(e) {
+  if (e && e.target !== document.getElementById('lightbox') && e.target.closest && e.target.closest('.lightbox-inner')) return;
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', function(e) { if (e.key === 'Escape') { closeLightbox(); closePanel(); } });
+
+// ─── TOAST ────────────────────────────────────────────────────────────────────
+function showToast(msg) {
+  var t = document.getElementById('toast');
+  document.getElementById('toast-msg').textContent = msg;
+  t.classList.add('show');
+  setTimeout(function() { t.classList.remove('show'); }, 3000);
+}
 </script>
-<!-- TOAST -->
-<div class="toast" id="toast"><i class="ti ti-check"></i><span id="toast-msg">—</span></div>
 </body>
 </html>
